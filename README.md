@@ -1,5 +1,7 @@
-# learn-kana
-A website where you will be shoved Kana characters up to your brain, until you get them all
+# Learn-Kana
+⚠️ This website is still under construction!!!
+
+A website where you will be shoved Kana characters up to your brain, until you get them all.
 
 # Requirements
 - The main page will give the user the choice of selecting the kanas to practice.
