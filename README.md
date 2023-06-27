@@ -1,8 +1,8 @@
 # Learn-Kana
-⚠️ This website is still under construction!!!
+
+⚠️ [This website](https://eldoprano.github.io/learn-kana/) is still under construction!!!
 
 A website where you will be shoved Kana characters up to your brain, until you get them all.
-You can check the current state of the website here: https://eldoprano.github.io/learn-kana/
 
 # Requirements
 - The main page will give the user the choice of selecting the kanas to practice.
