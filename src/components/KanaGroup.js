@@ -39,14 +39,14 @@ export default function KanaGroup(props) {
         <div className="character-title-group">
             {Object.keys(kanaCharacters[props.groupToShow]).map((character) => {
                 return (
-                    <div className="character-title-element">
+                    <button className="character-title-element">
                         <h3>{kanaCharacters[props.groupToShow][character].title}</h3>
                         <p>
                             {Object.keys(kanaCharacters[props.groupToShow][character].characters).map((in_character) => {
                                 return kanaCharacters[props.groupToShow][character].characters[in_character].romanji + " "
                             })}
                         </p>
-                    </div>
+                    </button>
             )})}
         </div>
 
