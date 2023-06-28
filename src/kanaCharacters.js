@@ -32,6 +32,7 @@ export const kanaCharacters = {
   "hiragana": {
     "a": {
       "title": "あ",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "あ",
@@ -72,6 +73,7 @@ export const kanaCharacters = {
     },
     "k": {
       "title": "か",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "か",
@@ -112,6 +114,7 @@ export const kanaCharacters = {
     },
     "s": {
       "title": "さ",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "さ",
@@ -152,6 +155,7 @@ export const kanaCharacters = {
     },
     "t": {
       "title": "た",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "た",
@@ -192,6 +196,7 @@ export const kanaCharacters = {
     },
     "n": {
       "title": "な",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "な",
@@ -232,6 +237,7 @@ export const kanaCharacters = {
     },
     "h": {
       "title": "は",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "は",
@@ -272,6 +278,7 @@ export const kanaCharacters = {
     },
     "m": {
       "title": "ま",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "ま",
@@ -312,6 +319,7 @@ export const kanaCharacters = {
     },
     "y": {
       "title": "や",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "や",
@@ -338,6 +346,7 @@ export const kanaCharacters = {
     },
     "r": {
       "title": "ら",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "ら",
@@ -378,6 +387,7 @@ export const kanaCharacters = {
     },
     "w": {
       "title": "わ",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "わ",
@@ -397,6 +407,7 @@ export const kanaCharacters = {
     },
     "nn": {
       "title": "ん",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "ん",
@@ -409,6 +420,7 @@ export const kanaCharacters = {
     },
     "g": {
       "title": "が",
+      "tags": ["dakuten_kana"],
       "characters": {
         "a": {
           "jp_character": "が",
@@ -449,6 +461,7 @@ export const kanaCharacters = {
     },
     "z": {
       "title": "ざ",
+      "tags": ["dakuten_kana"],
       "characters": {
         "a": {
           "jp_character": "ざ",
@@ -489,6 +502,7 @@ export const kanaCharacters = {
     },
     "d": {
       "title": "だ",
+      "tags": ["dakuten_kana"],
       "characters": {
         "a": {
           "jp_character": "だ",
@@ -529,6 +543,7 @@ export const kanaCharacters = {
     },
     "b": {
       "title": "ば",
+      "tags": ["dakuten_kana"],
       "characters": {
         "a": {
           "jp_character": "ば",
@@ -569,6 +584,7 @@ export const kanaCharacters = {
     },
     "p": {
       "title": "ぱ",
+      "tags": ["dakuten_kana"],
       "characters": {
         "a": {
           "jp_character": "ぱ",
@@ -611,6 +627,7 @@ export const kanaCharacters = {
   "katakana": {
     "a": {
       "title": "ア",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "ア",
@@ -651,6 +668,7 @@ export const kanaCharacters = {
     },
     "k": {
       "title": "カ",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "カ",
@@ -691,6 +709,7 @@ export const kanaCharacters = {
     },
     "s": {
       "title": "サ",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "サ",
@@ -731,6 +750,7 @@ export const kanaCharacters = {
     },
     "t": {
       "title": "タ",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "タ",
@@ -771,6 +791,7 @@ export const kanaCharacters = {
     },
     "n": {
       "title": "ナ",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "ナ",
@@ -811,6 +832,7 @@ export const kanaCharacters = {
     },
     "h": {
       "title": "ハ",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "ハ",
@@ -851,6 +873,7 @@ export const kanaCharacters = {
     },
     "m": {
       "title": "マ",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "マ",
@@ -891,6 +914,7 @@ export const kanaCharacters = {
     },
     "y": {
       "title": "ヤ",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "ヤ",
@@ -917,6 +941,7 @@ export const kanaCharacters = {
     },
     "r": {
       "title": "ラ",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "ラ",
@@ -957,6 +982,7 @@ export const kanaCharacters = {
     },
     "w": {
       "title": "ワ",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "ワ",
@@ -976,6 +1002,7 @@ export const kanaCharacters = {
     },
     "nn": {
       "title": "ン",
+      "tags": ["main_kana"],
       "characters": {
         "a": {
           "jp_character": "ン",
@@ -987,6 +1014,7 @@ export const kanaCharacters = {
     },
     "g": {
       "title": "ガ",
+      "tags": ["dakuten_kana"],
       "characters": {
         "a": {
           "jp_character": "ガ",
@@ -1027,6 +1055,7 @@ export const kanaCharacters = {
     },
     "z": {
       "title": "ザ",
+      "tags": ["dakuten_kana"],
       "characters": {
         "a": {
           "jp_character": "ザ",
@@ -1067,6 +1096,7 @@ export const kanaCharacters = {
     },
     "d": {
       "title": "ダ",
+      "tags": ["dakuten_kana"],
       "characters": {
         "a": {
           "jp_character": "ダ",
@@ -1107,6 +1137,7 @@ export const kanaCharacters = {
     },
     "b": {
       "title": "バ",
+      "tags": ["dakuten_kana"],
       "characters": {
         "a": {
           "jp_character": "バ",
@@ -1147,6 +1178,7 @@ export const kanaCharacters = {
     },
     "p": {
       "title": "パ",
+      "tags": ["dakuten_kana"],
       "characters": {
         "a": {
           "jp_character": "パ",

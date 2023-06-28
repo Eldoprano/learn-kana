@@ -7,17 +7,19 @@ Structure of kanaCharacters:
     "hiragana": {
         "a" {
             "title": "あ",
+            "tags": ["main_kana"],
             "characters": {
                 "a": { "jp_character": "あ", "romanji": ["a"], "sound": "あ" },
                 "i": { "jp_character": "い", "romanji": ["i"], "sound": "い" },
                 . . .
             }
-        },
-        "k": {
-            "title": "か",
+        }, . . .
+        "g": {
+            "title": "が",
+            "tags": ["dakuten_kana"],
             "characters": {
-                "a": { "jp_character": "か", "romanji": ["ka"], "sound": "か" },
-                "i": { "jp_character": "き", "romanji": ["ki"], "sound": "き" },
+                "a": { "jp_character": "が", "romanji": ["ga"], "sound": "が" },
+                "i": { "jp_character": "ぎ", "romanji": ["gi"], "sound": "ぎ" },
                 . . .
             }
         }
@@ -34,20 +36,57 @@ function uppercaseFirstLetter(string) {
 
 export default function KanaGroup(props) {
   return (
-    <div>
+    <div className='kana-group-elements'>
         <h2>{uppercaseFirstLetter(props.groupToShow)}</h2>
         <div className="character-title-group">
-            {Object.keys(kanaCharacters[props.groupToShow]).map((character) => {
+
+        <h3>Main Kana</h3>
+        <div className="main-kana-characters">
+        {Object.keys(kanaCharacters[props.groupToShow]).map((character) => {
+            const { title, tags, characters } = kanaCharacters[props.groupToShow][character];
+            const hasMainKanaTag = tags.includes("main_kana");
+
+            if (hasMainKanaTag) {
+                const characterText = Object.keys(characters).map((in_character) => {
+                    const { romanji } = characters[in_character];
+                    return romanji;
+                }).join(" ");
+
                 return (
-                    <button className="character-title-element">
-                        <h3>{kanaCharacters[props.groupToShow][character].title}</h3>
-                        <p>
-                            {Object.keys(kanaCharacters[props.groupToShow][character].characters).map((in_character) => {
-                                return kanaCharacters[props.groupToShow][character].characters[in_character].romanji + " "
-                            })}
-                        </p>
+                    <button className="character-title-element" key={character}>
+                    <h3>{title}</h3>
+                    <p>{characterText}</p>
                     </button>
-            )})}
+                );
+            }
+
+            return null; // Skip characters without the "main_kana" tag
+        })}
+        </div>
+
+        <h3>Dakuten Kana</h3>
+        <div className="dakuten-kana-characters">
+            {Object.keys(kanaCharacters[props.groupToShow]).map((character) => {
+            const { title, tags, characters } = kanaCharacters[props.groupToShow][character];
+            const hasDakutenKanaTag = tags.includes("dakuten_kana");
+
+            if (hasDakutenKanaTag) {
+                const characterText = Object.keys(characters).map((in_character) => {
+                    const { romanji } = characters[in_character];
+                    return romanji;
+                }).join(" ");
+
+                return (
+                    <button className="character-title-element" key={character}>
+                    <h3>{title}</h3>
+                    <p>{characterText}</p>
+                    </button>
+                );
+            }
+
+            return null; // Skip characters without the "dakuten_kana" tag
+            })}
+        </div>
         </div>
 
     </div>

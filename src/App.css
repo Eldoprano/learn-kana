@@ -5,6 +5,12 @@ body{
     background-color: #155263;
     color: #ff9a3c;
 }
+@font-face {
+  font-family: "Belanosima";
+  src: local("Belanosima"),
+   url("./fonts/Belanosima/Belanosima-SemiBold.ttf") format("truetype");
+  font-weight: bold;
+ }
 
 /* 
 ##########
@@ -23,12 +29,14 @@ Title Page
     font-size: 15.5vw;
     margin-bottom: 1vh;
     margin-top: 30vh;
+    font-family: "Belanosima";
 }
 
 .title-page>div>h3{
     text-align: center;
     margin-top: 1vh;
     font-size: 2.5vw;
+    font-family: "Belanosima";
 }
 
 /* Stolen and adapted from https://codepen.io/Hornebom/pen/obaLYK */
@@ -39,6 +47,7 @@ Title Page
     padding-right: 2rem;
     padding-left: 2rem;
     font-size: 1.5rem;
+    font-family: "Belanosima";
     line-height: 4rem;
     text-decoration: none;
     color: white;
@@ -78,4 +87,49 @@ Game Menu Page
 */
   .game-menu-page{
     height: 97vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .kana-group-selector{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  .kana-group-elements{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30em;
+  }
+
+  .character-title-group{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .main-kana-characters, .dakuten-kana-characters{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .character-title-element{
+    flex: 0 1 calc(20% - 8px);
+    margin:4px;
+    min-width: 7em
+  }
+
+  .character-title-element>h3{
+    font-size: 3.5em;
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+
+  .character-title-element>p{
+    font-size: 0.85em;
+    letter-spacing: -0.8px;
+    margin-top: 3px;
   }
