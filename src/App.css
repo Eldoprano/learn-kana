@@ -1,6 +1,9 @@
 html {
     scroll-behavior: smooth;
 }
+html, body, #root {
+  height: 100%;
+}
 body{
     background-color: #155263;
     color: #ff9a3c;
@@ -18,8 +21,7 @@ Title Page
 ########## 
 */
 .title-page{
-    min-height: -webkit-fill-available;
-    height: 98vh;
+    height: calc(100% - 16px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;

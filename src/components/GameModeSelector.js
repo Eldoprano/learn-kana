@@ -9,7 +9,7 @@ export default function GameModeSelector() {
           <ButtonWithArrows description="Give me" unit="Kanas" id="kana-selector"/>
           <div className='button-with-arrows'>
             <label>
-              <input type="radio" name="button-with-arrows" id='time-selector' class="character-checkbox-input"></input>
+              <input type="radio" checked="checked" name="button-with-arrows" id='time-selector' class="character-checkbox-input"></input>
               <div className="character-checkbox-content">
                 <p>Unlimited</p>
               </div>
