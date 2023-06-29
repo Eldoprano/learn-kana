@@ -3,15 +3,15 @@ import React from 'react'
 export default function ButtonWithArrows(props) {
   return (
     <div className='button-with-arrows'>
-        <button>-</button>
+        <button id={props.id + '-minus'}>-</button>
         <label key={props.id}>
             <input type="radio" name="button-with-arrows" className="character-checkbox-input" />
             <div className="character-checkbox-content">
-                <p>{props.description} 5 {props.unit}</p>
+                <p id={props.id + '-name'}>{props.description} 5 {props.unit}</p>
             </div>
         </label>
 
-        <button>+</button>
+        <button id={props.id + '-plus'}>+</button>
     </div>
   )
 }

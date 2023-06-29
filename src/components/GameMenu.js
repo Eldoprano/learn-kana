@@ -15,8 +15,8 @@ export default function GameMenu() {
       </div>
       <div className='game-mode-selector'>
         <GameModeSelector />
+        <button className='glowButton'>Let's start!</button>
       </div>
-      <button>Let's start!</button>
     </div>
   )
 }
