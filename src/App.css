@@ -299,11 +299,7 @@ Game Menu Page
     text-align: center;
   }
 
-  .game-mode-selector>button{
-    width: 200px;
-  }
-
-  .game-mode-selector>.glowButton {
+  .game-mode-selector>a>.glowButton {
     width: 250px;
     margin: 15px;
   }

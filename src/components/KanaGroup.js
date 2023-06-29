@@ -70,7 +70,7 @@ function character_button_group_builder(props, tag) {
 
                 return (
                     <label className="character-checkbox-element" key={character}>
-                        <input type="checkbox" defaultChecked={title=='あ'} id={title} className="character-checkbox-input" />
+                        <input type="checkbox" defaultChecked={title==='あ'} id={title} className="character-checkbox-input" />
                         <div className="character-checkbox-content">
                             <h3>{title}</h3>
                             <p>{characterText}</p>

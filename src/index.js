@@ -1,19 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider,} from "react-router-dom";
 import './App.css';
+import './InGame.css';
+import App from './App';
+import Game from './pages/Game'
 import './fonts/Belanosima/Belanosima-SemiBold.ttf'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: < App/>,
+  },
+  {
+    path: "game/",
+    element: <Game />,
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA
-serviceWorkerRegistration.unregister();
+serviceWorkerRegistration.register();
