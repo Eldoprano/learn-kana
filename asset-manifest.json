@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/learn-kana/static/css/main.0c20fa9b.css",
-    "main.js": "/learn-kana/static/js/main.a0b1c653.js",
+    "main.css": "/learn-kana/static/css/main.9b5d45ff.css",
+    "main.js": "/learn-kana/static/js/main.bdb0717e.js",
     "static/media/Belanosima-SemiBold.ttf": "/learn-kana/static/media/Belanosima-SemiBold.f09fa19c016ae0fc11e5.ttf",
     "index.html": "/learn-kana/index.html",
-    "main.0c20fa9b.css.map": "/learn-kana/static/css/main.0c20fa9b.css.map",
-    "main.a0b1c653.js.map": "/learn-kana/static/js/main.a0b1c653.js.map"
+    "main.9b5d45ff.css.map": "/learn-kana/static/css/main.9b5d45ff.css.map",
+    "main.bdb0717e.js.map": "/learn-kana/static/js/main.bdb0717e.js.map"
   },
   "entrypoints": [
-    "static/css/main.0c20fa9b.css",
-    "static/js/main.a0b1c653.js"
+    "static/css/main.9b5d45ff.css",
+    "static/js/main.bdb0717e.js"
   ]
 }
