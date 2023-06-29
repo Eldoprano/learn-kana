@@ -62,7 +62,10 @@ function character_button_group_builder(props, tag) {
             if (hasTag) {
                 const characterText = Object.keys(characters).map((in_character) => {
                     const { romanji } = characters[in_character];
-                    return romanji;
+                    // TODO: This is very hacky. Fix it.
+                    //if(String(romanji).includes("a") || romanji == "n"){
+                        return romanji;
+                    //}
                 }).join(" ");
 
                 return (
