@@ -12,11 +12,11 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/learn-kana",
     element: < App/>,
   },
   {
-    path: "game/",
+    path: "/learn-kana/game/",
     element: <Game />,
   },
 ]);
