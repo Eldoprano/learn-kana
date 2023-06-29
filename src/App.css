@@ -18,7 +18,8 @@ Title Page
 ########## 
 */
 .title-page{
-    height: 96vh;
+    min-height: -webkit-fill-available;
+    height: 98vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
