@@ -29,7 +29,6 @@ export default function GameMenu() {
       <h2 id='game-menu-title'>Select a group to learn</h2>
       <div className='kana-group-selector'>
         <KanaGroup groupToShow="hiragana" />
-        <div className='kana-divider'></div>
         <KanaGroup groupToShow="katakana" />
       </div>
       <div className='game-mode-selector'>
