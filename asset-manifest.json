@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "./static/css/main.6d983393.css",
-    "main.js": "./static/js/main.c988e9d9.js",
+    "main.css": "./static/css/main.0a27f64b.css",
+    "main.js": "./static/js/main.fa71f970.js",
     "service-worker.js": "./service-worker.js",
     "static/media/Belanosima-SemiBold.ttf": "./static/media/Belanosima-SemiBold.f09fa19c016ae0fc11e5.ttf",
     "index.html": "./index.html",
-    "main.6d983393.css.map": "./static/css/main.6d983393.css.map",
-    "main.c988e9d9.js.map": "./static/js/main.c988e9d9.js.map"
+    "main.0a27f64b.css.map": "./static/css/main.0a27f64b.css.map",
+    "main.fa71f970.js.map": "./static/js/main.fa71f970.js.map"
   },
   "entrypoints": [
-    "static/css/main.6d983393.css",
-    "static/js/main.c988e9d9.js"
+    "static/css/main.0a27f64b.css",
+    "static/js/main.fa71f970.js"
   ]
 }
