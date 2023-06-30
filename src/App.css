@@ -13,6 +13,7 @@ body{
   src: local("Belanosima"),
    url("./fonts/Belanosima/Belanosima-SemiBold.ttf") format("truetype");
   font-weight: bold;
+  font-display: swap;
  }
 
 /* 
@@ -160,6 +161,7 @@ Game Menu Page
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 5px;
+    margin-bottom: 0.7em;
   }
 
   .character-title-element{

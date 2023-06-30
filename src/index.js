@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider,} from "react-router-dom";
 import './App.css';
 import './InGame.css';
 import App from './App';
-import Game from './pages/Game'
+import InGame from './pages/InGame'
 import './fonts/Belanosima/Belanosima-SemiBold.ttf'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/learn-kana/game/",
-    element: <Game />,
+    element: <InGame />,
   },
 ]);
 

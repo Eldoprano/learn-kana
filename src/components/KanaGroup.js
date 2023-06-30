@@ -1,6 +1,7 @@
 import React from 'react'
 import { kanaCharacters } from '../kanaCharacters.js'
 
+
 /*
 Structure of kanaCharacters:
 {
@@ -14,15 +15,6 @@ Structure of kanaCharacters:
                 . . .
             }
         }, . . .
-        "g": {
-            "title": "が",
-            "tags": ["dakuten_kana"],
-            "characters": {
-                "a": { "jp_character": "が", "romanji": ["ga"], "sound": "が" },
-                "i": { "jp_character": "ぎ", "romanji": ["gi"], "sound": "ぎ" },
-                . . .
-            }
-        }
     },
     "katakana": {
         . . .
@@ -33,6 +25,7 @@ Structure of kanaCharacters:
 function uppercaseFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
 
 export default function KanaGroup(props) {
   return (
@@ -62,15 +55,13 @@ function character_button_group_builder(props, tag) {
             if (hasTag) {
                 const characterText = Object.keys(characters).map((in_character) => {
                     const { romanji } = characters[in_character];
-                    // TODO: This is very hacky. Fix it.
-                    //if(String(romanji).includes("a") || romanji == "n"){
-                        return romanji;
-                    //}
+                    return romanji;
                 }).join(" ");
 
+                // checkedKanas in local storage is a list of kanas that should be checked
                 return (
                     <label className="character-checkbox-element" key={character}>
-                        <input type="checkbox" defaultChecked={title==='あ'} id={title} className="character-checkbox-input" />
+                        <input type="checkbox" defaultChecked={localStorage.checkedKanas.includes(title)} id={title} className="character-checkbox-input kana-checkbox" />
                         <div className="character-checkbox-content">
                             <h3>{title}</h3>
                             <p>{characterText}</p>

@@ -7,7 +7,8 @@ Structure:
 {
     "hiragana": {
         "a" {
-            "title": "a",
+            "title": "あ",
+            "tags": ["main_kana"],
             "characters": {
                 "a": { "jp_character": "あ", "romanji": ["a"], "sound": "あ" },
                 "i": { "jp_character": "い", "romanji": ["i"], "sound": "い" },
@@ -15,7 +16,8 @@ Structure:
             }
         },
         "k": {
-            "title": "ka",
+            "title": "か",
+            "tags": ["main_kana"],
             "characters": {
                 "a": { "jp_character": "か", "romanji": ["ka"], "sound": "か" },
                 "i": { "jp_character": "き", "romanji": ["ki"], "sound": "き" },
@@ -402,14 +404,8 @@ export const kanaCharacters = {
             "wo"
           ],
           "sound": "を"
-        }
-      }
-    },
-    "nn": {
-      "title": "ん",
-      "tags": ["main_kana"],
-      "characters": {
-        "a": {
+        },
+        "x": {
           "jp_character": "ん",
           "romanji": [
             "n"
@@ -997,14 +993,8 @@ export const kanaCharacters = {
             "wo"
           ],
           "sound": "ヲ"
-        }
-      }
-    },
-    "nn": {
-      "title": "ン",
-      "tags": ["main_kana"],
-      "characters": {
-        "a": {
+        },
+        "x": {
           "jp_character": "ン",
           "romanji": [
             "n"

@@ -4,7 +4,7 @@ import InGameExit from '../components/InGameExit'
 import InGameShowCharacter from '../components/InGameShowCharacter'
 import InGameWriteAnswer from '../components/InGameWriteAnswer'
 
-export default function Game() {
+export default function InGame() {
   return (
     <>
         <div className="in-game-top-var">

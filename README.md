@@ -1,6 +1,9 @@
 # Learn-Kana
 
-⚠️ [This website](https://eldoprano.github.io/learn-kana/) is still under construction!!!
+⚠️ This website is still under construction!!!
+You can check the deployment of the current status here:
+- [GitHub pages](https://eldoprano.github.io/learn-kana/) 
+- [Cloudflare pages](https://learn-kana.pages.dev/)
 
 A website where you will be shoved Kana characters up to your brain, until you get them all.
 
