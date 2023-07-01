@@ -1,9 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 import { kanaCharacters } from '../kanaCharacters.js'
+import { Link } from "react-router-dom";
+
 
 export default function InGameCharacterShowAndInput() {
-  const [onScreenKana, setKana] = useState('あ');
+  const [onScreenKana, setKana] = useState('');
+  const [onScreenScore, setScore] = useState(0);
+  let currentScore = 0;
   let inGameAnswerList = '';
 
   const characterGroupsToShow = localStorage.getItem("checkedKanas")
@@ -26,42 +30,37 @@ export default function InGameCharacterShowAndInput() {
   });
 
   function showNewCharacter() {
+    console.log("LOADED")
     const randomNumber = Math.floor(Math.random() * charactersToShow.length)
     setKana(charactersToShow[randomNumber].jp_character)
-    
+
     // Get the answer from the kanaCharacters dictionary
     inGameAnswerList = charactersToShow[randomNumber].romanji
   }
-  // Load Character at start
-  React.useEffect(() => {
-    window.addEventListener('load', showNewCharacter);
-    return () => {
-      window.removeEventListener("load", showNewCharacter);
-    };
-  }, []);
 
   // ---- Character Input handlers ----
-  function handleKeyDown(e) {
-    // Check if key is a printable character and append it to the input field
-    const InGameTextInput = document.querySelector('#in-game-text-input-cursor-group span');
-    if (e.key.match(/^[A-Za-z0-9 ]+$/) && e.key.length === 1) {
-      InGameTextInput.textContent += e.key;
-    } else if (e.key === 'Enter') {
-      InGameTextInput.textContent += '\n';
-    } else if (e.key === 'Backspace') {
-      InGameTextInput.textContent = InGameTextInput.textContent.slice(0, -1);
-    }
-
-    if(inGameAnswerList.includes(InGameTextInput.textContent)){
-      // Wait 1 second and then clear the input field and show a new character
-      setTimeout(function () {
-        InGameTextInput.textContent = '';
-        showNewCharacter();
-      },200)
-    }
-  }
-  
   React.useEffect(() => {
+    function handleKeyDown(e) {
+      // Check if key is a printable character and append it to the input field
+      const InGameTextInput = document.querySelector('#in-game-text-input-cursor-group span');
+      if (e.key.match(/^[A-Za-z0-9 ]+$/) && e.key.length === 1) {
+        InGameTextInput.textContent += e.key;
+      } else if (e.key === 'Enter') {
+        InGameTextInput.textContent += '\n';
+      } else if (e.key === 'Backspace') {
+        InGameTextInput.textContent = InGameTextInput.textContent.slice(0, -1);
+      }
+
+      if (inGameAnswerList.includes(InGameTextInput.textContent)) {
+        // Wait 1 second and then clear the input field and show a new character
+        currentScore += 1;
+        setScore(currentScore)
+        setTimeout(function () {
+          InGameTextInput.textContent = '';
+          showNewCharacter();
+        }, 200)
+      }
+    }
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
@@ -71,32 +70,40 @@ export default function InGameCharacterShowAndInput() {
   function handleFocus() {
     document.querySelector('#in-game-text-input').focus();
     window.setInterval(function () {
-      if (document.querySelector('#in-game-text-input-cursor').style.visibility === 'visible') {
-        document.querySelector('#in-game-text-input-cursor').style.visibility = 'hidden';
-      } else {
-        document.querySelector('#in-game-text-input-cursor').style.visibility = 'visible';
+      // Quick and dirty hack. You should terminate this interval when page changes
+      if (document.querySelector('#in-game-text-input-cursor')) {
+        if (document.querySelector('#in-game-text-input-cursor').style.visibility === 'visible') {
+          document.querySelector('#in-game-text-input-cursor').style.visibility = 'hidden';
+        } else {
+          document.querySelector('#in-game-text-input-cursor').style.visibility = 'visible';
+        }
       }
     }, 700);
   }
   React.useEffect(() => {
-    window.addEventListener('load', handleFocus);
-    return () => {
-      window.removeEventListener("load", handleFocus);
-    };
+    handleFocus();
+    showNewCharacter();
   }, []);
-
 
   return (
     <>
-      <div className='in-game-kana-character'>{onScreenKana}</div>
-      {/* <div className='in-game-romanji-character'>a</div> */}
-
-      <div id='in-game-text-input-cursor-group'>
-        <span></span>
-        <div id='in-game-text-input-cursor'></div>
+      <div className="in-game-top-var">
+        <div>Kanas {onScreenScore}</div>
+        <Link to='/learn-kana'>
+          <div>Exit</div>
+        </Link>
       </div>
-      <input type="text" id='in-game-text-input' />
-      <p id="hidden-text-for-font-loading">a</p>
+      <div className='in-game-game-screen'>
+
+        <div className='in-game-kana-character'>{onScreenKana}</div>
+        <div id='in-game-text-input-cursor-group'>
+          <span></span>
+          <div id='in-game-text-input-cursor'></div>
+        </div>
+        <input type="text" id='in-game-text-input' />
+        <p id="hidden-text-for-font-loading">a</p>
+      </div>
+
     </>
   )
 }
