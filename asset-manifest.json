@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "./static/css/main.fe7cecf0.css",
-    "main.js": "./static/js/main.dd4e0bd9.js",
+    "main.css": "./static/css/main.2163d0ec.css",
+    "main.js": "./static/js/main.84a87972.js",
     "static/media/KleeOne-Regular.ttf": "./static/media/KleeOne-Regular.0ff902fbf6d967456899.ttf",
     "service-worker.js": "./service-worker.js",
     "static/media/Belanosima-SemiBold.ttf": "./static/media/Belanosima-SemiBold.f09fa19c016ae0fc11e5.ttf",
     "index.html": "./index.html",
-    "main.fe7cecf0.css.map": "./static/css/main.fe7cecf0.css.map",
-    "main.dd4e0bd9.js.map": "./static/js/main.dd4e0bd9.js.map"
+    "main.2163d0ec.css.map": "./static/css/main.2163d0ec.css.map",
+    "main.84a87972.js.map": "./static/js/main.84a87972.js.map"
   },
   "entrypoints": [
-    "static/css/main.fe7cecf0.css",
-    "static/js/main.dd4e0bd9.js"
+    "static/css/main.2163d0ec.css",
+    "static/js/main.84a87972.js"
   ]
 }
