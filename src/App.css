@@ -325,6 +325,13 @@ Game Menu Page
   margin: 15px;
 }
 
+.game-mode-selector-button-group > label > div {
+  height: 3em;
+  width: 9em;
+}
+.game-mode-selector-button-group > label > div > p {
+  margin: auto;
+}
 
 @media (max-width: 655px) {
   .kana-group-selector {

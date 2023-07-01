@@ -29,13 +29,56 @@ export default function InGameCharacterShowAndInput() {
     });
   });
 
-  function showNewCharacter() {
-    console.log("LOADED")
-    const randomNumber = Math.floor(Math.random() * charactersToShow.length)
-    setKana(charactersToShow[randomNumber].jp_character)
+  function sample(inputArray, numberOfOutputs, ignoredCharacters=[]) {
+    // Create a copy of the original array to avoid modifying it
+    const copyArray = [...inputArray];
+    const sampledElements = [];
+    for (let i = 0; i < copyArray.length; i++){
+      if (ignoredCharacters.includes(copyArray[i].jp_character)) {
+        // Remove the selected element from the copyArray to avoid duplicates
+        copyArray.splice(i, 1);
+        i--;
+      }
+    }
+    // If n is greater than the size of a, set n to the size of a
+    numberOfOutputs = Math.min(numberOfOutputs, copyArray.length);
+    for (let i = 0; i < numberOfOutputs; i++) {
+      const randomIndex = Math.floor(Math.random() * copyArray.length);
+      sampledElements.push(copyArray[randomIndex]);
+      // Remove the selected element from the copyArray to avoid duplicates
+      copyArray.splice(randomIndex, 1);
+    }
+    return sampledElements;
+  }
 
-    // Get the answer from the kanaCharacters dictionary
-    inGameAnswerList = charactersToShow[randomNumber].romanji
+  function fillTouchAnswers(picked_kana) {
+    const possibleAnswers = sample(charactersToShow, 10, [picked_kana]);
+    const elements = document.querySelectorAll('.in-game-touch-answer>p');
+    const randomIndex = Math.floor(Math.random() * elements.length);
+
+    // Go over the elements
+    for (let i = 0; i < elements.length; i++) {
+      // If the current element is the one we want to fill, fill it
+      if (i === randomIndex) {
+        elements[i].textContent = inGameAnswerList;
+      } else {
+        elements[i].textContent = possibleAnswers[i].romanji;
+      }
+    }
+  }
+
+  let currentKanaToPickList = []
+  function showNewCharacter() {
+    if (currentKanaToPickList.length === 0) {
+      currentKanaToPickList = sample(charactersToShow, 10)
+    }
+    const picked_kana = currentKanaToPickList.pop()
+    setKana(picked_kana.jp_character)
+    inGameAnswerList = picked_kana.romanji
+
+    if (localStorage.getItem("game-mode-touch") === "true") {
+      fillTouchAnswers(picked_kana.jp_character);
+    }
   }
 
   // ---- Character Input handlers ----
@@ -61,46 +104,83 @@ export default function InGameCharacterShowAndInput() {
         }, 200)
       }
     }
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    if (localStorage.getItem("game-mode-touch") === "false") {
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }
   }, []);
 
-  function handleFocus() {
-    document.querySelector('#in-game-text-input').focus();
-    window.setInterval(function () {
-      // Quick and dirty hack. You should terminate this interval when page changes
-      if (document.querySelector('#in-game-text-input-cursor')) {
+  let cursorBlinkInterval;
+  React.useEffect(() => {
+    function handleFocus() {
+      document.querySelector('#in-game-text-input').focus();
+      cursorBlinkInterval = window.setInterval(function () {
         if (document.querySelector('#in-game-text-input-cursor').style.visibility === 'visible') {
           document.querySelector('#in-game-text-input-cursor').style.visibility = 'hidden';
         } else {
           document.querySelector('#in-game-text-input-cursor').style.visibility = 'visible';
         }
-      }
-    }, 700);
-  }
-  React.useEffect(() => {
-    handleFocus();
+      }, 700);
+    }
+    if (localStorage.getItem("game-mode-touch") === "false") {
+      handleFocus();
+    }
     showNewCharacter();
+
+    return () => {
+      clearInterval(cursorBlinkInterval);
+    }
   }, []);
+
+  let inGameInputElement = <></>
+  if (localStorage.getItem("game-mode-touch") === "true") {
+    function makeTouchAnswerDivs(params) {
+      const numberOfAnswers = 6;
+      const answerElements = [];
+    
+      for (let i = 0; i < numberOfAnswers; i++) {
+          answerElements.push((
+            <div className='in-game-touch-answer'>
+              <p></p>
+            </div>
+          ));
+        }
+      return answerElements;
+    }
+    
+    inGameInputElement = <>
+      <div className='in-game-touch-answer-group'>
+        {
+          makeTouchAnswerDivs()
+        }
+      </div>
+    </>
+  } else {
+    inGameInputElement = <>
+      <div id='in-game-text-input-cursor-group'>
+        <span></span>
+        <div id='in-game-text-input-cursor'></div>
+      </div>
+      <input type="text" id='in-game-text-input' />
+    </>
+  }
 
   return (
     <>
       <div className="in-game-top-var">
-        <div>Kanas {onScreenScore}</div>
-        <Link to='/learn-kana'>
-          <div>Exit</div>
+        <div className='in-game-score'>Kanas {onScreenScore}</div>
+        <Link to='/learn-kana#game-menu-title' className='in-game-exit-button'>
+          <div>✖</div>
         </Link>
       </div>
       <div className='in-game-game-screen'>
 
-        <div className='in-game-kana-character'>{onScreenKana}</div>
-        <div id='in-game-text-input-cursor-group'>
-          <span></span>
-          <div id='in-game-text-input-cursor'></div>
+        <div className='in-game-kana-character'>
+          {onScreenKana}
         </div>
-        <input type="text" id='in-game-text-input' />
+        {inGameInputElement}
         <p id="hidden-text-for-font-loading">a</p>
       </div>
 

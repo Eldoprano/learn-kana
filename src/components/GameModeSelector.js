@@ -1,5 +1,6 @@
 import React from 'react'
 import ButtonWithArrows from './ButtonWithArrows'
+import CheckMark from './CheckMark';
 
 export default function GameModeSelector() {
 
@@ -42,6 +43,10 @@ export default function GameModeSelector() {
             </label>
           </div>
           <ButtonWithArrows description="Give me" unit="minutes" id="time-selector"/>
+        </div>
+        <div className='game-mode-selector-button-group'>
+          <CheckMark characterText="Touch Mode" class="game-mode-selector-button-group-row-2" id="game-mode-touch"/>
+          <CheckMark characterText="Randomize Fonts" class="game-mode-selector-button-group-row-2" id="game-mode-random-fonts"/>
         </div>
     </div>
   )

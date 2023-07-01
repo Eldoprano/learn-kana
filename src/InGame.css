@@ -18,6 +18,18 @@ body {
   margin: 0px;
 }
 
+.in-game-score {
+  font-size: 2.5em;
+  user-select: none;
+}
+
+.in-game-exit-button {
+  text-decoration: none; 
+  color: #ff9a3c;
+  font-size: 2.5em;
+  margin-right: 14px;
+}
+
 .in-game-container {
   display: flex;
   height: 100%;
@@ -38,8 +50,9 @@ body {
 }
 
 .in-game-kana-character {
-  font-size: 30vh;
+  font-size: 35vh;
   user-select: none;
+  margin-top: 5vh;
 }
 
 .in-game-romanji-character {
@@ -83,6 +96,25 @@ body {
   width: 0;
   height: 0;
   opacity: 0;
+}
+
+.in-game-touch-answer-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width:80vw;
+  gap: 10px;
+
+}
+
+.in-game-touch-answer {
+  width: 20vw;
+  font-size: 2em;
+  text-align: center;
+  border-radius: 30px;
+  background-color: #00000027;
+  cursor: pointer;
 }
 
 #hidden-text-for-font-loading {

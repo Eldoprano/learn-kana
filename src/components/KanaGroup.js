@@ -61,7 +61,10 @@ function character_button_group_builder(props, tag) {
                 // checkedKanas in local storage is a list of kanas that should be checked
                 return (
                     <label className="character-checkbox-element" key={character}>
-                        <input type="checkbox" defaultChecked={localStorage.checkedKanas.includes(title)} id={title} className="character-checkbox-input kana-checkbox" />
+                        <input type="checkbox" 
+                            defaultChecked={localStorage.checkedKanas.includes(title)} 
+                            id={title} 
+                            className="character-checkbox-input kana-checkbox" />
                         <div className="character-checkbox-content">
                             <h3>{title}</h3>
                             <p>{characterText}</p>
