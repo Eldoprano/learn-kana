@@ -7,14 +7,16 @@ import InGameWriteAnswer from '../components/InGameWriteAnswer'
 export default function InGame() {
   return (
     <>
+      <div className='in-game-container'>
         <div className="in-game-top-var">
-            <InGameProgress/>
-            <InGameExit />
+          <InGameProgress />
+          <InGameExit />
         </div>
         <div className='in-game-game-screen'>
-            <InGameShowCharacter />
-            <InGameWriteAnswer />
+          <InGameShowCharacter />
+          <InGameWriteAnswer />
         </div>
+      </div>
     </>
   )
 }

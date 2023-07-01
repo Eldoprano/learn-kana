@@ -1,20 +1,93 @@
+@font-face {
+  font-family: "Belanosima";
+  src: local("Belanosima"),
+    url("./fonts/Belanosima/Belanosima-SemiBold.ttf") format("truetype");
+  font-weight: bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "KleeOne";
+  src: local("KleeOne"),
+    url("./fonts/Klee_One/KleeOne-Regular.ttf") format("truetype");
+  font-weight: bold;
+  font-display: swap;
+}
+
+body {
+  margin: 0px;
+}
+
+.in-game-container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
 .in-game-top-var {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px;
 }
 
 .in-game-game-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .in-game-kana-character {
-    font-size: 30vw;
+  font-size: 30vh;
+  user-select: none;
 }
 
 .in-game-romanji-character {
-    font-size: 15vw;
+  font-size: 15vw;
+}
+
+#in-game-text-input-cursor-group {
+  display: flex;
+  justify-content: center;
+  font-family: courier;
+  font-size: 13vh;
+  background: transparent;
+  width: 90vw;
+  color: #ff9a3c;
+  padding: 5px;
+  overflow: hidden;
+  height: 14vh;
+}
+
+#in-game-text-input-cursor-group span {
+  float: left;
+  padding-left: 3px;
+  white-space: pre;
+  font-family: "KleeOne", "Comic Sans MS", "Comic Sans";
+  align-self: center;
+  user-select: none;
+}
+
+#in-game-text-input-cursor {
+  float: left;
+  width: 5px;
+  height: 11.5vh;
+  background: #ff9a3c;
+  margin-right: 0.5em;
+  margin-left: 7px;
+  align-self: center;
+}
+
+#in-game-text-input {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+#hidden-text-for-font-loading {
+  position: absolute;
+  visibility: hidden;
+  left: -1px;
+  top: -1px;
+  font-family: "KleeOne";
 }

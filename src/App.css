@@ -1,90 +1,97 @@
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
-html, body, #root {
+
+html,
+body,
+#root {
   height: 100%;
 }
-body{
-    background-color: #155263;
-    color: #ff9a3c;
+
+body {
+  background-color: #155263;
+  color: #ff9a3c;
 }
+
 @font-face {
   font-family: "Belanosima";
   src: local("Belanosima"),
-   url("./fonts/Belanosima/Belanosima-SemiBold.ttf") format("truetype");
+    url("./fonts/Belanosima/Belanosima-SemiBold.ttf") format("truetype");
   font-weight: bold;
   font-display: swap;
- }
+}
 
 /* 
 ##########
 Title Page
 ########## 
 */
-.title-page{
-    height: calc(100% - 16px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+.title-page {
+  height: calc(100% - 16px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.title-page>div>h1{
-    font-size: 15.5vw;
-    margin-bottom: 1vh;
-    margin-top: 30vh;
-    font-family: "Belanosima";
-    user-select: none;
+.title-page>div>h1 {
+  font-size: 15.5vw;
+  margin-bottom: 1vh;
+  margin-top: 30vh;
+  font-family: "Belanosima";
+  user-select: none;
 }
 
-.title-page>div>h3{
-    text-align: center;
-    margin-top: 1vh;
-    font-size: 2.5vw;
-    font-family: "Belanosima";
-    user-select: none;
+.title-page>div>h3 {
+  text-align: center;
+  margin-top: 1vh;
+  font-size: 2.5vw;
+  font-family: "Belanosima";
+  user-select: none;
 }
 
 /* Stolen and adapted from https://codepen.io/Hornebom/pen/obaLYK */
 .glowButton {
-    position: relative;
-    margin: auto;
-    margin-bottom: 0.5em;
-    padding-right: 2rem;
-    padding-left: 2rem;
-    border-style: hidden;
-    font-size: 1.5rem;
-    font-family: "Belanosima";
-    line-height: 4rem;
-    text-decoration: none;
-    color: white;
-    letter-spacing: 2px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-image: linear-gradient(24deg, #ff9a3c, #155263);
-    border-radius: 30px;
-    cursor: pointer;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-    box-shadow: 0 0 0 0 #ff9a3c, 0.5rem 0.5rem 30px #503114;
-    transition: box-shadow 0.6s;
-  }
-  .glowButton:hover {
-    box-shadow: 0 0 60px 2px #ff9a3c, 0.5rem 0.5rem 30px #503114;
-  }
-  .glowButton:after {
-    content: "";
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    bottom: 2px;
-    left: 2px;
-    border-radius: 30px;
-    background-image: linear-gradient(170deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
-    pointer-events: none;
-  }
+  position: relative;
+  margin: auto;
+  margin-bottom: 0.5em;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  border-style: hidden;
+  font-size: 1.5rem;
+  font-family: "Belanosima";
+  line-height: 4rem;
+  text-decoration: none;
+  color: white;
+  letter-spacing: 2px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(24deg, #ff9a3c, #155263);
+  border-radius: 30px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-shadow: 0 0 0 0 #ff9a3c, 0.5rem 0.5rem 30px #503114;
+  transition: box-shadow 0.6s;
+}
+
+.glowButton:hover {
+  box-shadow: 0 0 60px 2px #ff9a3c, 0.5rem 0.5rem 30px #503114;
+}
+
+.glowButton:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  border-radius: 30px;
+  background-image: linear-gradient(170deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
 
 
 /* 
@@ -93,234 +100,238 @@ Game Menu Page
 ##############
 */
 
-  #game-menu-title {
-    user-select: none;
-    padding-top: 0.7em;
-  }
-  .game-menu-page{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-  }
+#game-menu-title {
+  user-select: none;
+  padding-top: 0.7em;
+}
 
-  .kana-group-selector{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    gap:1em;
-  }
+.game-menu-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
 
-  .kana-group-selector::before {
-    align-self: stretch;
-    content: '';
-    border: 1px solid #ff9a3c;
-  }
+.kana-group-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 1em;
+}
 
-  .kana-group-selector .kana-group-elements:first-child {
-    order: -1;
-  }
-  
-  .kana-group-elements{
-    display: flex;
-    flex-direction: column;
-    flex-basis: 40em;
-  }
+.kana-group-selector::before {
+  align-self: stretch;
+  content: '';
+  border: 1px solid #ff9a3c;
+}
 
-  .kana-group-elements>h2 {
-    margin-bottom: 0.2em;
-    font-size: 2em;
-    text-align: center;
-    user-select: none;
-  }
+.kana-group-selector .kana-group-elements:first-child {
+  order: -1;
+}
 
-  .character-title-group{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    /*
+.kana-group-elements {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 40em;
+}
+
+.kana-group-elements>h2 {
+  margin-bottom: 0.2em;
+  font-size: 2em;
+  text-align: center;
+  user-select: none;
+}
+
+.character-title-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /*
     border: #ff9a3c;
     border-width: 1px;
     border-style: solid;
     border-radius: 20px;
     */
-    padding: 0em 1em;
-    justify-content: center;
+  padding: 0em 1em;
+  justify-content: center;
+}
+
+.character-title-group>h3 {
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+  user-select: none;
+}
+
+.main_kana-characters,
+.dakuten_kana-characters {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 5px;
+  margin-bottom: 0.7em;
+}
+
+.character-title-element {
+  flex: 0 1 calc(20% - 8px);
+  margin: 4px;
+  min-width: 7em
+}
+
+
+.character-checkbox-content>h3 {
+  font-size: 3.5em;
+  margin-top: 5px;
+  margin-bottom: -15px;
+  user-select: none;
+}
+
+.character-checkbox-content>p {
+  font-size: 1em;
+  letter-spacing: -0.8px;
+  margin-top: 3px;
+  font-family: 'Trebuchet MS', sans-serif;
+  user-select: none;
+}
+
+.character-checkbox-element {
+  display: inline-block;
+  position: relative;
+  margin: 0px;
+}
+
+.character-checkbox-input {
+  position: absolute;
+  opacity: 0;
+}
+
+.character-checkbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 7.1em;
+  transition: background-color 0.3s;
+}
+
+
+.character-checkbox-input:checked~.character-checkbox-content {
+  background-color: #00000045;
+  border-color: #00000000;
+  animation: checkbox-check 0.3s;
+}
+
+
+.character-checkbox-input:not(:checked)~.character-checkbox-content {
+  background-color: transparent;
+  border-color: #00000000;
+}
+
+.character-checkbox-input:hover:not(:checked)~.character-checkbox-content {
+  background-color: #00000027;
+}
+
+.character-checkbox-input:checked~.character-checkbox-content h3 {
+  transition: color 0.3s;
+  -webkit-text-stroke: 1px black;
+}
+
+.character-checkbox-input:hover:checked~.character-checkbox-content {
+  background-color: #0000006d;
+}
+
+@keyframes checkbox-check {
+  0% {
+    transform: scale(1);
   }
 
-  .character-title-group>h3{
-    margin-top: 0.6em;
-    margin-bottom: 0.6em;
-    user-select: none;
+  50% {
+    transform: scale(1.1);
   }
 
-  .main_kana-characters, .dakuten_kana-characters{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 5px;
-    margin-bottom: 0.7em;
+  100% {
+    transform: scale(1);
   }
-
-  .character-title-element{
-    flex: 0 1 calc(20% - 8px);
-    margin:4px;
-    min-width: 7em
-  }
+}
 
 
-  .character-checkbox-content>h3{
-    font-size: 3.5em;
-    margin-top: 5px;
-    margin-bottom: -15px;
-    user-select: none;
-  }
-
-  .character-checkbox-content>p{
-    font-size: 1em;
-    letter-spacing: -0.8px;
-    margin-top: 3px;
-    font-family: 'Trebuchet MS', sans-serif;
-    user-select: none;
-  }
-
-  .character-checkbox-element {
-    display: inline-block;
-    position: relative;
-    margin: 0px;
-  }
-  
-  .character-checkbox-input {
-    position: absolute;
-    opacity: 0;
-  }
-  
-  .character-checkbox-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    height: 100px;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 7.1em;
-    transition: background-color 0.3s;
-  }
-  
-  
-  .character-checkbox-input:checked ~ .character-checkbox-content {
-    background-color: #00000045;
-    border-color: #00000000;
-    animation: checkbox-check 0.3s;
-  }
-  
-  
-  .character-checkbox-input:not(:checked) ~ .character-checkbox-content {
-    background-color: transparent;
-    border-color: #00000000;
-  }
-  
-  .character-checkbox-input:hover:not(:checked) ~ .character-checkbox-content {
-    background-color: #00000027;
-  }
-  
-  .character-checkbox-input:checked ~ .character-checkbox-content h3 {
-    transition: color 0.3s;
-    -webkit-text-stroke: 1px black;
-  }
-
-  .character-checkbox-input:hover:checked ~ .character-checkbox-content {
-    background-color: #0000006d;
-  }
-  
-  @keyframes checkbox-check {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  
-
-  /*
+/*
   Game mode selector
   */
 
-  .game-mode-selector-group {
-    text-align: -webkit-center;
+.game-mode-selector-group {
+  text-align: -webkit-center;
+}
+
+.game-mode-selector-group>h2 {
+  user-select: none;
+
+}
+
+.game-mode-selector-button-group {
+  display: flex;
+  flex-direction: row;
+  width: 60vw;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px;
+}
+
+.button-with-arrows {
+  display: flex;
+  flex-direction: row;
+  height: 3em;
+}
+
+.button-with-arrows>label>div>p {
+  margin: auto;
+}
+
+.button-with-arrows>button {
+  background-color: transparent;
+  width: 3em;
+  border-style: hidden;
+  font-size: 1.2em;
+  color: #ff9a3c;
+  user-select: none;
+}
+
+.button-with-arrows>button:active {
+  animation: checkbox-check 0.3s;
+}
+
+.button-with-arrows>button:hover {
+  background-color: #00000027;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.button-with-arrows .character-checkbox-content {
+  height: 3em;
+  width: 9em;
+}
+
+.game-mode-selector {
+  text-align: center;
+}
+
+.game-mode-selector>a>.glowButton {
+  width: 250px;
+  margin: 15px;
+}
+
+
+@media (max-width: 655px) {
+  .kana-group-selector {
+    flex-direction: column;
   }
 
-  .game-mode-selector-group>h2 {
-    user-select: none;
-
+  .game-mode-selector-button-group {
+    flex-direction: column;
   }
-
-  .game-mode-selector-button-group{
-    display: flex;
-    flex-direction: row;
-    width: 60vw;
-    justify-content: space-around;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .button-with-arrows {
-    display: flex;
-    flex-direction: row;
-    height: 3em;
-  }
-
-  .button-with-arrows>label>div>p {
-    margin: auto;
-  }
-
-  .button-with-arrows>button {
-    background-color: transparent;
-    width: 3em;
-    border-style: hidden;
-    font-size: 1.2em;
-    color: #ff9a3c;
-    user-select: none;
-  }
-
-  .button-with-arrows>button:active {
-    animation: checkbox-check 0.3s;
-  }
-
-  .button-with-arrows>button:hover{
-    background-color: #00000027;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-
-  .button-with-arrows .character-checkbox-content {
-    height: 3em;
-    width: 9em;
-  }
-
-  .game-mode-selector {
-    text-align: center;
-  }
-
-  .game-mode-selector>a>.glowButton {
-    width: 250px;
-    margin: 15px;
-  }
-
-
-  @media (max-width: 655px) {
-    .kana-group-selector{
-      flex-direction: column;
-    }
-
-    .game-mode-selector-button-group{
-      flex-direction: column;
-    }
-  }
+}
