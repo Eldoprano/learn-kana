@@ -66,6 +66,7 @@ body {
   font-family: "KleeOne", "Comic Sans MS", "Comic Sans";
   align-self: center;
   user-select: none;
+  padding-bottom: 10px;
 }
 
 #in-game-text-input-cursor {

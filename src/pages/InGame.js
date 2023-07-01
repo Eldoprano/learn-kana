@@ -1,8 +1,7 @@
 import React from 'react'
 import InGameProgress from '../components/InGameProgress'
 import InGameExit from '../components/InGameExit'
-import InGameShowCharacter from '../components/InGameShowCharacter'
-import InGameWriteAnswer from '../components/InGameWriteAnswer'
+import InGameCharacterShowAndInput from '../components/InGameCharacterShowAndInput'
 
 export default function InGame() {
   return (
@@ -13,8 +12,7 @@ export default function InGame() {
           <InGameExit />
         </div>
         <div className='in-game-game-screen'>
-          <InGameShowCharacter />
-          <InGameWriteAnswer />
+          <InGameCharacterShowAndInput />
         </div>
       </div>
     </>
