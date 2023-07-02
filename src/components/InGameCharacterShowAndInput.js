@@ -3,22 +3,25 @@ import { useState } from 'react'
 import { kanaCharacters } from '../kanaCharacters.js'
 import { Link } from "react-router-dom";
 
-
+let currentKanaToPickList = []
 export default function InGameCharacterShowAndInput() {
+
+  /* 
+    ##########################################
+    # Creates and handles the Kana character #
+    ##########################################
+  */
   const [onScreenKana, setKana] = useState('');
+  const [onScreenSolution, setSolution] = useState('');
   const [onScreenScore, setScore] = useState(0);
   let currentScore = 0;
   let inGameAnswerList = '';
 
   const characterGroupsToShow = localStorage.getItem("checkedKanas")
-  // List with its elements looking as follow
-  // {
-  //     "jp_character": "あ",
-  //     "romanji": ["a"],
-  //     "sound": "あ"
-  // }
-  let charactersToShow = []
 
+  // Creates a list of all possible Kanas to show, with its elements looking as follow: 
+  // { "jp_character": "あ", "romanji": ["a"], "sound": "あ" }
+  let charactersToShow = []
   Object.entries(kanaCharacters).forEach(([key, value]) => {
     Object.entries(value).forEach(([key2, value2]) => {
       if (characterGroupsToShow.includes(value2.title)) {
@@ -29,6 +32,7 @@ export default function InGameCharacterShowAndInput() {
     });
   });
 
+  // Helper function to get n random unique elements from an array
   function sample(inputArray, numberOfOutputs, ignoredCharacters=[]) {
     // Create a copy of the original array to avoid modifying it
     const copyArray = [...inputArray];
@@ -40,19 +44,32 @@ export default function InGameCharacterShowAndInput() {
         i--;
       }
     }
-    // If n is greater than the size of a, set n to the size of a
-    numberOfOutputs = Math.min(numberOfOutputs, copyArray.length);
-    for (let i = 0; i < numberOfOutputs; i++) {
+    // If n is greater than the size of a, set possible unique outputs to the size of array
+    const numberOfUniqueOutputs = Math.min(numberOfOutputs, copyArray.length);
+    for (let i = 0; i < numberOfUniqueOutputs; i++) {
       const randomIndex = Math.floor(Math.random() * copyArray.length);
       sampledElements.push(copyArray[randomIndex]);
       // Remove the selected element from the copyArray to avoid duplicates
       copyArray.splice(randomIndex, 1);
     }
+
+    // Fill the rest of the space with duplicate elements
+    const remainingOutputs = numberOfOutputs - numberOfUniqueOutputs;
+    for (let i = 0; i < remainingOutputs; i++) {
+      const randomIndex = Math.floor(Math.random() * numberOfUniqueOutputs);
+      sampledElements.push(sampledElements[randomIndex]);
+    }
+
     return sampledElements;
   }
 
+  /* 
+  ##########################################
+  # Creates and handles the touch answers #
+  ##########################################
+  */
   function fillTouchAnswers(picked_kana) {
-    const possibleAnswers = sample(charactersToShow, 10, [picked_kana]);
+    const possibleAnswers = sample(charactersToShow, 6, [picked_kana]);
     const elements = document.querySelectorAll('.in-game-touch-answer>p');
     const randomIndex = Math.floor(Math.random() * elements.length);
 
@@ -67,21 +84,28 @@ export default function InGameCharacterShowAndInput() {
     }
   }
 
-  let currentKanaToPickList = []
+
+  // Function gets called at the beginning and every time the kana changes
   function showNewCharacter() {
     if (currentKanaToPickList.length === 0) {
-      currentKanaToPickList = sample(charactersToShow, 10)
+      currentKanaToPickList = sample(charactersToShow, 25)
     }
+    console.log(currentKanaToPickList)
     const picked_kana = currentKanaToPickList.pop()
     setKana(picked_kana.jp_character)
     inGameAnswerList = picked_kana.romanji
+    setSolution(inGameAnswerList)
 
     if (localStorage.getItem("game-mode-touch") === "true") {
       fillTouchAnswers(picked_kana.jp_character);
     }
   }
 
-  // ---- Character Input handlers ----
+  /* 
+  #######################
+  # Text input handlers #
+  #######################
+  */
   React.useEffect(() => {
     function handleKeyDown(e) {
       // Check if key is a printable character and append it to the input field
@@ -94,7 +118,7 @@ export default function InGameCharacterShowAndInput() {
         InGameTextInput.textContent = InGameTextInput.textContent.slice(0, -1);
       }
 
-      if (inGameAnswerList.includes(InGameTextInput.textContent)) {
+      if (inGameAnswerList.includes(InGameTextInput.textContent.trim())) {
         // Wait 1 second and then clear the input field and show a new character
         currentScore += 1;
         setScore(currentScore)
@@ -134,6 +158,27 @@ export default function InGameCharacterShowAndInput() {
     }
   }, []);
 
+  /* 
+  ########################
+  # Touch input handlers #
+  ########################
+  */
+ function onClickAnswerButtonHandler(event) {
+   if (onScreenSolution.includes(event.target.firstChild.textContent)) {
+     setScore(onScreenScore + 1)
+     showNewCharacter();
+   } else {
+    alert("Wrong answer!");
+   }
+ }
+
+  /* 
+  ######################################################
+  # Decide wether to use touch or keyboard for answers #
+  ######################################################
+  */
+
+  // Make answer input via touch buttons
   let inGameInputElement = <></>
   if (localStorage.getItem("game-mode-touch") === "true") {
     function makeTouchAnswerDivs(params) {
@@ -142,7 +187,7 @@ export default function InGameCharacterShowAndInput() {
     
       for (let i = 0; i < numberOfAnswers; i++) {
           answerElements.push((
-            <div className='in-game-touch-answer'>
+            <div className='in-game-touch-answer' onClick={onClickAnswerButtonHandler}>
               <p></p>
             </div>
           ));
@@ -157,6 +202,8 @@ export default function InGameCharacterShowAndInput() {
         }
       </div>
     </>
+
+  // Make answer input via keyboard
   } else {
     inGameInputElement = <>
       <div id='in-game-text-input-cursor-group'>
