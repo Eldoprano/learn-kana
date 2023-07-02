@@ -128,7 +128,7 @@ export default function InGameCharacterShowAndInput() {
         }, 200)
       }
     }
-    if (localStorage.getItem("game-mode-touch") === "false") {
+    if (localStorage.getItem("game-mode-touch") !== "true") {
       window.addEventListener('keydown', handleKeyDown);
       return () => {
         window.removeEventListener("keydown", handleKeyDown);
@@ -148,7 +148,7 @@ export default function InGameCharacterShowAndInput() {
         }
       }, 700);
     }
-    if (localStorage.getItem("game-mode-touch") === "false") {
+    if (localStorage.getItem("game-mode-touch") !== "true") {
       handleFocus();
     }
     showNewCharacter();
