@@ -14,6 +14,67 @@
   font-display: swap;
 }
 
+
+
+@font-face {
+  font-family: "Kaisei_Tokumin";
+  src: local("Kaisei_Tokumin"),
+    url("./fonts/Kaisei_Tokumin/KaiseiTokumin-Regular.ttf") format("truetype");
+  font-weight: bold;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Noto_Serif_JP";
+  src: local("Noto_Serif_JP"),
+    url("./fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf") format("opentype");
+  font-weight: bold;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Shippori_Mincho";
+  src: local("Shippori_Mincho"),
+    url("./fonts/Shippori_Mincho/ShipporiMincho-Regular.ttf") format("truetype");
+  font-weight: bold;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Tsukimi_Rounded";
+  src: local("Tsukimi_Rounded"),
+    url("./fonts/Tsukimi_Rounded/TsukimiRounded-Regular.ttf") format("truetype");
+  font-weight: bold;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "YokoMoji";
+  src: local("YokoMoji"),
+    url("./fonts/YokoMoji/yokomoji.otf") format("opentype");
+  font-weight: bold;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "LeftHanded";
+  src: local("freefont_lefthanded"),
+    url("./fonts/freefont_lefthanded/freefont_lefthanded.otf") format("opentype");
+  font-weight: bold;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "JiyunoTsubasa";
+  src: local("JiyunoTsubasa"),
+    url("./fonts/JiyunoTsubasa/JiyunoTsubasa.ttf") format("truetype");
+  font-weight: bold;
+  font-display: block;
+}
+
+
+
+
 body {
   margin: 0px;
 }
@@ -39,20 +100,25 @@ body {
 .in-game-top-var {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   margin: 5px;
+  justify-content: space-between;
+  height: 7%;
 }
 
 .in-game-game-screen {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  height: 93%;
 }
 
 .in-game-kana-character {
   font-size: 35vh;
   user-select: none;
   margin-top: 5vh;
+  overflow: hidden;
+  height: 65%;
 }
 
 .in-game-romanji-character {
@@ -102,26 +168,65 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  width:80vw;
+  justify-content: space-evenly;
+  width: 95%;
   gap: 10px;
-
+  margin: 10px;
 }
 
 .in-game-touch-answer {
-  width: 20vw;
+  width: 30%;
   font-size: 2em;
   text-align: center;
   border-radius: 30px;
   background-color: #00000027;
   user-select: none;
   cursor: pointer;
+  display: grid;
+  align-content: center;
 }
 
-#hidden-text-for-font-loading {
+.hidden-text-for-font-loading {
   position: absolute;
   visibility: hidden;
   left: -1px;
   top: -1px;
-  font-family: "KleeOne";
+}
+
+.font-Belanosima{
+  font-family: Belanosima;
+}
+.font-KleeOne{
+  font-family: KleeOne;
+}
+.font-Kaisei_Tokumin{
+  font-family: Kaisei_Tokumin;
+}
+.font-Noto_Serif_JP{
+  font-family: Noto_Serif_JP;
+}
+.font-Shippori_Mincho{
+  font-family: Shippori_Mincho;
+}
+.font-Tsukimi_Rounded{
+  font-family: Tsukimi_Rounded;
+}
+.font-YokoMoji{
+  font-family: YokoMoji;
+}
+.font-LeftHanded{
+  font-family: LeftHanded;
+}
+.font-JiyunoTsubasa{
+  font-family: JiyunoTsubasa;
+}
+.font-forceDefault{
+  font-family: Belanosima !important;
+}
+
+@media (min-width: 900px) {
+  .in-game-touch-answer-group {
+    width:60%;
+    height: 35%;
+  }
 }

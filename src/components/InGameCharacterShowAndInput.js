@@ -4,6 +4,18 @@ import { kanaCharacters } from '../kanaCharacters.js'
 import { Link } from "react-router-dom";
 
 let currentKanaToPickList = []
+let fontClassList = [
+  "Belanosima",
+  "KleeOne",
+  "Kaisei_Tokumin",
+  "Noto_Serif_JP",
+  "Shippori_Mincho",
+  "Tsukimi_Rounded",
+  "YokoMoji",
+  "LeftHanded",
+  "JiyunoTsubasa",
+  "KleeOne"
+]
 export default function InGameCharacterShowAndInput() {
 
   /* 
@@ -90,11 +102,25 @@ export default function InGameCharacterShowAndInput() {
     if (currentKanaToPickList.length === 0) {
       currentKanaToPickList = sample(charactersToShow, 25)
     }
-    console.log(currentKanaToPickList)
+    // console.log(currentKanaToPickList)
     const picked_kana = currentKanaToPickList.pop()
     setKana(picked_kana.jp_character)
     inGameAnswerList = picked_kana.romanji
     setSolution(inGameAnswerList)
+
+    if (localStorage.getItem("game-mode-random-fonts") === "true") {
+      const randomFontIndex = Math.floor(Math.random() * fontClassList.length);
+      const fontClass = fontClassList[randomFontIndex];
+      // First we delete any class that begins with the word font
+      document.querySelector('#in-game-kana-character').classList.forEach(element => {
+        if (element.startsWith('font-')) {
+          document.querySelector('#in-game-kana-character').classList.remove(element);
+        }
+      });
+
+      // Then we add the new class
+      document.querySelector('#in-game-kana-character').classList.add("font-" + fontClass);
+    }
 
     if (localStorage.getItem("game-mode-touch") === "true") {
       fillTouchAnswers(picked_kana.jp_character);
@@ -116,6 +142,11 @@ export default function InGameCharacterShowAndInput() {
         InGameTextInput.textContent += '\n';
       } else if (e.key === 'Backspace') {
         InGameTextInput.textContent = InGameTextInput.textContent.slice(0, -1);
+      } else if (e.key === 'Shift') {
+        document.querySelector('#in-game-kana-character').classList.add("font-forceDefault");
+        setTimeout(function () {
+          document.querySelector('#in-game-kana-character').classList.remove("font-forceDefault");
+        },(1500))
       }
 
       if (inGameAnswerList.includes(InGameTextInput.textContent.trim())) {
@@ -172,6 +203,13 @@ export default function InGameCharacterShowAndInput() {
    }
  }
 
+ function onClickChangeFontToDefault(event) {
+    document.querySelector('#in-game-kana-character').classList.add("font-forceDefault");
+    setTimeout(function () {
+      document.querySelector('#in-game-kana-character').classList.remove("font-forceDefault");
+    },(1500))
+ }
+
   /* 
   ######################################################
   # Decide wether to use touch or keyboard for answers #
@@ -224,11 +262,20 @@ export default function InGameCharacterShowAndInput() {
       </div>
       <div className='in-game-game-screen'>
 
-        <div className='in-game-kana-character'>
-          {onScreenKana}
+        <div id='in-game-kana-character' onClick={onClickChangeFontToDefault} className='in-game-kana-character'>
+            {onScreenKana}
         </div>
         {inGameInputElement}
-        <p id="hidden-text-for-font-loading">a</p>
+        <div className='hidden-text-for-font-loading'>
+        {
+          // Go with a for loop over every font, and create an element p with a class of the font
+          fontClassList.map((fontClass) => {
+            return (
+              <p className={"font-" + fontClass}>a</p>
+            )
+            })
+        }
+        </div>
       </div>
 
     </>
