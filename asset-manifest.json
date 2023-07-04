@@ -1,16 +1,23 @@
 {
   "files": {
-    "main.css": "./static/css/main.eaeaffe7.css",
-    "main.js": "./static/js/main.6ce6ec3b.js",
+    "main.css": "./static/css/main.a27a93d9.css",
+    "main.js": "./static/js/main.47a4daba.js",
+    "static/media/ShipporiMincho-Regular.ttf": "./static/media/ShipporiMincho-Regular.fc476d938d8fe9050c97.ttf",
     "static/media/KleeOne-Regular.ttf": "./static/media/KleeOne-Regular.0ff902fbf6d967456899.ttf",
+    "static/media/NotoSerifJP-Regular.otf": "./static/media/NotoSerifJP-Regular.285413897b112b5d379e.otf",
+    "static/media/KaiseiTokumin-Regular.ttf": "./static/media/KaiseiTokumin-Regular.a931c0b1704ff5a9e05c.ttf",
+    "static/media/yokomoji.otf": "./static/media/yokomoji.485991e2ae589ecaa9a5.otf",
+    "static/media/JiyunoTsubasa.ttf": "./static/media/JiyunoTsubasa.d65d4873d75e673ced42.ttf",
+    "static/media/freefont_lefthanded.otf": "./static/media/freefont_lefthanded.055e1cd371da4b6ae5b2.otf",
+    "static/media/TsukimiRounded-Regular.ttf": "./static/media/TsukimiRounded-Regular.dc7607101c944dce846b.ttf",
     "service-worker.js": "./service-worker.js",
     "static/media/Belanosima-SemiBold.ttf": "./static/media/Belanosima-SemiBold.f09fa19c016ae0fc11e5.ttf",
     "index.html": "./index.html",
-    "main.eaeaffe7.css.map": "./static/css/main.eaeaffe7.css.map",
-    "main.6ce6ec3b.js.map": "./static/js/main.6ce6ec3b.js.map"
+    "main.a27a93d9.css.map": "./static/css/main.a27a93d9.css.map",
+    "main.47a4daba.js.map": "./static/js/main.47a4daba.js.map"
   },
   "entrypoints": [
-    "static/css/main.eaeaffe7.css",
-    "static/js/main.6ce6ec3b.js"
+    "static/css/main.a27a93d9.css",
+    "static/js/main.47a4daba.js"
   ]
 }
