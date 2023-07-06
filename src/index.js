@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     element: < App/>,
   },
   {
-    path: "/learn-kana/game/",
+    path: "/learn-kana∕game",
     element: <InGame />,
   },
 ]);

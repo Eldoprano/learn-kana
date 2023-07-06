@@ -8,7 +8,7 @@ export default function TitlePage() {
           <h1>Learn Kana!</h1>
           <h3>By Eldoprano</h3>
         </div>
-        <a className='glowButton' onClick={() => window.location.href = '#game-menu-title'}>Start learning!</a>
+        <a className='glowButton' onClick={() => window.location.href = '#game-menu-title'}>Start practicing!</a>
       </div>
     </>
   )

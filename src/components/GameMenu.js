@@ -33,7 +33,7 @@ export default function GameMenu() {
       </div>
       <div className='game-mode-selector'>
         <GameModeSelector />
-        <Link to='/learn-kana/game'>
+        <Link to='/learn-kana∕game'>
           <button className='glowButton' onClick={handleButtonClick}>Let's start!</button>
         </Link>
       </div>

@@ -72,6 +72,14 @@
   font-display: block;
 }
 
+@font-face {
+  font-family: "YujiBoku";
+  src: local("Yuji_Boku"),
+    url("./fonts/Yuji_Boku/YujiBoku-Regular.ttf") format("truetype");
+  font-weight: bold;
+  font-display: block;
+}
+
 
 
 
@@ -219,6 +227,9 @@ body {
 }
 .font-JiyunoTsubasa{
   font-family: JiyunoTsubasa;
+}
+.font-YujiBoku{
+  font-family: YujiBoku;
 }
 .font-forceDefault{
   font-family: Belanosima !important;

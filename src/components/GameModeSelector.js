@@ -46,7 +46,7 @@ export default function GameModeSelector() {
         </div>
         <div className='game-mode-selector-button-group'>
           <CheckMark characterText="Touch Mode" class="game-mode-selector-button-group-row-2" id="game-mode-touch"/>
-          <CheckMark characterText="Randomize Fonts" class="game-mode-selector-button-group-row-2" id="game-mode-random-fonts"/>
+          <CheckMark characterText="Handwritten Fonts" class="game-mode-selector-button-group-row-2" id="game-mode-random-fonts"/>
         </div>
     </div>
   )

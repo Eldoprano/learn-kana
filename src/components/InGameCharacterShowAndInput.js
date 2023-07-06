@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 let currentKanaToPickList = []
 let fontClassList = [
-  "Belanosima",
+  // "Belanosima",
   "KleeOne",
   "Kaisei_Tokumin",
   "Noto_Serif_JP",
@@ -13,8 +13,9 @@ let fontClassList = [
   "Tsukimi_Rounded",
   "YokoMoji",
   "LeftHanded",
-  "JiyunoTsubasa",
-  "KleeOne"
+  // "JiyunoTsubasa",
+  // "KleeOne",
+  "YujiBoku",
 ]
 export default function InGameCharacterShowAndInput() {
 
@@ -256,7 +257,7 @@ export default function InGameCharacterShowAndInput() {
     <>
       <div className="in-game-top-var">
         <div className='in-game-score'>Kanas {onScreenScore}</div>
-        <Link to='/learn-kana#game-menu-title' className='in-game-exit-button'>
+        <Link to='/learn-kana' className='in-game-exit-button'>
           <div>✖</div>
         </Link>
       </div>
