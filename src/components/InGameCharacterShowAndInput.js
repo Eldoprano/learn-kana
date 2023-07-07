@@ -101,7 +101,7 @@ export default function InGameCharacterShowAndInput() {
   // Function gets called at the beginning and every time the kana changes
   function showNewCharacter() {
     if (currentKanaToPickList.length === 0) {
-      currentKanaToPickList = sample(charactersToShow, 25)
+      currentKanaToPickList = sample(charactersToShow, Math.floor(charactersToShow.length))
     }
     // console.log(currentKanaToPickList)
     const picked_kana = currentKanaToPickList.pop()
