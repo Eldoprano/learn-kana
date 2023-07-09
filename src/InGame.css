@@ -176,7 +176,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   width: 95%;
   gap: 10px;
   margin: 10px;

@@ -33,12 +33,13 @@ export default function InGameCharacterShowAndInput() {
   const characterGroupsToShow = localStorage.getItem("checkedKanas")
 
   // Creates a list of all possible Kanas to show, with its elements looking as follow: 
-  // { "jp_character": "あ", "romanji": ["a"], "sound": "あ" }
+  // { "jp_character": "あ", "romanji": ["a"], "sound": "あ", "vocal": "a" }
   let charactersToShow = []
   Object.entries(kanaCharacters).forEach(([key, value]) => {
     Object.entries(value).forEach(([key2, value2]) => {
       if (characterGroupsToShow.includes(value2.title)) {
         Object.entries(value2.characters).forEach(([key3, value3]) => {
+          value3.vocal = key3;
           charactersToShow.push(value3);
         });
       }
@@ -46,27 +47,33 @@ export default function InGameCharacterShowAndInput() {
   });
 
   // Helper function to get n random unique elements from an array
-  function sample(inputArray, numberOfOutputs, ignoredCharacters=[]) {
+  function sample(inputArray, numberOfOutputs, onePerVocal=false) {
+    const vocals = ["a", "i", "u", "e", "o"]; 
+    let current_vocal = 0;
+
     // Create a copy of the original array to avoid modifying it
     const copyArray = [...inputArray];
     const sampledElements = [];
-    for (let i = 0; i < copyArray.length; i++){
-      if (ignoredCharacters.includes(copyArray[i].jp_character)) {
-        // Remove the selected element from the copyArray to avoid duplicates
-        copyArray.splice(i, 1);
-        i--;
-      }
-    }
+
     // If n is greater than the size of a, set possible unique outputs to the size of array
     const numberOfUniqueOutputs = Math.min(numberOfOutputs, copyArray.length);
+
     for (let i = 0; i < numberOfUniqueOutputs; i++) {
-      const randomIndex = Math.floor(Math.random() * copyArray.length);
-      sampledElements.push(copyArray[randomIndex]);
-      // Remove the selected element from the copyArray to avoid duplicates
-      copyArray.splice(randomIndex, 1);
+      while(true) {
+        const randomIndex = Math.floor(Math.random() * copyArray.length);
+        if(onePerVocal) {
+          if(copyArray[randomIndex].vocal === vocals[current_vocal]) {
+            current_vocal++;
+          } else { continue }
+        }
+        sampledElements.push(copyArray[randomIndex]);
+        // Remove the selected element from the copyArray to avoid duplicates
+        copyArray.splice(randomIndex, 1);
+        break;
+      }
     }
 
-    // Fill the rest of the space with duplicate elements
+    // If still space, fill it with duplicate elements
     const remainingOutputs = numberOfOutputs - numberOfUniqueOutputs;
     for (let i = 0; i < remainingOutputs; i++) {
       const randomIndex = Math.floor(Math.random() * numberOfUniqueOutputs);
@@ -82,18 +89,18 @@ export default function InGameCharacterShowAndInput() {
   ##########################################
   */
   function fillTouchAnswers(picked_kana) {
-    const possibleAnswers = sample(charactersToShow, 6, [picked_kana]);
+    const possibleAnswers = sample(charactersToShow, 5, true);
     const elements = document.querySelectorAll('.in-game-touch-answer>p');
     const randomIndex = Math.floor(Math.random() * elements.length);
+    for (let i = 0; i < possibleAnswers.length; i++) {
+      if(possibleAnswers[i].vocal === picked_kana.vocal) {
+        Object.assign(possibleAnswers[i], picked_kana)
+      }
+    }
 
     // Go over the elements
     for (let i = 0; i < elements.length; i++) {
-      // If the current element is the one we want to fill, fill it
-      if (i === randomIndex) {
-        elements[i].textContent = inGameAnswerList;
-      } else {
-        elements[i].textContent = possibleAnswers[i].romanji;
-      }
+      elements[i].textContent = possibleAnswers[i].romanji;
     }
   }
 
@@ -124,7 +131,7 @@ export default function InGameCharacterShowAndInput() {
     }
 
     if (localStorage.getItem("game-mode-touch") === "true") {
-      fillTouchAnswers(picked_kana.jp_character);
+      fillTouchAnswers(picked_kana);
     }
   }
 
@@ -221,7 +228,7 @@ export default function InGameCharacterShowAndInput() {
   let inGameInputElement = <></>
   if (localStorage.getItem("game-mode-touch") === "true") {
     function makeTouchAnswerDivs(params) {
-      const numberOfAnswers = 6;
+      const numberOfAnswers = 5;
       const answerElements = [];
     
       for (let i = 0; i < numberOfAnswers; i++) {
