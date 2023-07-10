@@ -405,7 +405,7 @@ export const kanaCharacters = {
           ],
           "sound": "を"
         },
-        "x": {
+        "u": {
           "jp_character": "ん",
           "romanji": [
             "n"
@@ -994,7 +994,7 @@ export const kanaCharacters = {
           ],
           "sound": "ヲ"
         },
-        "x": {
+        "u": {
           "jp_character": "ン",
           "romanji": [
             "n"
