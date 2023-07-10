@@ -55,6 +55,11 @@ export default function InGameCharacterShowAndInput() {
     const copyArray = [...inputArray];
     const sampledElements = [];
 
+    if(inputArray.length < numberOfOutputs) {
+      inputArray = inputArray.concat(inputArray);
+      onePerVocal = false;
+    }
+
     // If n is greater than the size of a, set possible unique outputs to the size of array
     const numberOfUniqueOutputs = Math.min(numberOfOutputs, copyArray.length);
 
@@ -91,7 +96,6 @@ export default function InGameCharacterShowAndInput() {
   function fillTouchAnswers(picked_kana) {
     const possibleAnswers = sample(charactersToShow, 5, true);
     const elements = document.querySelectorAll('.in-game-touch-answer>p');
-    const randomIndex = Math.floor(Math.random() * elements.length);
     for (let i = 0; i < possibleAnswers.length; i++) {
       if(possibleAnswers[i].vocal === picked_kana.vocal) {
         Object.assign(possibleAnswers[i], picked_kana)
