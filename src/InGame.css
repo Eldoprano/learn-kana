@@ -97,6 +97,7 @@ body {
   color: #ff9a3c;
   font-size: 2.5em;
   margin-right: 14px;
+  cursor: pointer;
 }
 
 .in-game-container {
@@ -192,6 +193,39 @@ body {
   cursor: pointer;
   display: grid;
   align-content: center;
+}
+
+.inGameUserGameScoreWindow{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: brightness(0.75) blur(25px);;
+}
+.inGameUserGameScoreWindow_header{
+
+}
+.inGameUserGameScoreWindow_stats{
+  display: flex;
+  flex-direction: column;
+}
+.inGameUserGameScoreWindow_stats_speed{
+  display: flex;
+}
+.inGameUserGameScoreWindow_stats_problematicKanas{
+  display: flex;
+  flex-direction: column;
+}
+.inGameUserGameScoreWindow_stats_problematicKanas>div{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.inGameUserGameScoreWindow_buttons{
+  display: flex;
 }
 
 .hidden-text-for-font-loading {
