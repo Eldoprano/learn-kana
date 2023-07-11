@@ -51,6 +51,7 @@ if (localStorage.getItem('userStats') === null) {
 // This timer is set to current time when a new kana is showned. 
 // We use it to calculate how long it takes the user to respond.
 let kanaTimeToAnswerTimer = 0;
+let inGameKanaOnScreen = ""
 
 export default function InGameCharacterShowAndInput() {
 
@@ -65,7 +66,6 @@ export default function InGameCharacterShowAndInput() {
   const [userGameScoreWindowVisible, setUserGameScoreWindowVisible] = useState(false);
   let currentScore = 0;
   let inGameAnswerList = [];
-  let inGameKanaOnScreen = ""
 
   const characterGroupsToShow = localStorage.getItem("checkedKanas")
 
@@ -174,7 +174,6 @@ export default function InGameCharacterShowAndInput() {
     }
     if (guessType === "correct") {
       currentUserStats[inGameKanaOnScreen].currentGameStats.totalResponseTime += (currentTime - kanaTimeToAnswerTimer);
-      console.log(currentUserStats[inGameKanaOnScreen].currentGameStats.totalResponseTime)
       currentUserStats[inGameKanaOnScreen].currentGameStats.rightGuesses++;
     } else if (guessType === "wrong") {
       currentUserStats[inGameKanaOnScreen].currentGameStats.touchWrongGuesses++;
@@ -235,6 +234,8 @@ export default function InGameCharacterShowAndInput() {
         setTimeout(function () {
           document.querySelector('#in-game-kana-character').classList.remove("font-forceDefault");
         }, (1500))
+      } else if (e.key === 'Escape') {
+        setUserGameScoreWindowVisible(true);
       }
 
       if (inGameAnswerList.includes(InGameTextInput.textContent.trim())) {
@@ -307,7 +308,6 @@ export default function InGameCharacterShowAndInput() {
   }
 
   function onClickExitButton(event) {
-    console.log("clicked")
     setUserGameScoreWindowVisible(true);
   }
 

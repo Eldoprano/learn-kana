@@ -1,4 +1,6 @@
 import React from 'react'
+import {Link} from "react-router-dom";
+
 /* userStats object structure:
 {
     "あ": {
@@ -37,19 +39,21 @@ export default function UserGameScoreWindow(props) {
 
     function getAverageResponseTimeOfCurrentGame() {
         let totalResponseTime=0;
-        let totalKanas=0;
         for (const kana in userStats) {
-            totalResponseTime += userStats[kana].currentGameStats.totalResponseTime / userStats[kana].currentGameStats.rightGuesses;
-            totalKanas += 1;
+            totalResponseTime += userStats[kana].currentGameStats.totalResponseTime;
         }
-        return (totalResponseTime/totalKanas)/1000;
+        return (totalResponseTime/getTotalRightGuessesOfCurrentGame())/1000;
     }
 
     // This function returns n kanas in descending order that have the highest average response time
     function getTopNProblematicKanas(n) {
         let problematicKanas = [];
         for (const kana in userStats) {
-            let averageResponseTime = userStats[kana].currentGameStats.totalResponseTime / userStats[kana].currentGameStats.rightGuesses;
+            if(userStats[kana].currentGameStats.rightGuesses === 0) {
+                continue;
+            }
+
+            const averageResponseTime = userStats[kana].currentGameStats.totalResponseTime / userStats[kana].currentGameStats.rightGuesses;
             problematicKanas.push({
                 kana: kana,
                 averageResponseTime: averageResponseTime/1000
@@ -60,11 +64,11 @@ export default function UserGameScoreWindow(props) {
     }
 
     const problematicKanasElement = <>
-        <p>Top 10 Problematic Kanas</p>
+        <p>Slow Kanas:</p>
         <div>
             {
-                getTopNProblematicKanas(10).map((kana, index) => {
-                    return <p>{kana.kana + ': ' + kana.averageResponseTime.toFixed(2)}</p>
+                getTopNProblematicKanas(5).map((kana, index) => {
+                    return <p className='problematicKanasElement'>{kana.kana + ': ' + kana.averageResponseTime.toFixed(2)}</p>
                 })
             }
         </div>
@@ -72,23 +76,30 @@ export default function UserGameScoreWindow(props) {
     let inGameUserGameScoreWindow = <></>
     if(props.visible){
         inGameUserGameScoreWindow = 
-            <div className='inGameUserGameScoreWindow'>
-                <div className='inGameUserGameScoreWindow_header'>
-                    <h1>{getTotalRightGuessesOfCurrentGame()} Kanas Completed!</h1>
-                </div>
-                <div className='inGameUserGameScoreWindow_stats'>
-                    <div className='inGameUserGameScoreWindow_stats_speed'>
-                        <p>Time per Kana: {getAverageResponseTimeOfCurrentGame().toFixed(3)} seconds</p>
+            <div className='inGameUserGameScoreBackground'>            
+                <div className='inGameUserGameScoreWindow'>
+                    <div className='inGameUserGameScoreWindow_header'>
+                        <h1>{getTotalRightGuessesOfCurrentGame()}</h1>
+                        <h2>Kanas Completed!</h2>
                     </div>
-                    <div className='inGameUserGameScoreWindow_stats_problematicKanas'>
-                        {problematicKanasElement}
+                    <div className='inGameUserGameScoreWindow_stats'>
+                        <div className='inGameUserGameScoreWindow_stats_speed'>
+                            <p>{"Time per Kana: " + getAverageResponseTimeOfCurrentGame().toFixed(3) + " seconds"}</p>
+                        </div>
+                        <div className='inGameUserGameScoreWindow_stats_problematicKanas'>
+                            {problematicKanasElement}
+                        </div>
                     </div>
-                </div>
-                <div className='inGameUserGameScoreWindow_buttons'>
-                    <button>Back to Main Menu</button>
-                    <button>Try Problematics</button>
-                    <button>Play Again</button>
-                </div>
+                    <div className='inGameUserGameScoreWindow_buttons'>
+                        <Link to='/learn-kana'>
+                            <button>Back to Main Menu</button>
+                        </Link>
+                        <button disabled={true}>Try Problematics</button>
+                        <Link to='/learn-kana'>
+                            <button>Play Again</button>
+                        </Link>
+                    </div>
+                </div>            
             </div>
     }
 

@@ -195,7 +195,7 @@ body {
   align-content: center;
 }
 
-.inGameUserGameScoreWindow{
+.inGameUserGameScoreBackground {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -205,27 +205,80 @@ body {
   justify-content: center;
   backdrop-filter: brightness(0.75) blur(25px);;
 }
-.inGameUserGameScoreWindow_header{
-
-}
-.inGameUserGameScoreWindow_stats{
+.inGameUserGameScoreWindow{
+  border-style: solid;
+  border-radius: 30px;
+  padding: 3em;
+  margin: 3em;
+  gap: 35px;
   display: flex;
   flex-direction: column;
 }
-.inGameUserGameScoreWindow_stats_speed{
+
+.inGameUserGameScoreWindow_header>h1{
+  font-size: 13vh;
+  text-align: center;
+  margin: 0px;
+  padding-bottom: 0px;
+}
+.inGameUserGameScoreWindow_header>h2{
+  font-size: 7vh;
+  text-align: center;
+  margin: 0px;
+}
+
+.inGameUserGameScoreWindow_stats{
   display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.inGameUserGameScoreWindow_stats_speed>p{
+  text-align: center;
+  font-size: 5vh;
+  margin: 0px;
 }
 .inGameUserGameScoreWindow_stats_problematicKanas{
   display: flex;
   flex-direction: column;
+  font-size: 4vh;
+  text-align: center;
+  gap: 10px;
+}
+.inGameUserGameScoreWindow_stats_problematicKanas>p{
+  font-size: 5vh;
+  margin: 0px;
+}
+.inGameUserGameScoreWindow_stats_problematicKanas>div{
+  margin-bottom: 20px;
+}
+.inGameUserGameScoreWindow_stats_problematicKanas>div>p{
+  margin: 0px;
 }
 .inGameUserGameScoreWindow_stats_problematicKanas>div{
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .inGameUserGameScoreWindow_buttons{
   display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.inGameUserGameScoreWindow_buttons button{
+  background: transparent;
+  border-style: solid;
+  border-color: #ff9a3c;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 2.5vh;
+  color: #ff9a3c;
+  font-weight: bold;
+  cursor: pointer;
+}
+.inGameUserGameScoreWindow_buttons button:hover{
+  background-color: #ff9a3c54;
 }
 
 .hidden-text-for-font-loading {
