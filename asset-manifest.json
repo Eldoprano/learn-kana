@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.4d11e2dc.css",
-    "main.js": "./static/js/main.0c1b1dea.js",
+    "main.css": "./static/css/main.7476abfa.css",
+    "main.js": "./static/js/main.68698145.js",
     "static/media/ShipporiMincho-Regular.ttf": "./static/media/ShipporiMincho-Regular.fc476d938d8fe9050c97.ttf",
     "static/media/YujiBoku-Regular.ttf": "./static/media/YujiBoku-Regular.2a28c6fdce6b8f64d626.ttf",
     "static/media/KleeOne-Regular.ttf": "./static/media/KleeOne-Regular.0ff902fbf6d967456899.ttf",
@@ -14,11 +14,11 @@
     "service-worker.js": "./service-worker.js",
     "static/media/Belanosima-SemiBold.ttf": "./static/media/Belanosima-SemiBold.f09fa19c016ae0fc11e5.ttf",
     "index.html": "./index.html",
-    "main.4d11e2dc.css.map": "./static/css/main.4d11e2dc.css.map",
-    "main.0c1b1dea.js.map": "./static/js/main.0c1b1dea.js.map"
+    "main.7476abfa.css.map": "./static/css/main.7476abfa.css.map",
+    "main.68698145.js.map": "./static/js/main.68698145.js.map"
   },
   "entrypoints": [
-    "static/css/main.4d11e2dc.css",
-    "static/js/main.0c1b1dea.js"
+    "static/css/main.7476abfa.css",
+    "static/js/main.68698145.js"
   ]
 }
