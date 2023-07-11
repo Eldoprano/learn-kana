@@ -329,6 +329,27 @@ body {
   font-family: Belanosima !important;
 }
 
+.animation-wrong1{
+  animation-name: animation-wrong;
+  animation-duration: 0.13s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes animation-wrong {
+  25% {
+    transform: translatex(-3px);
+    color: #ff7d3c;
+  }
+  75% {
+    transform: translatex(+3px);
+    color: #ff7d3c;
+  }
+  100% {
+    transform: translatex(0px);
+    color: #ff7d3c;
+  }
+}
+
 @media (max-width: 750px) {
   .inGameUserGameScoreWindow{
     padding: 2em;

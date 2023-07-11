@@ -278,7 +278,6 @@ export default function InGameCharacterShowAndInput() {
     }
     resetCurentGameStats();
     showNewCharacter();
-
     return () => {
       clearInterval(cursorBlinkInterval);
     }
@@ -296,7 +295,11 @@ export default function InGameCharacterShowAndInput() {
       showNewCharacter();
     } else {
       updateCurrentGameStats("wrong");
-      alert("Wrong answer!");
+      // Animate the element in ID in-game-kana-character using the class animation-wrong
+      document.querySelector('#in-game-kana-character').classList.add("animation-wrong1");
+      setTimeout(function () {
+        document.querySelector('#in-game-kana-character').classList.remove("animation-wrong1");
+      },300)
     }
   }
 
