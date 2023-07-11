@@ -94,10 +94,8 @@ export default function UserGameScoreWindow(props) {
                         <Link to='/learn-kana'>
                             <button>Back to Main Menu</button>
                         </Link>
-                        <button disabled={true}>Try Problematics</button>
-                        <Link to='/learn-kana'>
-                            <button>Play Again</button>
-                        </Link>
+                        <button onClick={() => alert("Not implemented.. yet")}>Try Problematics</button>
+                        <button onClick={() => window.location.reload(false)}>Play Again</button>
                     </div>
                 </div>            
             </div>

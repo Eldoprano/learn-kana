@@ -98,6 +98,7 @@ body {
   font-size: 2.5em;
   margin-right: 14px;
   cursor: pointer;
+  user-select: none;
 }
 
 .in-game-container {
@@ -220,11 +221,13 @@ body {
   text-align: center;
   margin: 0px;
   padding-bottom: 0px;
+  user-select: none;
 }
 .inGameUserGameScoreWindow_header>h2{
   font-size: 7vh;
   text-align: center;
   margin: 0px;
+  user-select: none;
 }
 
 .inGameUserGameScoreWindow_stats{
@@ -236,6 +239,7 @@ body {
   text-align: center;
   font-size: 5vh;
   margin: 0px;
+  user-select: none;
 }
 .inGameUserGameScoreWindow_stats_problematicKanas{
   display: flex;
@@ -247,12 +251,14 @@ body {
 .inGameUserGameScoreWindow_stats_problematicKanas>p{
   font-size: 5vh;
   margin: 0px;
+  user-select: none;
 }
 .inGameUserGameScoreWindow_stats_problematicKanas>div{
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 .inGameUserGameScoreWindow_stats_problematicKanas>div>p{
   margin: 0px;
+  user-select: none;
 }
 .inGameUserGameScoreWindow_stats_problematicKanas>div{
   display: flex;
@@ -265,6 +271,7 @@ body {
   justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 10px;
+  user-select: none;
 }
 .inGameUserGameScoreWindow_buttons button{
   background: transparent;
@@ -320,6 +327,27 @@ body {
 }
 .font-forceDefault{
   font-family: Belanosima !important;
+}
+
+@media (max-width: 750px) {
+  .inGameUserGameScoreWindow{
+    padding: 2em;
+  }
+  .inGameUserGameScoreWindow_header>h1{
+    font-size: 10vh;
+  }
+  .inGameUserGameScoreWindow_header>h2{
+    font-size: 5vh;
+  }
+  .inGameUserGameScoreWindow_stats_speed>p{
+    font-size: 4vh;
+  }
+  .inGameUserGameScoreWindow_stats_problematicKanas>p{
+    font-size: 4vh;
+  }
+  .inGameUserGameScoreWindow_stats_problematicKanas>div>p{
+    font-size: 3.5vh;
+  }
 }
 
 @media (min-width: 900px) {
