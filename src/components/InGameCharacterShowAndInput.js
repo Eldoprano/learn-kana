@@ -186,10 +186,23 @@ export default function InGameCharacterShowAndInput() {
 
   // Function gets called at the beginning and every time the kana changes
   function showNewCharacter() {
+
+    // Check if the user already answered its kana limits. If so, show stats.
+    // We get the score with document because the variable onScreenScore 
+    // doesnt want to give it to us :( The regex is to just get the number
+    const gameMode = JSON.parse(localStorage.getItem("gameMode"))
+    if( gameMode.type == "kana-selector" && 
+        gameMode.value != -1 &&  
+        document.getElementById("in-game-score").textContent.replace(/^\D+/g, '') >= gameMode.value){
+      setUserGameScoreWindowVisible(true);
+    }
+
+    // If we already used the full list of unique random picked, fill it again
     if (currentKanaToPickList.length === 0) {
       currentKanaToPickList = sample(charactersToShow, Math.floor(charactersToShow.length))
     }
-    // console.log(currentKanaToPickList)
+
+    // Get and show the current Kana
     const picked_kana = currentKanaToPickList.pop()
     inGameKanaOnScreen = picked_kana.jp_character
     setKana(inGameKanaOnScreen)
@@ -214,6 +227,11 @@ export default function InGameCharacterShowAndInput() {
       fillTouchAnswers(picked_kana);
     }
     kanaTimeToAnswerTimer = Date.now();
+
+    // Get andry if the user keeps submiting correct answers while on the stats window
+    if (document.querySelector('.inGameUserGameScoreBackground')) {
+      alert("Hey! ( ｡ •̀ ᴖ •́ ｡) Stop responding you silly")
+    }
   }
 
   /* 
@@ -359,7 +377,7 @@ export default function InGameCharacterShowAndInput() {
   return (
     <>
       <div className="in-game-top-var">
-        <div className='in-game-score'>Kanas {onScreenScore}</div>
+        <div className='in-game-score' id='in-game-score'>Kanas {onScreenScore}</div>
         <div onClick={onClickExitButton} className='in-game-exit-button'>✖</div>
       </div>
       <div className='in-game-game-screen'>

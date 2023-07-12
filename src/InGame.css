@@ -204,8 +204,19 @@ body {
   width: 100%;
   align-items: center;
   justify-content: center;
-  backdrop-filter: brightness(0.75) blur(25px);;
+  backdrop-filter: brightness(0.75) blur(25px);
+  animation: fadeIn 0.3s linear 1 forwards;
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .inGameUserGameScoreWindow{
   border-style: solid;
   border-radius: 30px;

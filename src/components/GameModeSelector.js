@@ -3,6 +3,13 @@ import ButtonWithArrows from './ButtonWithArrows'
 import CheckMark from './CheckMark';
 
 export default function GameModeSelector() {
+  // Initialize localStorage
+  if (!localStorage.getItem("gameMode")) {
+    localStorage.setItem("gameMode", JSON.stringify({
+      "type": "kana-selector",
+      "value": -1
+    }));
+  }
 
   const handleCheckMarked = (e) => {
     // Mark the checkbox as checked

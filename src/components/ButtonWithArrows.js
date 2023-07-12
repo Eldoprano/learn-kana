@@ -3,7 +3,6 @@ import { useState } from 'react'
 
 export default function ButtonWithArrows(props) {
   const [value, setValue] = useState(5);
-
   const handleMinus = (e) => {
     let newValue = 5;
     if (value > 5 && value <= 50) {
