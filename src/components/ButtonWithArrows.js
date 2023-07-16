@@ -55,11 +55,14 @@ export default function ButtonWithArrows(props) {
   return (
     <div className='button-with-arrows'>
       <button id={props.id + '-minus'} onClick={handleMinus}>-</button>
+
       <label key={props.id} data-gamemode={props.id}>
-        <input type="radio" 
+        <input type="radio"
+          id={props.id + '-radio-button'}
           onChange={handleMarked} 
           name="button-with-arrows-group" 
-          className="character-checkbox-input game-mode-select-checkbox" />
+          className="character-checkbox-input game-mode-select-checkbox" 
+        />
         <div className="character-checkbox-content">
           <p id={props.id + '-name'}>{props.description} {value} {props.unit}</p>
         </div>
