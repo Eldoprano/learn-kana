@@ -123,12 +123,26 @@ body {
   height: 93%;
 }
 
+.in-game-kana-character-group {
+  display: flex;
+  align-items: baseline;
+  height: 65%;
+}
+
+.in-game-next-kana-character-group {
+  display: flex;
+  font-size: 12vh;
+  user-select: none;
+  color: #db8331;
+}
+
 .in-game-kana-character {
   font-size: 35vh;
   user-select: none;
   margin-top: 5vh;
   overflow: hidden;
   height: 65%;
+  margin-left: 36vh;
 }
 
 .in-game-romanji-character {
@@ -358,6 +372,17 @@ body {
   100% {
     transform: translatex(0px);
     color: #ff7d3c;
+  }
+}
+
+@media (max-width: 900px) {
+  .in-game-kana-character-group {
+    align-self: auto;
+    flex-direction: column;
+  }
+  .in-game-kana-character {
+    margin-bottom: -15px;
+    margin-left: 0px;
   }
 }
 

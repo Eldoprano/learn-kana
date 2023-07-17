@@ -61,6 +61,9 @@ export default function InGameCharacterShowAndInput() {
     ##########################################
   */
   const [onScreenKana, setKana] = useState('');
+  const [next1onScreenKana, setNext1Kana] = useState('');
+  const [next2onScreenKana, setNext2Kana] = useState('');
+  const [next3onScreenKana, setNext3Kana] = useState('');
   const [onScreenSolution, setSolution] = useState('');
   const [onScreenScore, setScore] = useState(0);
   const [userGameScoreWindowVisible, setUserGameScoreWindowVisible] = useState(false);
@@ -198,14 +201,19 @@ export default function InGameCharacterShowAndInput() {
     }
 
     // If we already used the full list of unique random picked, fill it again
-    if (currentKanaToPickList.length === 0) {
-      currentKanaToPickList = sample(charactersToShow, Math.floor(charactersToShow.length))
+    if (currentKanaToPickList.length <= 5) {
+      currentKanaToPickList = currentKanaToPickList.concat(sample(charactersToShow, Math.floor(charactersToShow.length)))
     }
 
     // Get and show the current Kana
     const picked_kana = currentKanaToPickList.pop()
     inGameKanaOnScreen = picked_kana.jp_character
     setKana(inGameKanaOnScreen)
+
+    setNext1Kana(currentKanaToPickList[currentKanaToPickList.length - 1].jp_character)
+    setNext2Kana(currentKanaToPickList[currentKanaToPickList.length - 2].jp_character)
+    setNext3Kana(currentKanaToPickList[currentKanaToPickList.length - 3].jp_character)
+
     inGameAnswerList = picked_kana.romanji
     setSolution(inGameAnswerList)
 
@@ -382,8 +390,21 @@ export default function InGameCharacterShowAndInput() {
       </div>
       <div className='in-game-game-screen'>
 
-        <div id='in-game-kana-character' onClick={onClickChangeFontToDefault} className='in-game-kana-character'>
-          {onScreenKana}
+        <div className='in-game-kana-character-group'>
+          <div id='in-game-kana-character' onClick={onClickChangeFontToDefault} className='in-game-kana-character'>
+            {onScreenKana}
+          </div>
+          <div className='in-game-next-kana-character-group'>
+            <div>
+              {next1onScreenKana}
+            </div>
+            <div>
+              {next2onScreenKana}
+            </div>
+            <div>
+              {next3onScreenKana}
+            </div>
+          </div>
         </div>
         {inGameInputElement}
         <div className='hidden-text-for-font-loading'>
