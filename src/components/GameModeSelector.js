@@ -26,6 +26,14 @@ export default function GameModeSelector() {
         "value": -1
       }));
     }
+
+    if(localStorage.getItem("game-mode-touch") === undefined  || localStorage.getItem("game-mode-touch") === "true") {
+      document.getElementById("game-mode-touch").checked = true;
+      localStorage.setItem("game-mode-touch", "true");
+    } else {
+      document.getElementById("game-mode-touch").checked = false;
+      localStorage.setItem("game-mode-touch", "false");
+    }
   }
   );
 

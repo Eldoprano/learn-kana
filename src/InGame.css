@@ -225,6 +225,7 @@ body {
   gap: 35px;
   display: flex;
   flex-direction: column;
+  box-shadow: 10px 10px 10px 0px #000000a8;
 }
 
 .inGameUserGameScoreWindow_header>h1{
@@ -358,6 +359,13 @@ body {
   100% {
     transform: translatex(0px);
     color: #ff7d3c;
+  }
+}
+
+@media (max-width: 700px) {
+  .inGameUserGameScoreWindow_buttons {
+    flex-direction: column;
+    align-content: center;
   }
 }
 

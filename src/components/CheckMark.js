@@ -8,8 +8,8 @@ export default function CheckMark(props) {
   }
   return (
     <label className="character-checkbox-element" key={props.id}>
-        <input type="checkbox" 
-            id={props.title} 
+        <input type="checkbox"
+            id={props.id} 
             className={"character-checkbox-input " + props.class}
             onChange={handleCheckMarked}
             defaultChecked={localStorage.getItem(props.id) === "true"} />
