@@ -26,14 +26,6 @@ export default function GameModeSelector() {
         "value": -1
       }));
     }
-
-    if(localStorage.getItem("game-mode-touch") === undefined  || localStorage.getItem("game-mode-touch") === "true") {
-      document.getElementById("game-mode-touch").checked = true;
-      localStorage.setItem("game-mode-touch", "true");
-    } else {
-      document.getElementById("game-mode-touch").checked = false;
-      localStorage.setItem("game-mode-touch", "false");
-    }
   }
   );
 
@@ -42,16 +34,6 @@ export default function GameModeSelector() {
     localStorage.setItem("gameMode", JSON.stringify(
       {
         "type": "kana-selector",
-        "value": -1
-      }
-    ));
-  }
-
-  const handleLabelMarked = (e) => {
-    // Mark the checkbox as checked
-    localStorage.setItem("gameMode", JSON.stringify(
-      {
-        "type": "time-selector",
         "value": -1
       }
     ));
@@ -78,7 +60,8 @@ export default function GameModeSelector() {
           <ButtonWithArrows description="Give me" unit="minutes" id="time-selector"/>
         </div>
         <div className='game-mode-selector-button-group'>
-          <CheckMark characterText="Touch Mode" class="game-mode-selector-button-group-row-2" id="game-mode-touch"/>
+          <CheckMark characterText="Touch Mode" class="game-mode-selector-button-group-row-2" id="game-mode-touch" default="true"/>
+          <CheckMark characterText="Word Practice" class="game-mode-selector-button-group-row-2" id="game-mode-word"/>
           <CheckMark characterText="Handwritten Fonts" class="game-mode-selector-button-group-row-2" id="game-mode-random-fonts"/>
         </div>
     </div>
