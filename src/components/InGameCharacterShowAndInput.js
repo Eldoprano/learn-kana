@@ -4,7 +4,7 @@ import { kanaCharacters } from '../kanaCharacters.js'
 import UserGameScoreWindow from './UserGameScoreWindow.js'
 import { Link } from "react-router-dom";
 
-let currentKanaToPickList = []
+let currentElementToPickList = []
 let fontClassList = [
   // "Belanosima",
   "KleeOne",
@@ -67,21 +67,63 @@ export default function InGameCharacterShowAndInput() {
   let currentScore = 0;
   let inGameAnswerList = [];
 
-  const characterGroupsToShow = localStorage.getItem("checkedKanas")
+  const characterGroupsToShow = JSON.parse(localStorage.getItem("checkedKanas"))
 
-  // Creates a list of all possible Kanas to show, with its elements looking as follow: 
-  // { "jp_character": "あ", "romanji": ["a"], "sound": "あ", "vocal": "a" }
+
+  // Creates a list of all possible Kanas/Words to show, the element outputs look like this: 
+  // { "jp_character": "あ", "romanji": ["a"], "sound": "あ", "type": "kana/word", *"vocal": "a", *"meaning": "dog" }
+  // *The key "vocal" only shows up when the type is "kana"
+  // *The key "meaning" only shows up when the type is "word"
   let charactersToShow = []
-  Object.entries(kanaCharacters).forEach(([key, value]) => {
-    Object.entries(value).forEach(([key2, value2]) => {
-      if (characterGroupsToShow.includes(value2.title)) {
-        Object.entries(value2.characters).forEach(([key3, value3]) => {
-          value3.vocal = key3;
-          charactersToShow.push(value3);
-        });
-      }
+  if (localStorage.getItem("game-mode-word") === "true") {
+    charactersToShow = getListOfWords(characterGroupsToShow)
+  } else {
+    charactersToShow = getListOfKanas(characterGroupsToShow);
+  }
+
+
+  function getListOfKanas(charGroups) {
+    let output = []
+    Object.entries(kanaCharacters).forEach(([key, category]) => {
+      Object.entries(category).forEach(([key, charGroup]) => {
+        if (charGroups.includes(charGroup.title)) {
+          Object.entries(charGroup.characters).forEach(([charVocal, char]) => {
+            char.vocal = charVocal;
+            char.type = "kana";
+            output.push(char);
+          });
+        }
+      });
     });
-  });
+    return output;
+  }
+
+  function getListOfWords(charGroups) {
+    let output = []
+    Object.entries(kanaCharacters.words).forEach(([key, value]) => {
+      let ignoreWord = false;
+      for(let i = 0; i < value.hiragana_groups.length; i++){
+        if(!charGroups.includes(value.hiragana_groups[i])) {
+          ignoreWord = true;
+        }
+      }
+      for(let i = 0; i < value.katakana_groups.length; i++){
+        if(!charGroups.includes(value.katakana_groups[i])) {
+          ignoreWord = true;
+        }
+      }
+      if(!ignoreWord) {
+        output.push({
+          "jp_character": value.jp_character,
+          "romanji": value.romanji,
+          "sound": value.sound,
+          "meaning": value.meaning,
+          "type": "word",
+        })
+      }
+    })
+    return output;
+  }
 
   // Helper function to get n random unique elements from an array
   function sample(inputArray, numberOfOutputs, onePerVocal = false) {
@@ -198,15 +240,15 @@ export default function InGameCharacterShowAndInput() {
     }
 
     // If we already used the full list of unique random picked, fill it again
-    if (currentKanaToPickList.length === 0) {
-      currentKanaToPickList = sample(charactersToShow, Math.floor(charactersToShow.length))
+    if (currentElementToPickList.length === 0) {
+      currentElementToPickList = sample(charactersToShow, Math.floor(charactersToShow.length))
     }
 
     // Get and show the current Kana
-    const picked_kana = currentKanaToPickList.pop()
-    inGameKanaOnScreen = picked_kana.jp_character
+    const pickedElement = currentElementToPickList.pop()
+    inGameKanaOnScreen = pickedElement.jp_character
     setKana(inGameKanaOnScreen)
-    inGameAnswerList = picked_kana.romanji
+    inGameAnswerList = pickedElement.romanji
     setSolution(inGameAnswerList)
 
     if (localStorage.getItem("game-mode-random-fonts") === "true") {
@@ -224,7 +266,7 @@ export default function InGameCharacterShowAndInput() {
     }
 
     if (localStorage.getItem("game-mode-touch") === "true") {
-      fillTouchAnswers(picked_kana);
+      fillTouchAnswers(pickedElement);
     }
     kanaTimeToAnswerTimer = Date.now();
 

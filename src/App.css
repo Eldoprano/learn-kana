@@ -277,7 +277,7 @@ Game Menu Page
   display: flex;
   flex-direction: row;
   width: 60vw;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   gap: 5px;
 }

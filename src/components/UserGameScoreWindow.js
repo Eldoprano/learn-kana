@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 
 /* userStats object structure:
 {
@@ -91,9 +91,12 @@ export default function UserGameScoreWindow(props) {
                         </div>
                     </div>
                     <div className='inGameUserGameScoreWindow_buttons'>
-                        <Link to='/learn-kana'>
-                            <button>Back to Main Menu</button>
-                        </Link>
+                        {/* Changing to window.location because of some react problems 
+                            (game-mode-word change wasn't being respected) 
+                        */}
+                        {/* <Link to='/learn-kana'> */} 
+                            <button onClick={() => window.location.href = "/learn-kana"}>Back to Main Menu</button>
+                        {/* </Link> */}
                         <button onClick={() => alert("Not implemented.. yet")}>Try Problematics</button>
                         <button onClick={() => window.location.reload(false)}>Play Again</button>
                     </div>
