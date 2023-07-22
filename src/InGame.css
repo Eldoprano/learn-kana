@@ -131,6 +131,13 @@ body {
   height: 65%;
 }
 
+#in-game-solution {
+  position: absolute;
+  top: calc(50% + 5vh);
+  font-size: 15vh;
+  user-select: none;
+}
+
 .in-game-romanji-character {
   font-size: 15vw;
 }
@@ -305,6 +312,13 @@ body {
   visibility: hidden;
   left: -1px;
   top: -1px;
+}
+
+.hidden-element {
+  position: absolute !important;
+  visibility: hidden !important;
+  left: -1px !important;
+  top: -1px !important;
 }
 
 .font-Belanosima{

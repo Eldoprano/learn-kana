@@ -62,6 +62,7 @@ export default function InGameCharacterShowAndInput() {
   */
   const [onScreenKana, setKana] = useState('');
   const [onScreenSolution, setSolution] = useState('');
+  const [onScreenWordMeaning, setWordMeaning] = useState('');
   const [onScreenScore, setScore] = useState(0);
   const [userGameScoreWindowVisible, setUserGameScoreWindowVisible] = useState(false);
   let currentScore = 0;
@@ -167,6 +168,14 @@ export default function InGameCharacterShowAndInput() {
     return sampledElements;
   }
 
+  function getFontSizeInVH(element) {
+    const computedStyles = window.getComputedStyle(element);
+    const fontSizeInPixels = parseFloat(computedStyles.fontSize);
+    const viewportHeight = window.innerHeight;
+    const fontSizeInVh = (fontSizeInPixels / viewportHeight) * 100;
+    return fontSizeInVh;
+  }
+
   /* 
   ##########################################
   # Creates and handles the touch answers #
@@ -250,6 +259,20 @@ export default function InGameCharacterShowAndInput() {
     setKana(inGameKanaOnScreen)
     inGameAnswerList = pickedElement.romanji
     setSolution(inGameAnswerList)
+    if(pickedElement.type === "word") {
+      setWordMeaning(pickedElement.meaning)
+    }
+
+    // TODO: Does this work?
+    if(pickedElement.type === "word") {
+      const kanaCharacterSelected = document.querySelector("#in-game-kana-character")
+      if(kanaCharacterSelected.text !== undefined){
+        kanaCharacterSelected.text.style.fontSize = (100/kanaCharacterSelected.text.length) + "vw"
+        if(getFontSizeInVH(kanaCharacterSelected)>=35){
+          kanaCharacterSelected.text.style.fontSize = "35vh"
+        }
+      }
+    }
 
     if (localStorage.getItem("game-mode-random-fonts") === "true") {
       const randomFontIndex = Math.floor(Math.random() * fontClassList.length);
@@ -302,11 +325,21 @@ export default function InGameCharacterShowAndInput() {
         updateCurrentGameStats("correct");
         currentScore += 1;
         setScore(currentScore)
-        // Wait 1 second and then clear the input field and show a new character
-        setTimeout(function () {
-          InGameTextInput.textContent = '';
-          showNewCharacter();
-        }, 200)
+
+        if (localStorage.getItem("game-mode-word") === "true") {
+          document.querySelector('#in-game-solution').classList.remove("hidden-element");
+          setTimeout(function () {
+            InGameTextInput.textContent = '';
+            document.querySelector('#in-game-solution').classList.add("hidden-element");
+            showNewCharacter();
+          }, 1000)
+        } else {
+          // Wait 200 milisecond and then clear the input field and show a new character
+          setTimeout(function () {
+            InGameTextInput.textContent = '';
+            showNewCharacter();
+          }, 200)
+        }
       }
     }
     if (localStorage.getItem("game-mode-touch") !== "true") {
@@ -426,6 +459,9 @@ export default function InGameCharacterShowAndInput() {
 
         <div id='in-game-kana-character' onClick={onClickChangeFontToDefault} className='in-game-kana-character'>
           {onScreenKana}
+        </div>
+        <div id='in-game-solution' className='hidden-element'>
+          {onScreenWordMeaning}
         </div>
         {inGameInputElement}
         <div className='hidden-text-for-font-loading'>
