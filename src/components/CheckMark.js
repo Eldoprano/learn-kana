@@ -18,7 +18,18 @@ export default function CheckMark(props) {
   const handleCheckMarked = (e) => {
     // Mark the checkbox as checked
     localStorage.setItem(props.id, e.target.checked);
+
+    // Temp solution: Unmark #game-mode-touch when #game-mode-word is checked
+    if(props.id === "game-mode-word" && e.target.checked) {
+        localStorage.setItem("game-mode-touch", false);
+        document.getElementById("game-mode-touch").checked = false;
+    } else if (props.id === "game-mode-touch" && e.target.checked) {
+        localStorage.setItem("game-mode-word", false);
+        document.getElementById("game-mode-word").checked = false;
+    }
   }
+  
+  
   return (
     <label className="character-checkbox-element" key={props.id}>
         <input type="checkbox"
