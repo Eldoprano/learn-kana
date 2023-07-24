@@ -15,7 +15,6 @@
 }
 
 
-
 @font-face {
   font-family: "Kaisei_Tokumin";
   src: local("Kaisei_Tokumin"),
@@ -90,6 +89,17 @@ body {
 .in-game-score {
   font-size: 2.5em;
   user-select: none;
+  width: auto;
+}
+
+.in-game-help-bar {
+  display: flex;
+  font-size: 1.5em;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .in-game-exit-button {
@@ -99,6 +109,7 @@ body {
   margin-right: 14px;
   cursor: pointer;
   user-select: none;
+  text-align: right;
 }
 
 .in-game-container {
@@ -108,10 +119,9 @@ body {
 }
 
 .in-game-top-var {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   margin: 5px;
-  justify-content: space-between;
   height: 7%;
 }
 
@@ -127,11 +137,23 @@ body {
   font-size: 35vh;
   user-select: none;
   margin-top: 5vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 65%;
 }
 
-#in-game-solution {
+.in-game-kana-character {
+  font-size: 35vh;
+  user-select: none;
+  margin-top: 5vh;
+  /* overflow: hidden; */
+  height: 65%;
+}
+
+.in-game-kana-character>p{
+  margin: 0px;
+}
+
+.in-game-solution {
   position: absolute;
   top: calc(50% + 5vh);
   font-size: 15vh;

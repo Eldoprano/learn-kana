@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import { kanaCharacters } from '../kanaCharacters.js'
 import UserGameScoreWindow from './UserGameScoreWindow.js'
-import { Link } from "react-router-dom";
 
 let currentElementToPickList = []
 let fontClassList = [
@@ -168,14 +167,6 @@ export default function InGameCharacterShowAndInput() {
     return sampledElements;
   }
 
-  function getFontSizeInVH(element) {
-    const computedStyles = window.getComputedStyle(element);
-    const fontSizeInPixels = parseFloat(computedStyles.fontSize);
-    const viewportHeight = window.innerHeight;
-    const fontSizeInVh = (fontSizeInPixels / viewportHeight) * 100;
-    return fontSizeInVh;
-  }
-
   /* 
   ##########################################
   # Creates and handles the touch answers #
@@ -242,8 +233,8 @@ export default function InGameCharacterShowAndInput() {
     // We get the score with document because the variable onScreenScore 
     // doesnt want to give it to us :( The regex is to just get the number
     const gameMode = JSON.parse(localStorage.getItem("gameMode"))
-    if( gameMode.type == "kana-selector" && 
-        gameMode.value != -1 &&  
+    if( gameMode.type === "kana-selector" && 
+        gameMode.value !== -1 &&  
         document.getElementById("in-game-score").textContent.replace(/^\D+/g, '') >= gameMode.value){
       setUserGameScoreWindowVisible(true);
     }
@@ -263,17 +254,6 @@ export default function InGameCharacterShowAndInput() {
       setWordMeaning(pickedElement.meaning)
     }
 
-    // TODO: Does this work?
-    if(pickedElement.type === "word") {
-      const kanaCharacterSelected = document.querySelector("#in-game-kana-character")
-      if(kanaCharacterSelected.text !== undefined){
-        kanaCharacterSelected.text.style.fontSize = (100/kanaCharacterSelected.text.length) + "vw"
-        if(getFontSizeInVH(kanaCharacterSelected)>=35){
-          kanaCharacterSelected.text.style.fontSize = "35vh"
-        }
-      }
-    }
-
     if (localStorage.getItem("game-mode-random-fonts") === "true") {
       const randomFontIndex = Math.floor(Math.random() * fontClassList.length);
       const fontClass = fontClassList[randomFontIndex];
@@ -291,9 +271,13 @@ export default function InGameCharacterShowAndInput() {
     if (localStorage.getItem("game-mode-touch") === "true") {
       fillTouchAnswers(pickedElement);
     }
+
+    document.querySelector("#in-game-kana-character>p").style.fontSize = "35vh";
+    document.querySelector("#in-game-kana-character>p").setAttribute("data-word-wraped","false")
+
     kanaTimeToAnswerTimer = Date.now();
 
-    // Get andry if the user keeps submiting correct answers while on the stats window
+    // Get angry if the user keeps submiting correct answers while on the stats window
     if (document.querySelector('.inGameUserGameScoreBackground')) {
       alert("Hey! ( ｡ •̀ ᴖ •́ ｡) Stop responding you silly")
     }
@@ -319,14 +303,23 @@ export default function InGameCharacterShowAndInput() {
         }, (1500))
       } else if (e.key === 'Escape') {
         setUserGameScoreWindowVisible(true);
+      } else if (e.key === '?') {
+        if (localStorage.getItem("game-mode-word") === "true" & document.querySelector('#in-game-kana-solution').classList.contains("hidden-element")) {
+          updateCurrentGameStats('askForHelp')
+          document.querySelector('#in-game-kana-solution').classList.remove("hidden-element");
+      }
       }
 
+      // If the user answers correctly, make that known and pass to the next character
       if (inGameAnswerList.includes(InGameTextInput.textContent.trim())) {
         updateCurrentGameStats("correct");
         currentScore += 1;
         setScore(currentScore)
 
         if (localStorage.getItem("game-mode-word") === "true") {
+          if (!document.querySelector('#in-game-kana-solution').classList.contains("hidden-element")) {
+            document.querySelector('#in-game-kana-solution').classList.add("hidden-element");
+          }
           document.querySelector('#in-game-solution').classList.remove("hidden-element");
           setTimeout(function () {
             InGameTextInput.textContent = '';
@@ -352,6 +345,39 @@ export default function InGameCharacterShowAndInput() {
 
   let cursorBlinkInterval;
   React.useEffect(() => {
+    function getFontSizeInVH(element) {
+      const computedStyles = window.getComputedStyle(element);
+      const fontSizeInPixels = parseFloat(computedStyles.fontSize);
+      const viewportHeight = window.innerHeight;
+      const fontSizeInVh = (fontSizeInPixels / viewportHeight) * 100;
+      return fontSizeInVh;
+    }
+    function onLineWrapDoSomething() {
+      const kanaCharacter = document.querySelector("#in-game-kana-character>p")
+      // kanaCharacter.style.fontSize = "35vh";
+      const lineHeight = window.getComputedStyle(kanaCharacter).getPropertyValue('font-size');
+      const lineHeightParsed = parseInt(lineHeight.split('px')[0]);
+      const amountOfLinesTilAdjust = 2;
+      const isWraped = kanaCharacter.getAttribute("data-word-wraped") === "true"
+      if(isWraped & getFontSizeInVH(kanaCharacter)>=35) {
+        kanaCharacter.style.fontSize = "35vh";
+        kanaCharacter.setAttribute("data-word-wraped","false")
+      }
+      else if (isWraped){
+        kanaCharacter.style.fontSize = (90/kanaCharacter.textContent.length) + "vw";
+        kanaCharacter.setAttribute("data-word-wraped","true")
+      } else if (!isWraped & kanaCharacter.offsetHeight >= (lineHeightParsed * amountOfLinesTilAdjust)) {
+        kanaCharacter.style.fontSize = (90/kanaCharacter.textContent.length) + "vw";
+        kanaCharacter.setAttribute("data-word-wraped","true")
+      } 
+      
+    }
+
+    // window.addEventListener('resize', onLineWrapDoSomething)
+
+    //handles style changes on banner to check wrapping
+    setInterval(onLineWrapDoSomething,100)
+
     function handleFocus() {
       document.querySelector('#in-game-text-input').focus();
       cursorBlinkInterval = window.setInterval(function () {
@@ -453,15 +479,21 @@ export default function InGameCharacterShowAndInput() {
     <>
       <div className="in-game-top-var">
         <div className='in-game-score' id='in-game-score'>Kanas {onScreenScore}</div>
+        <div className='in-game-help-bar'><div><strong>?</strong>: help</div><div><strong>shift</strong>: normal font</div></div>
         <div onClick={onClickExitButton} className='in-game-exit-button'>✖</div>
       </div>
       <div className='in-game-game-screen'>
 
         <div id='in-game-kana-character' onClick={onClickChangeFontToDefault} className='in-game-kana-character'>
-          {onScreenKana}
+          <p>
+            {onScreenKana}
+          </p>
         </div>
-        <div id='in-game-solution' className='hidden-element'>
+        <div id='in-game-solution' className='in-game-solution hidden-element'>
           {onScreenWordMeaning}
+        </div>
+        <div id='in-game-kana-solution' className='in-game-solution hidden-element'>
+          {onScreenSolution}
         </div>
         {inGameInputElement}
         <div className='hidden-text-for-font-loading'>

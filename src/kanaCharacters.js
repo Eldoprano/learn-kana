@@ -3928,7 +3928,7 @@ export const kanaCharacters = {
         "kabuki"
       ],
       "sound": "かぶき",
-      "meaning": "kabuki",
+      "meaning": "kabuki (theatre form)",
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -3956,7 +3956,7 @@ export const kanaCharacters = {
         "shamisen"
       ],
       "sound": "しゃみせん",
-      "meaning": "shamisen",
+      "meaning": "shamisen (instrument)",
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -3971,7 +3971,7 @@ export const kanaCharacters = {
         "furoshiki"
       ],
       "sound": "ふろしき",
-      "meaning": "furoshiki",
+      "meaning": "traditional wrapping cloths",
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -3986,7 +3986,7 @@ export const kanaCharacters = {
         "ukiyoe"
       ],
       "sound": "うきよえ",
-      "meaning": "ukiyo-e",
+      "meaning": "ukiyoe (art genre)",
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -4014,7 +4014,7 @@ export const kanaCharacters = {
         "judo"
       ],
       "sound": "じゅどう",
-      "meaning": "judo",
+      "meaning": "judo (martial art)",
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -4043,7 +4043,7 @@ export const kanaCharacters = {
         "aikido"
       ],
       "sound": "あいきどう",
-      "meaning": "aikido",
+      "meaning": "aikido (martial art)",
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
