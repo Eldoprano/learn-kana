@@ -63,16 +63,33 @@ export default function UserGameScoreWindow(props) {
         return problematicKanas.slice(0,n);
     }
 
-    const problematicKanasElement = <>
-        <p>Slow Kanas:</p>
-        <div>
-            {
-                getTopNProblematicKanas(5).map((kana, index) => {
-                    return <p className='problematicKanasElement'>{kana.kana + ': ' + kana.averageResponseTime.toFixed(2)}</p>
-                })
-            }
+    let userStatsElement = <></>
+    if (getAverageResponseTimeOfCurrentGame() > 0) {
+        userStatsElement = <div className='inGameUserGameScoreWindow_stats'>
+            <div className='inGameUserGameScoreWindow_stats_speed'>
+                <p>
+                    {"Time per Kana: " + getAverageResponseTimeOfCurrentGame().toFixed(3) + " seconds"}
+                </p>
+            </div>
+            <div className='inGameUserGameScoreWindow_stats_problematicKanas'>
+                <p>Slow Kanas:</p>
+                <div>
+                    {
+                        getTopNProblematicKanas(5).map((kana, index) => {
+                            return <p className='problematicKanasElement'>{kana.kana + ': ' + kana.averageResponseTime.toFixed(2)}</p>
+                        })
+                    }
+                </div>
+            </div>
         </div>
-    </>
+    } else {
+        userStatsElement = <div className='inGameUserGameScoreWindow_stats'>
+            <div className='inGameUserGameScoreWindow_stats_speed'>
+                <p>Yeah.. ehh... Try again?</p>
+            </div>
+        </div>
+    }
+
     let inGameUserGameScoreWindow = <></>
     if(props.visible){
         inGameUserGameScoreWindow = 
@@ -80,21 +97,13 @@ export default function UserGameScoreWindow(props) {
                 <div className='inGameUserGameScoreWindow'>
                     <div className='inGameUserGameScoreWindow_header'>
                         <h1>{getTotalRightGuessesOfCurrentGame()}</h1>
-                        <h2>Kanas Completed!</h2>
+                        <h2>{(localStorage.getItem("game-mode-word") === "true") ? "Words" : "Kanas"} Completed!</h2>
                     </div>
-                    <div className='inGameUserGameScoreWindow_stats'>
-                        <div className='inGameUserGameScoreWindow_stats_speed'>
-                            <p>{"Time per Kana: " + getAverageResponseTimeOfCurrentGame().toFixed(3) + " seconds"}</p>
-                        </div>
-                        <div className='inGameUserGameScoreWindow_stats_problematicKanas'>
-                            {problematicKanasElement}
-                        </div>
-                    </div>
+                    {userStatsElement}
                     <div className='inGameUserGameScoreWindow_buttons'>
                         {/* Changing to window.location because of some react problems 
                             (game-mode-word change wasn't being respected) 
-                        */}
-                        {/* <Link to='/learn-kana'> */} 
+                             <Link to='/learn-kana'> */} 
                             <button onClick={() => window.location.href = "/learn-kana"}>Back to Main Menu</button>
                         {/* </Link> */}
                         <button onClick={() => alert("Not implemented.. yet")}>Try Problematics</button>

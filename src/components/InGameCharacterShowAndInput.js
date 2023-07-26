@@ -304,10 +304,7 @@ export default function InGameCharacterShowAndInput() {
       } else if (e.key === 'Escape') {
         setUserGameScoreWindowVisible(true);
       } else if (e.key === '?') {
-        if (localStorage.getItem("game-mode-word") === "true" & document.querySelector('#in-game-kana-solution').classList.contains("hidden-element")) {
-          updateCurrentGameStats('askForHelp')
-          document.querySelector('#in-game-kana-solution').classList.remove("hidden-element");
-      }
+        handleUserAskForHelp()
       }
 
       // If the user answers correctly, make that known and pass to the next character
@@ -402,6 +399,13 @@ export default function InGameCharacterShowAndInput() {
     }
   }, []);
 
+  function handleUserAskForHelp() {
+    if (localStorage.getItem("game-mode-word") === "true" & document.querySelector('#in-game-kana-solution').classList.contains("hidden-element")) {
+      updateCurrentGameStats('askForHelp')
+      document.querySelector('#in-game-kana-solution').classList.remove("hidden-element")
+    }
+  }
+
   /* 
   ########################
   # Touch input handlers #
@@ -479,7 +483,10 @@ export default function InGameCharacterShowAndInput() {
     <>
       <div className="in-game-top-var">
         <div className='in-game-score' id='in-game-score'>Kanas {onScreenScore}</div>
-        <div className='in-game-help-bar'><div><strong>?</strong>: help</div><div><strong>shift</strong>: normal font</div></div>
+        <div className='in-game-help-bar'>
+          <div onClick={handleUserAskForHelp}><strong>?</strong>: help</div>
+          {(localStorage.getItem("game-mode-random-fonts") === "true") ? <div onClick={onClickChangeFontToDefault}><strong>shift</strong>: normal font</div> : <div></div>}
+        </div>
         <div onClick={onClickExitButton} className='in-game-exit-button'>✖</div>
       </div>
       <div className='in-game-game-screen'>
