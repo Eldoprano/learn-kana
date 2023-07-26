@@ -256,6 +256,7 @@ body {
   display: flex;
   flex-direction: column;
   box-shadow: 10px 10px 10px 0px #000000a8;
+  background-color: #0000001c;
 }
 
 .inGameUserGameScoreWindow_header>h1{

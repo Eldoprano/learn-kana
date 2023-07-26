@@ -26,8 +26,7 @@ export default function GameModeSelector() {
         "value": -1
       }));
     }
-  }
-  );
+  });
 
   const handleCheckMarked = (e) => {
     // Mark the checkbox as checked
@@ -41,29 +40,29 @@ export default function GameModeSelector() {
 
   return (
     <div className='game-mode-selector-group'>
-        <h2>Select a mode:</h2>
-        <div className='game-mode-selector-button-group'>
-          <ButtonWithArrows description="Give me" unit="Kanas" id="kana-selector"/>
-          <div className='button-with-arrows'>
-            <label data-gamemode="kana-selector">
-              <input type="radio" 
-                onClick={handleCheckMarked} 
-                name="button-with-arrows-group" 
-                id='time-selector-unlimited-radio-button' 
-                className="character-checkbox-input game-mode-select-checkbox">
-              </input>
-              <div className="character-checkbox-content">
-                <p>Unlimited</p>
-              </div>
-            </label>
-          </div>
-          <ButtonWithArrows description="Give me" unit="minutes" id="time-selector"/>
+      <h2>Select a mode:</h2>
+      <div className='game-mode-selector-button-group'>
+        <ButtonWithArrows description="Give me" unit="Kanas" id="kana-selector"/>
+        <div className='button-with-arrows'>
+          <label data-gamemode="kana-selector">
+            <input type="radio" 
+              onClick={handleCheckMarked} 
+              name="button-with-arrows-group" 
+              id='time-selector-unlimited-radio-button' 
+              className="character-checkbox-input game-mode-select-checkbox">
+            </input>
+            <div className="character-checkbox-content">
+              <p>Unlimited</p>
+            </div>
+          </label>
         </div>
-        <div className='game-mode-selector-button-group'>
-          <CheckMark characterText="Touch Mode" class="game-mode-selector-button-group-row-2" id="game-mode-touch" default="true"/>
-          <CheckMark characterText="Word Practice" class="game-mode-selector-button-group-row-2" id="game-mode-word"/>
-          <CheckMark characterText="Handwritten Fonts" class="game-mode-selector-button-group-row-2" id="game-mode-random-fonts"/>
-        </div>
+        <ButtonWithArrows description="Give me" unit="minutes" id="time-selector"/>
+      </div>
+      <div className='game-mode-selector-button-group'>
+        <CheckMark characterText="Touch Mode" class="game-mode-selector-button-group-row-2" id="game-mode-touch" default="true"/>
+        <CheckMark characterText="Word Practice" class="game-mode-selector-button-group-row-2" id="game-mode-word"/>
+        <CheckMark characterText="Handwritten Fonts" class="game-mode-selector-button-group-row-2" id="game-mode-random-fonts"/>
+      </div>
     </div>
   )
 }
