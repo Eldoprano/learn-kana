@@ -38,6 +38,9 @@ export default function GameModeSelector() {
     ));
   }
 
+  // Checks if the current device has a touchscreen
+  const touchDefault = ('ontouchstart' in window | navigator.msMaxTouchPoints) === 1;
+
   return (
     <div className='game-mode-selector-group'>
       <h2>Select a mode:</h2>
@@ -59,7 +62,7 @@ export default function GameModeSelector() {
         <ButtonWithArrows description="Give me" unit="minutes" id="time-selector"/>
       </div>
       <div className='game-mode-selector-button-group'>
-        <CheckMark characterText="Touch Mode" class="game-mode-selector-button-group-row-2" id="game-mode-touch" default="true"/>
+        <CheckMark characterText="Touch Mode" class="game-mode-selector-button-group-row-2" id="game-mode-touch" default={touchDefault.toString()}/>
         <CheckMark characterText="Word Practice" class="game-mode-selector-button-group-row-2" id="game-mode-word"/>
         <CheckMark characterText="Handwritten Fonts" class="game-mode-selector-button-group-row-2" id="game-mode-random-fonts"/>
       </div>
