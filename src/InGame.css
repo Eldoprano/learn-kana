@@ -190,11 +190,11 @@ body {
 
 #in-game-text-input-cursor {
   float: left;
-  width: 5px;
+  width: 3px;
   height: 11.5vh;
   background: #ff9a3c;
-  margin-right: 0.5em;
-  margin-left: 7px;
+  margin-right: -4px;
+  margin-left: -2px;
   align-self: center;
 }
 

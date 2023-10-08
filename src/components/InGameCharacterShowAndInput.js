@@ -291,7 +291,9 @@ export default function InGameCharacterShowAndInput() {
   React.useEffect(() => {
     function handleKeyDown(e) {
       // Check if key is a printable character and append it to the input field
-      const InGameTextInput = document.querySelector('#in-game-text-input-cursor-group span');
+      const InGameTextInput = document.querySelector('#in-game-text-input-before-cursor');
+      const InGameTextInputAfterCursor = document.querySelector('#in-game-text-input-after-cursor');
+
       if (e.key.match(/^[A-Za-z0-9 ]+$/) && e.key.length === 1) {
         InGameTextInput.textContent += e.key;
       } else if (e.key === 'Backspace') {
@@ -305,10 +307,28 @@ export default function InGameCharacterShowAndInput() {
         setUserGameScoreWindowVisible(true);
       } else if (e.key === '?') {
         handleUserAskForHelp()
+      } else if (e.key === 'ArrowLeft') {
+        if (InGameTextInput.textContent.length > 0) {
+          InGameTextInputAfterCursor.textContent = InGameTextInput.textContent.slice(-1) + InGameTextInputAfterCursor.textContent;
+          InGameTextInput.textContent = InGameTextInput.textContent.slice(0, -1);
+          InGameTextInputAfterCursor.style.visibility = "visible";
+        }      
+      } else if (e.key === 'ArrowRight') {
+        InGameTextInput.textContent = InGameTextInput.textContent + InGameTextInputAfterCursor.textContent.slice(0,1);
+        InGameTextInputAfterCursor.textContent = InGameTextInputAfterCursor.textContent.slice(1);
+        if (InGameTextInputAfterCursor.textContent.length === 0) {
+          InGameTextInputAfterCursor.style.visibility = "hidden";
+        }
+      } else if (e.key === 'Delete') {
+        if(InGameTextInputAfterCursor.textContent.length > 0) {
+          InGameTextInputAfterCursor.textContent = InGameTextInputAfterCursor.textContent.slice(1);
+        }
       }
 
+      const InGameCurrentAnswer = InGameTextInput.textContent + InGameTextInputAfterCursor.textContent;
+
       // If the user answers correctly, make that known and pass to the next character
-      if (inGameAnswerList.includes(InGameTextInput.textContent.trim())) {
+      if (inGameAnswerList.includes(InGameCurrentAnswer.trim())) {
         updateCurrentGameStats("correct");
         currentScore += 1;
         setScore(currentScore)
@@ -320,6 +340,7 @@ export default function InGameCharacterShowAndInput() {
           document.querySelector('#in-game-solution').classList.remove("hidden-element");
           setTimeout(function () {
             InGameTextInput.textContent = '';
+            InGameTextInputAfterCursor.textContent = '';
             document.querySelector('#in-game-solution').classList.add("hidden-element");
             showNewCharacter();
           }, 1000)
@@ -327,6 +348,7 @@ export default function InGameCharacterShowAndInput() {
           // Wait 200 milisecond and then clear the input field and show a new character
           setTimeout(function () {
             InGameTextInput.textContent = '';
+            InGameTextInputAfterCursor.textContent = '';
             showNewCharacter();
           }, 200)
         }
@@ -472,8 +494,9 @@ export default function InGameCharacterShowAndInput() {
   } else {
     inGameInputElement = <>
       <div id='in-game-text-input-cursor-group'>
-        <span></span>
+        <span id='in-game-text-input-before-cursor'></span>
         <div id='in-game-text-input-cursor'></div>
+        <span id='in-game-text-input-after-cursor'></span>
       </div>
       <input type="text" id='in-game-text-input' />
     </>
