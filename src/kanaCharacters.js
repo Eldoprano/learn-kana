@@ -1930,7 +1930,8 @@ export const kanaCharacters = {
     "pasu-poto": {
       "jp_character": "パスポート",
       "romanji": [
-        "pasu-poto"
+        "pasu-poto",
+        "pasupooto"
       ],
       "sound": "パスポート",
       "meaning": "passport",
@@ -1957,7 +1958,8 @@ export const kanaCharacters = {
     "ko-hi-": {
       "jp_character": "コーヒー",
       "romanji": [
-        "ko-hi-"
+        "ko-hi-",
+        "koohii"
       ],
       "sound": "コーヒー",
       "meaning": "coffee",
@@ -1983,7 +1985,8 @@ export const kanaCharacters = {
     "bi-do": {
       "jp_character": "ビード",
       "romanji": [
-        "bi-do"
+        "bi-do",
+        "biido"
       ],
       "sound": "ビード",
       "meaning": "beard",
@@ -2105,7 +2108,8 @@ export const kanaCharacters = {
     "ramen": {
       "jp_character": "ラーメン",
       "romanji": [
-        "ramen"
+        "ramen",
+        "raamen"
       ],
       "sound": "ラーメン",
       "meaning": "ramen",
@@ -2146,7 +2150,8 @@ export const kanaCharacters = {
     "karee raisu": {
       "jp_character": "カレーライス",
       "romanji": [
-        "karee raisu"
+        "karee raisu",
+        "kareeraisu"
       ],
       "sound": "カレーライス",
       "meaning": "curry rice",
@@ -2230,7 +2235,8 @@ export const kanaCharacters = {
     "aisukurimu": {
       "jp_character": "アイスクリーム",
       "romanji": [
-        "aisukurimu"
+        "aisukurimu",
+        "aisukuriimu"
       ],
       "sound": "アイスクリーム",
       "meaning": "ice cream",
@@ -2288,7 +2294,8 @@ export const kanaCharacters = {
     "pasta": {
       "jp_character": "パスタ",
       "romanji": [
-        "pasta"
+        "pasta",
+        "pasuta"
       ],
       "sound": "パスタ",
       "meaning": "pasta",
@@ -2317,7 +2324,8 @@ export const kanaCharacters = {
     "nudoru": {
       "jp_character": "ヌードル",
       "romanji": [
-        "nudoru"
+        "nudoru",
+        "nuudoru"
       ],
       "sound": "ヌードル",
       "meaning": "noodles",
@@ -2362,7 +2370,8 @@ export const kanaCharacters = {
     "tempura": {
       "jp_character": "てんぷら",
       "romanji": [
-        "tempura"
+        "tempura",
+        "tenpura"
       ],
       "sound": "てんぷら",
       "meaning": "tempura",
@@ -2579,7 +2588,8 @@ export const kanaCharacters = {
     "tonkatsu sosu": {
       "jp_character": "とんかつソース",
       "romanji": [
-        "tonkatsu sosu"
+        "tonkatsu sosu",
+        "tonkatsusoosu"
       ],
       "sound": "とんかつソース",
       "meaning": "tonkatsu sauce",
@@ -2595,7 +2605,8 @@ export const kanaCharacters = {
     "mayone-zu": {
       "jp_character": "マヨネーズ",
       "romanji": [
-        "mayone-zu"
+        "mayone-zu",
+        "mayoneezu"
       ],
       "sound": "マヨネーズ",
       "meaning": "mayonnaise",
@@ -2666,7 +2677,8 @@ export const kanaCharacters = {
     "pi-man": {
       "jp_character": "ピーマン",
       "romanji": [
-        "pi-man"
+        "pi-man",
+        "piiman"
       ],
       "sound": "ピーマン",
       "meaning": "green pepper",
@@ -2707,7 +2719,8 @@ export const kanaCharacters = {
     "bacon": {
       "jp_character": "ベーコン",
       "romanji": [
-        "bacon"
+        "bacon",
+        "beekon"
       ],
       "sound": "ベーコン",
       "meaning": "bacon",
@@ -2734,7 +2747,8 @@ export const kanaCharacters = {
     "chiken": {
       "jp_character": "チキン",
       "romanji": [
-        "chiken"
+        "chiken",
+        "chikin"
       ],
       "sound": "チキン",
       "meaning": "chicken",
@@ -2748,7 +2762,8 @@ export const kanaCharacters = {
     "nan": {
       "jp_character": "パン",
       "romanji": [
-        "nan"
+        "nan",
+        "pan"
       ],
       "sound": "パン",
       "meaning": "bread",
@@ -3532,7 +3547,8 @@ export const kanaCharacters = {
     "kinyoubi": {
       "jp_character": "きんようび",
       "romanji": [
-        "kinyoubi"
+        "kinyoubi",
+        "kin'youbi"
       ],
       "sound": "きんようび",
       "meaning": "Friday",
@@ -3696,7 +3712,8 @@ export const kanaCharacters = {
     "misosiru": {
       "jp_character": "みそしる",
       "romanji": [
-        "misosiru"
+        "misosiru",
+        "misoshiru"
       ],
       "sound": "みそしる",
       "meaning": "miso soup",
@@ -3907,7 +3924,8 @@ export const kanaCharacters = {
     "sumo": {
       "jp_character": "すもう",
       "romanji": [
-        "sumo"
+        "sumo",
+        "sumou"
       ],
       "sound": "すもう",
       "meaning": "sumo",
@@ -4051,7 +4069,8 @@ export const kanaCharacters = {
     "judo": {
       "jp_character": "じゅどう",
       "romanji": [
-        "judo"
+        "judo",
+        "judou"
       ],
       "sound": "じゅどう",
       "meaning": "judo (martial art)",
@@ -4080,7 +4099,8 @@ export const kanaCharacters = {
     "aikido": {
       "jp_character": "あいきどう",
       "romanji": [
-        "aikido"
+        "aikido",
+        "aikidou"
       ],
       "sound": "あいきどう",
       "meaning": "aikido (martial art)",
@@ -4094,7 +4114,8 @@ export const kanaCharacters = {
     "kyudo": {
       "jp_character": "きゅうどう",
       "romanji": [
-        "kyudo"
+        "kyudo",
+        "kyuudou"
       ],
       "sound": "きゅうどう",
       "meaning": "Japanese archery",
