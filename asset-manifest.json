@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.5ca10212.css",
-    "main.js": "./static/js/main.ffe8c7b7.js",
+    "main.css": "./static/css/main.c9e88715.css",
+    "main.js": "./static/js/main.1268e17a.js",
     "static/media/ShipporiMincho-Regular.ttf": "./static/media/ShipporiMincho-Regular.fc476d938d8fe9050c97.ttf",
     "static/media/YujiBoku-Regular.ttf": "./static/media/YujiBoku-Regular.2a28c6fdce6b8f64d626.ttf",
     "static/media/KleeOne-Regular.ttf": "./static/media/KleeOne-Regular.0ff902fbf6d967456899.ttf",
@@ -11,14 +11,14 @@
     "static/media/JiyunoTsubasa.ttf": "./static/media/JiyunoTsubasa.d65d4873d75e673ced42.ttf",
     "static/media/freefont_lefthanded.otf": "./static/media/freefont_lefthanded.055e1cd371da4b6ae5b2.otf",
     "static/media/TsukimiRounded-Regular.ttf": "./static/media/TsukimiRounded-Regular.dc7607101c944dce846b.ttf",
-    "service-worker.js": "./service-worker.js",
     "static/media/Belanosima-SemiBold.ttf": "./static/media/Belanosima-SemiBold.f09fa19c016ae0fc11e5.ttf",
+    "service-worker.js": "./service-worker.js",
     "index.html": "./index.html",
-    "main.5ca10212.css.map": "./static/css/main.5ca10212.css.map",
-    "main.ffe8c7b7.js.map": "./static/js/main.ffe8c7b7.js.map"
+    "main.c9e88715.css.map": "./static/css/main.c9e88715.css.map",
+    "main.1268e17a.js.map": "./static/js/main.1268e17a.js.map"
   },
   "entrypoints": [
-    "static/css/main.5ca10212.css",
-    "static/js/main.ffe8c7b7.js"
+    "static/css/main.c9e88715.css",
+    "static/js/main.1268e17a.js"
   ]
 }
