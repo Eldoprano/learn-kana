@@ -76,7 +76,7 @@ export default function UserGameScoreWindow(props) {
                 <div>
                     {
                         getTopNProblematicKanas(5).map((kana, index) => {
-                            return <p className='problematicKanasElement'>{kana.kana + ': ' + kana.averageResponseTime.toFixed(2)}</p>
+                            return <p className='problematicKanasElement' key={'problematicKanasElement-'+{index}}>{kana.kana + ': ' + kana.averageResponseTime.toFixed(2)}</p>
                         })
                     }
                 </div>

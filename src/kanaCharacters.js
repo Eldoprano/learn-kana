@@ -1565,7 +1565,7 @@ export const kanaCharacters = {
         "kono"
       ],
       "sound": "この",
-      "meaning": "this (before a noun)",
+      "meaning": "this",
       "katakana_groups": [],
       "hiragana_groups": [
         "か",
@@ -1578,7 +1578,7 @@ export const kanaCharacters = {
         "sono"
       ],
       "sound": "その",
-      "meaning": "that (before a noun)",
+      "meaning": "that",
       "katakana_groups": [],
       "hiragana_groups": [
         "さ",
@@ -1591,7 +1591,7 @@ export const kanaCharacters = {
         "ano"
       ],
       "sound": "あの",
-      "meaning": "that over there (before a noun)",
+      "meaning": "that over there",
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -3986,7 +3986,7 @@ export const kanaCharacters = {
         "kabuki"
       ],
       "sound": "かぶき",
-      "meaning": "kabuki (theatre form)",
+      "meaning": "Japanese theatre form",
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -4014,7 +4014,7 @@ export const kanaCharacters = {
         "shamisen"
       ],
       "sound": "しゃみせん",
-      "meaning": "shamisen (instrument)",
+      "meaning": "Japanese string instrument",
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -4103,7 +4103,7 @@ export const kanaCharacters = {
         "aikidou"
       ],
       "sound": "あいきどう",
-      "meaning": "aikido (martial art)",
+      "meaning": "Japanese martial art",
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",

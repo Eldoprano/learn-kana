@@ -19,7 +19,10 @@ A website where you will be shoved Kana characters up to your brain, until you g
   - User score will be showned in a corner. ✅
   - The background color will react according to the speed and correctness of the users answer (timed combos?). ☢️
   - A help window will also be available, showing Kanas with their romanjis, together with similar Kanas. ❔
+  - Show Kana progress per character. This can be adjusted. ⚠️
+  - Meaning of word should be more readable. ⚠️
+  - More words for the first groups (and in general). ⚠️
   - When user decides to stop practicing (Or if a timer was set and finished) the user will be showed statistics:
     - How many Kanas you got. ✅
-    - Kanas you have difficulties with (based on incorrect answers and... time?). ✅~
+    - Kanas you have difficulties with (based on incorrect answers and... time?). ⚠️
     - Average response time (ignores large time pauses). ✅

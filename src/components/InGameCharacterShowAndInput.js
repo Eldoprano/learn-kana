@@ -244,6 +244,9 @@ export default function InGameCharacterShowAndInput() {
       currentElementToPickList = sample(charactersToShow, Math.floor(charactersToShow.length))
     }
 
+    // Reset visibility of help
+    document.querySelector('#in-game-kana-solution').classList.add("hidden-element")
+
     // Get and show the current Kana
     const pickedElement = currentElementToPickList.pop()
     inGameKanaOnScreen = pickedElement.jp_character
@@ -294,7 +297,7 @@ export default function InGameCharacterShowAndInput() {
       const InGameTextInput = document.querySelector('#in-game-text-input-before-cursor');
       const InGameTextInputAfterCursor = document.querySelector('#in-game-text-input-after-cursor');
 
-      if (e.key.match(/^[A-Za-z0-9 ]+$/) && e.key.length === 1) {
+      if (e.key.match(/^[^?]$/)) {
         InGameTextInput.textContent += e.key;
       } else if (e.key === 'Backspace') {
         InGameTextInput.textContent = InGameTextInput.textContent.slice(0, -1);
@@ -333,18 +336,44 @@ export default function InGameCharacterShowAndInput() {
         currentScore += 1;
         setScore(currentScore)
 
+        // Define a variable to decide the behavior
+        // This was a suggestion to wait for the user 
+        // to press enter to show the next character
+        // Currently disabled
+        let waitForKeyPress = false;
+
         if (localStorage.getItem("game-mode-word") === "true") {
           if (!document.querySelector('#in-game-kana-solution').classList.contains("hidden-element")) {
             document.querySelector('#in-game-kana-solution').classList.add("hidden-element");
           }
           document.querySelector('#in-game-solution').classList.remove("hidden-element");
-          setTimeout(function () {
-            InGameTextInput.textContent = '';
-            InGameTextInputAfterCursor.textContent = '';
-            document.querySelector('#in-game-solution').classList.add("hidden-element");
-            showNewCharacter();
-          }, 1000)
-        } else {
+
+          if (waitForKeyPress) {
+            // Define the function for keydown event
+            const handleKeyDown = (event) => {
+              if (event.key === 'Enter') {
+                InGameTextInput.textContent = '';
+                InGameTextInputAfterCursor.textContent = '';
+                document.querySelector('#in-game-solution').classList.add("hidden-element");
+                showNewCharacter();
+
+                // Remove the event listener to prevent multiple listeners from being added
+                document.removeEventListener('keydown', handleKeyDown);
+              }
+            };
+
+            // Listen for 'Enter' key press
+            document.addEventListener('keydown', handleKeyDown);
+          } else {
+            setTimeout(function () {
+              InGameTextInput.textContent = '';
+              InGameTextInputAfterCursor.textContent = '';
+              document.querySelector('#in-game-solution').classList.add("hidden-element");
+              showNewCharacter();
+            }, 1000);
+          }
+        }
+        else {
           // Wait 200 milisecond and then clear the input field and show a new character
           setTimeout(function () {
             InGameTextInput.textContent = '';
@@ -422,7 +451,7 @@ export default function InGameCharacterShowAndInput() {
   }, []);
 
   function handleUserAskForHelp() {
-    if (localStorage.getItem("game-mode-word") === "true" & document.querySelector('#in-game-kana-solution').classList.contains("hidden-element")) {
+    if (document.querySelector('#in-game-kana-solution').classList.contains("hidden-element")) {
       updateCurrentGameStats('askForHelp')
       document.querySelector('#in-game-kana-solution').classList.remove("hidden-element")
     }
@@ -474,7 +503,7 @@ export default function InGameCharacterShowAndInput() {
 
       for (let i = 0; i < numberOfAnswers; i++) {
         answerElements.push((
-          <div className='in-game-touch-answer' onClick={onClickAnswerButtonHandler}>
+          <div key={'in-game-touch-answer-' + i} className='in-game-touch-answer' onClick={onClickAnswerButtonHandler}>
             <p></p>
           </div>
         ));
@@ -531,7 +560,7 @@ export default function InGameCharacterShowAndInput() {
             // Go with a for loop over every font, and create an element p with a class of the font
             fontClassList.map((fontClass) => {
               return (
-                <p className={"font-" + fontClass}>a</p>
+                <p className={"font-" + fontClass} key={"font-" + fontClass}>a</p>
               )
             })
           }
