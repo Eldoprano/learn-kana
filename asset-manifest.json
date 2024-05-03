@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.c9e88715.css",
-    "main.js": "./static/js/main.031a9b7a.js",
+    "main.css": "./static/css/main.da70e7ce.css",
+    "main.js": "./static/js/main.5cb0bf97.js",
     "static/media/ShipporiMincho-Regular.ttf": "./static/media/ShipporiMincho-Regular.fc476d938d8fe9050c97.ttf",
     "static/media/YujiBoku-Regular.ttf": "./static/media/YujiBoku-Regular.2a28c6fdce6b8f64d626.ttf",
     "static/media/KleeOne-Regular.ttf": "./static/media/KleeOne-Regular.0ff902fbf6d967456899.ttf",
@@ -14,11 +14,11 @@
     "static/media/Belanosima-SemiBold.ttf": "./static/media/Belanosima-SemiBold.f09fa19c016ae0fc11e5.ttf",
     "service-worker.js": "./service-worker.js",
     "index.html": "./index.html",
-    "main.c9e88715.css.map": "./static/css/main.c9e88715.css.map",
-    "main.031a9b7a.js.map": "./static/js/main.031a9b7a.js.map"
+    "main.da70e7ce.css.map": "./static/css/main.da70e7ce.css.map",
+    "main.5cb0bf97.js.map": "./static/js/main.5cb0bf97.js.map"
   },
   "entrypoints": [
-    "static/css/main.c9e88715.css",
-    "static/js/main.031a9b7a.js"
+    "static/css/main.da70e7ce.css",
+    "static/js/main.5cb0bf97.js"
   ]
 }
