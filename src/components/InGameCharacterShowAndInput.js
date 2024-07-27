@@ -331,7 +331,7 @@ export default function InGameCharacterShowAndInput() {
       const InGameCurrentAnswer = InGameTextInput.textContent + InGameTextInputAfterCursor.textContent;
 
       // If the user answers correctly, make that known and pass to the next character
-      if (inGameAnswerList.includes(InGameCurrentAnswer.trim())) {
+      if (inGameAnswerList.includes(InGameCurrentAnswer.trim().toLowerCase())) {
         updateCurrentGameStats("correct");
         currentScore += 1;
         setScore(currentScore)
