@@ -1,5 +1,6 @@
 import React from 'react'
-import { useState } from 'react'
+import {  useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { kanaCharacters } from '../kanaCharacters.js'
 import UserGameScoreWindow from './UserGameScoreWindow.js'
 
@@ -79,6 +80,21 @@ export default function InGameCharacterShowAndInput() {
     charactersToShow = getListOfWords(characterGroupsToShow)
   } else {
     charactersToShow = getListOfKanas(characterGroupsToShow);
+  }
+
+  // Be mad at the user if the charactersToShow is empty
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (charactersToShow.length === 0) {
+      navigate('/bruh', { state: { message: 'You didn\'t select any Kana!' } });
+      charactersToShow = [{ "jp_character": "あ", "romanji": ["a"], "sound": "あ", "type": "kana/word", "vocal": "a", "meaning": "dog" }]
+    }
+  }, [charactersToShow]);
+
+  // game-mode-auto-next
+  let autoNext = false;
+  if (localStorage.getItem("game-mode-auto-next") === "true") {
+    autoNext = true;
   }
 
 
@@ -344,12 +360,6 @@ export default function InGameCharacterShowAndInput() {
         currentScore += 1;
         setScore(currentScore)
 
-        // TODO Define a variable to decide the behavior
-        // This was a suggestion to wait for the user 
-        // to press enter to show the next character
-        // Currently disabled
-        let waitForKeyPress = false;
-
         // If the user is in word mode, show the translation of the word
         if (localStorage.getItem("game-mode-word") === "true") {
           if (!document.querySelector('#in-game-kana-solution').classList.contains("hidden-element")) {
@@ -357,7 +367,7 @@ export default function InGameCharacterShowAndInput() {
           }
           document.querySelector('#in-game-solution').classList.remove("hidden-element");
 
-          if (waitForKeyPress) {
+          if (!autoNext) {
             // Define the function for keydown event
             const handleKeyDown = (event) => {
               if (event.key === 'Enter') {
@@ -412,24 +422,25 @@ export default function InGameCharacterShowAndInput() {
       return fontSizeInVh;
     }
     function onLineWrapDoSomething() {
-      const kanaCharacter = document.querySelector("#in-game-kana-character>p")
-      // kanaCharacter.style.fontSize = "35vh";
-      const lineHeight = window.getComputedStyle(kanaCharacter).getPropertyValue('font-size');
-      const lineHeightParsed = parseInt(lineHeight.split('px')[0]);
-      const amountOfLinesTilAdjust = 2;
-      const isWraped = kanaCharacter.getAttribute("data-word-wraped") === "true"
-      if (isWraped & getFontSizeInVH(kanaCharacter) >= 35) {
-        kanaCharacter.style.fontSize = "35vh";
-        kanaCharacter.setAttribute("data-word-wraped", "false")
-      }
-      else if (isWraped) {
-        kanaCharacter.style.fontSize = (90 / kanaCharacter.textContent.length) + "vw";
-        kanaCharacter.setAttribute("data-word-wraped", "true")
-      } else if (!isWraped & kanaCharacter.offsetHeight >= (lineHeightParsed * amountOfLinesTilAdjust)) {
-        kanaCharacter.style.fontSize = (90 / kanaCharacter.textContent.length) + "vw";
-        kanaCharacter.setAttribute("data-word-wraped", "true")
-      }
-
+      try {
+        const kanaCharacter = document.querySelector("#in-game-kana-character>p")
+        // kanaCharacter.style.fontSize = "35vh";
+        const lineHeight = window.getComputedStyle(kanaCharacter).getPropertyValue('font-size');
+        const lineHeightParsed = parseInt(lineHeight.split('px')[0]);
+        const amountOfLinesTilAdjust = 2;
+        const isWraped = kanaCharacter.getAttribute("data-word-wraped") === "true"
+        if (isWraped & getFontSizeInVH(kanaCharacter) >= 35) {
+          kanaCharacter.style.fontSize = "35vh";
+          kanaCharacter.setAttribute("data-word-wraped", "false")
+        }
+        else if (isWraped) {
+          kanaCharacter.style.fontSize = (90 / kanaCharacter.textContent.length) + "vw";
+          kanaCharacter.setAttribute("data-word-wraped", "true")
+        } else if (!isWraped & kanaCharacter.offsetHeight >= (lineHeightParsed * amountOfLinesTilAdjust)) {
+          kanaCharacter.style.fontSize = (90 / kanaCharacter.textContent.length) + "vw";
+          kanaCharacter.setAttribute("data-word-wraped", "true")
+        }
+      } catch (error) { }
     }
 
     // window.addEventListener('resize', onLineWrapDoSomething)

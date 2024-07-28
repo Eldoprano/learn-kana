@@ -104,7 +104,7 @@ export default function UserGameScoreWindow(props) {
                         {/* Changing to window.location because of some react problems 
                             (game-mode-word change wasn't being respected) 
                              <Link to='/learn-kana'> */} 
-                            <button onClick={() => window.location.href = "/learn-kana"}>Back to Main Menu</button>
+                            <button onClick={() => window.location.href = "/learn-kana#game-menu-title"}>Back to Main Menu</button>
                         {/* </Link> */}
                         <button onClick={() => alert("Not implemented.. yet")}>Try Problematics</button>
                         <button onClick={() => window.location.reload(false)}>Play Again</button>

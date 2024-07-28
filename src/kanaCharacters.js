@@ -2339,7 +2339,8 @@ export const kanaCharacters = {
     "gyuudon": {
       "jp_character": "ぎゅうどん",
       "romanji": [
-        "gyuudon"
+        "gyuudon",
+        "gyudon"
       ],
       "sound": "ぎゅうどん",
       "meaning": "beef bowl",
@@ -2447,7 +2448,7 @@ export const kanaCharacters = {
         "yakitori"
       ],
       "sound": "やきとり",
-      "meaning": "grilled chicken skewers",
+      "meaning": "grilled chicken",
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
