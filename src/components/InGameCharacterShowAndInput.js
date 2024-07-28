@@ -102,17 +102,17 @@ export default function InGameCharacterShowAndInput() {
     let output = []
     Object.entries(kanaCharacters.words).forEach(([key, value]) => {
       let ignoreWord = false;
-      for(let i = 0; i < value.hiragana_groups.length; i++){
-        if(!charGroups.includes(value.hiragana_groups[i])) {
+      for (let i = 0; i < value.hiragana_groups.length; i++) {
+        if (!charGroups.includes(value.hiragana_groups[i])) {
           ignoreWord = true;
         }
       }
-      for(let i = 0; i < value.katakana_groups.length; i++){
-        if(!charGroups.includes(value.katakana_groups[i])) {
+      for (let i = 0; i < value.katakana_groups.length; i++) {
+        if (!charGroups.includes(value.katakana_groups[i])) {
           ignoreWord = true;
         }
       }
-      if(!ignoreWord) {
+      if (!ignoreWord) {
         output.push({
           "jp_character": value.jp_character,
           "romanji": value.romanji,
@@ -206,7 +206,7 @@ export default function InGameCharacterShowAndInput() {
     let currentUserStats = JSON.parse(localStorage.getItem('userStats'));
     if (currentUserStats[inGameKanaOnScreen] === undefined) {
       currentUserStats[inGameKanaOnScreen] = {
-        currentGameStats: { rightGuesses:0, touchWrongGuesses:0, totalResponseTime:0, askForHelpCounter:0 },
+        currentGameStats: { rightGuesses: 0, touchWrongGuesses: 0, totalResponseTime: 0, askForHelpCounter: 0 },
         last7DaysStats: [],
         totalRightGuesses: 0,
         totalTouchWrongGuesses: 0,
@@ -233,9 +233,9 @@ export default function InGameCharacterShowAndInput() {
     // We get the score with document because the variable onScreenScore 
     // doesnt want to give it to us :( The regex is to just get the number
     const gameMode = JSON.parse(localStorage.getItem("gameMode"))
-    if( gameMode.type === "kana-selector" && 
-        gameMode.value !== -1 &&  
-        document.getElementById("in-game-score").textContent.replace(/^\D+/g, '') >= gameMode.value){
+    if (gameMode.type === "kana-selector" &&
+      gameMode.value !== -1 &&
+      document.getElementById("in-game-score").textContent.replace(/^\D+/g, '') >= gameMode.value) {
       setUserGameScoreWindowVisible(true);
     }
 
@@ -253,7 +253,7 @@ export default function InGameCharacterShowAndInput() {
     setKana(inGameKanaOnScreen)
     inGameAnswerList = pickedElement.romanji
     setSolution(inGameAnswerList)
-    if(pickedElement.type === "word") {
+    if (pickedElement.type === "word") {
       setWordMeaning(pickedElement.meaning)
     }
 
@@ -276,7 +276,7 @@ export default function InGameCharacterShowAndInput() {
     }
 
     document.querySelector("#in-game-kana-character>p").style.fontSize = "35vh";
-    document.querySelector("#in-game-kana-character>p").setAttribute("data-word-wraped","false")
+    document.querySelector("#in-game-kana-character>p").setAttribute("data-word-wraped", "false")
 
     kanaTimeToAnswerTimer = Date.now();
 
@@ -292,6 +292,8 @@ export default function InGameCharacterShowAndInput() {
   #######################
   */
   React.useEffect(() => {
+    let timeoutInProgress = false;
+
     function handleKeyDown(e) {
       // Check if key is a printable character and append it to the input field
       const InGameTextInput = document.querySelector('#in-game-text-input-before-cursor');
@@ -315,33 +317,40 @@ export default function InGameCharacterShowAndInput() {
           InGameTextInputAfterCursor.textContent = InGameTextInput.textContent.slice(-1) + InGameTextInputAfterCursor.textContent;
           InGameTextInput.textContent = InGameTextInput.textContent.slice(0, -1);
           InGameTextInputAfterCursor.style.visibility = "visible";
-        }      
+        }
       } else if (e.key === 'ArrowRight') {
-        InGameTextInput.textContent = InGameTextInput.textContent + InGameTextInputAfterCursor.textContent.slice(0,1);
+        InGameTextInput.textContent = InGameTextInput.textContent + InGameTextInputAfterCursor.textContent.slice(0, 1);
         InGameTextInputAfterCursor.textContent = InGameTextInputAfterCursor.textContent.slice(1);
         if (InGameTextInputAfterCursor.textContent.length === 0) {
           InGameTextInputAfterCursor.style.visibility = "hidden";
         }
       } else if (e.key === 'Delete') {
-        if(InGameTextInputAfterCursor.textContent.length > 0) {
+        if (InGameTextInputAfterCursor.textContent.length > 0) {
           InGameTextInputAfterCursor.textContent = InGameTextInputAfterCursor.textContent.slice(1);
         }
       }
 
-      const InGameCurrentAnswer = InGameTextInput.textContent + InGameTextInputAfterCursor.textContent;
+      const InGameUserCurrentAnswer = InGameTextInput.textContent + InGameTextInputAfterCursor.textContent;
 
-      // If the user answers correctly, make that known and pass to the next character
-      if (inGameAnswerList.includes(InGameCurrentAnswer.trim().toLowerCase())) {
+
+      ///////////////////////////////////////////////////////////////
+      //////////// If the user types the correct answer! ////////////
+      ///////////////////////////////////////////////////////////////
+      
+      if (timeoutInProgress) return;
+      //  Make that known and pass to the next character
+      if (inGameAnswerList.includes(InGameUserCurrentAnswer.trim().toLowerCase())) {
         updateCurrentGameStats("correct");
         currentScore += 1;
         setScore(currentScore)
 
-        // Define a variable to decide the behavior
+        // TODO Define a variable to decide the behavior
         // This was a suggestion to wait for the user 
         // to press enter to show the next character
         // Currently disabled
         let waitForKeyPress = false;
 
+        // If the user is in word mode, show the translation of the word
         if (localStorage.getItem("game-mode-word") === "true") {
           if (!document.querySelector('#in-game-kana-solution').classList.contains("hidden-element")) {
             document.querySelector('#in-game-kana-solution').classList.add("hidden-element");
@@ -365,11 +374,13 @@ export default function InGameCharacterShowAndInput() {
             // Listen for 'Enter' key press
             document.addEventListener('keydown', handleKeyDown);
           } else {
+            timeoutInProgress = true;
             setTimeout(function () {
               InGameTextInput.textContent = '';
               InGameTextInputAfterCursor.textContent = '';
               document.querySelector('#in-game-solution').classList.add("hidden-element");
               showNewCharacter();
+              timeoutInProgress = false;
             }, 1000);
           }
         }
@@ -407,24 +418,24 @@ export default function InGameCharacterShowAndInput() {
       const lineHeightParsed = parseInt(lineHeight.split('px')[0]);
       const amountOfLinesTilAdjust = 2;
       const isWraped = kanaCharacter.getAttribute("data-word-wraped") === "true"
-      if(isWraped & getFontSizeInVH(kanaCharacter)>=35) {
+      if (isWraped & getFontSizeInVH(kanaCharacter) >= 35) {
         kanaCharacter.style.fontSize = "35vh";
-        kanaCharacter.setAttribute("data-word-wraped","false")
+        kanaCharacter.setAttribute("data-word-wraped", "false")
       }
-      else if (isWraped){
-        kanaCharacter.style.fontSize = (90/kanaCharacter.textContent.length) + "vw";
-        kanaCharacter.setAttribute("data-word-wraped","true")
+      else if (isWraped) {
+        kanaCharacter.style.fontSize = (90 / kanaCharacter.textContent.length) + "vw";
+        kanaCharacter.setAttribute("data-word-wraped", "true")
       } else if (!isWraped & kanaCharacter.offsetHeight >= (lineHeightParsed * amountOfLinesTilAdjust)) {
-        kanaCharacter.style.fontSize = (90/kanaCharacter.textContent.length) + "vw";
-        kanaCharacter.setAttribute("data-word-wraped","true")
-      } 
-      
+        kanaCharacter.style.fontSize = (90 / kanaCharacter.textContent.length) + "vw";
+        kanaCharacter.setAttribute("data-word-wraped", "true")
+      }
+
     }
 
     // window.addEventListener('resize', onLineWrapDoSomething)
 
     //handles style changes on banner to check wrapping
-    setInterval(onLineWrapDoSomething,100)
+    setInterval(onLineWrapDoSomething, 100)
 
     function handleFocus() {
       document.querySelector('#in-game-text-input').focus();
@@ -473,7 +484,7 @@ export default function InGameCharacterShowAndInput() {
       document.querySelector('#in-game-kana-character').classList.add("animation-wrong1");
       setTimeout(function () {
         document.querySelector('#in-game-kana-character').classList.remove("animation-wrong1");
-      },300)
+      }, 300)
     }
   }
 

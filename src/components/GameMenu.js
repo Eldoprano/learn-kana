@@ -1,7 +1,7 @@
 import React from 'react'
 import KanaGroup from './KanaGroup'
 import GameModeSelector from './GameModeSelector'
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function GameMenu() {
 
