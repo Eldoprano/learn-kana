@@ -48,7 +48,12 @@ export default function KanaGroup(props) {
       checkbox.checked = isChecked;
       // Update localStorage accordingly
       const title = checkbox.id;
-      let checkedKanas = JSON.parse(localStorage.getItem('checkedKanas')) || [];
+      let checkedKanas = [];
+      try {
+        checkedKanas = JSON.parse(localStorage.getItem('checkedKanas')) || [];
+      } catch (e) {
+        localStorage.setItem('checkedKanas', JSON.stringify([]));
+      }
       if (isChecked) {
         if (!checkedKanas.includes(title)) {
           checkedKanas.push(title);
