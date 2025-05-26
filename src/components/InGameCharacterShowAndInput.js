@@ -51,7 +51,7 @@ if (localStorage.getItem('userStats') === null) {
 // This timer is set to current time when a new kana is showned. 
 // We use it to calculate how long it takes the user to respond.
 let kanaTimeToAnswerTimer = 0;
-let inGameKanaOnScreen = ""
+let inGameKanaOnScreen = "";
 
 export default function InGameCharacterShowAndInput() {
 
@@ -231,7 +231,11 @@ export default function InGameCharacterShowAndInput() {
       }
     }
     if (guessType === "correct") {
-      currentUserStats[inGameKanaOnScreen].currentGameStats.totalResponseTime += (currentTime - kanaTimeToAnswerTimer);
+      let responseTime = currentTime - kanaTimeToAnswerTimer;
+      if (responseTime > 15000) {
+        responseTime = 15000;
+      }
+      currentUserStats[inGameKanaOnScreen].currentGameStats.totalResponseTime += responseTime;
       currentUserStats[inGameKanaOnScreen].currentGameStats.rightGuesses++;
     } else if (guessType === "wrong") {
       currentUserStats[inGameKanaOnScreen].currentGameStats.touchWrongGuesses++;
