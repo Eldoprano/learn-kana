@@ -22,21 +22,32 @@ let fontClassList = [
 /* userStats object structure:
 {
     "あ": {
+        "totalTimesShown": 10, // New: Total times this character has been shown
         "totalRightGuesses": 6,
-        "totalTouchWrongGuesses": 1,
-        "totaltotalResponseTime":2.36,
+        "totalWrongGuesses": 1, // Changed from totalTouchWrongGuesses
+        "totaltotalResponseTime": 2.36, // Sum of response times for correct guesses
         "totalAskForHelpCounter": 3,
-        "currentGameStats": {
+        "currentGameStats": { // Stats for the current session/game
           "rightGuesses":1,
-          "touchWrongGuesses":0,
+          "wrongGuesses":0, // Changed from touchWrongGuesses
           "totalResponseTime":1.33,
           "askForHelpCounter":0
-        }
-        "last7DaysStats": [
+        },
+        "dailyPerformance": [ // New: Array to store daily performance metrics
+            {
+                "date": 1678886400000, // Timestamp for the day (e.g., midnight UTC)
+                "rightGuesses": 3,
+                "wrongGuesses": 1,
+                "askForHelpCounter": 1,
+                "responseTimeSum": 1.45 // Sum of response times for correct guesses this day
+            }
+            // ... more entries for other days
+        ],
+        "last7DaysStats": [ // Potentially deprecated or to be phased out in favor of dailyPerformance
             {
                 "date": 12379898722,
                 "rightGuesses": 3,
-                "TouchwrongGuesses": 1,
+                "wrongGuesses": 1, // Changed from TouchwrongGuesses
                 "totalResponseTime": 1.45,
                 "askForHelpCounter": 1
             }
@@ -52,6 +63,125 @@ if (localStorage.getItem('userStats') === null) {
 // We use it to calculate how long it takes the user to respond.
 let kanaTimeToAnswerTimer = 0;
 let inGameKanaOnScreen = "";
+
+async function selectNextCharacter(charactersToShow) {
+  let userStats = JSON.parse(localStorage.getItem('userStats')) || {};
+  let weightedCharacters = [];
+  const baseWeight = 50; // Base weight for all characters
+  const recencyMultiplier = 1.5; // Multiplier for characters shown recently
+  const problematicRateThreshold = 0.4; // If (wrong + help) / recentShown > this, it's problematic
+  const lowExposureThreshold = 10; // Times shown recently to be considered "enough data"
+  const veryLowExposureThreshold = 3; // Times shown recently, below this gets high priority if any errors
+  const significantErrorBonus = 40; // Bonus for high error rates
+  const moderateErrorBonus = 20; // Bonus for moderate error rates
+  const helpBonus = 10; // Bonus for needing help
+  const noRecentDataPenalty = 0.7; // Multiplier if no recent data (to encourage re-visiting)
+  const fastResponseFactor = 0.1; // Factor to slightly reduce weight for faster correct responses
+
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  thirtyDaysAgo.setHours(0, 0, 0, 0);
+  const thirtyDaysAgoTimestamp = thirtyDaysAgo.getTime();
+
+  for (const character of charactersToShow) {
+    let weight = baseWeight;
+    const stats = userStats[character.jp_character];
+
+    if (stats) {
+      let recentRightGuesses = 0;
+      let recentWrongGuesses = 0;
+      let recentAskForHelpCounter = 0;
+      let recentResponseTimeSum = 0;
+      let recentTimesShown = 0; // This will be sum of R/W/H from daily entries
+
+      if (stats.dailyPerformance && stats.dailyPerformance.length > 0) {
+        stats.dailyPerformance.forEach(daily => {
+          if (daily.date >= thirtyDaysAgoTimestamp) {
+            recentRightGuesses += daily.rightGuesses || 0;
+            recentWrongGuesses += daily.wrongGuesses || 0;
+            recentAskForHelpCounter += daily.askForHelpCounter || 0;
+            recentResponseTimeSum += daily.responseTimeSum || 0;
+            recentTimesShown += (daily.rightGuesses || 0) + (daily.wrongGuesses || 0) + (daily.askForHelpCounter || 0);
+          }
+        });
+      }
+      
+      // Handle legacy totalTouchWrongGuesses
+      const totalWrongGuessesLifetime = stats.totalWrongGuesses || stats.totalTouchWrongGuesses || 0;
+
+      if (recentTimesShown > 0) {
+        weight *= recencyMultiplier; // Boost weight if shown recently
+        const errorRate = (recentWrongGuesses + recentAskForHelpCounter) / recentTimesShown;
+        const helpRate = recentAskForHelpCounter / recentTimesShown;
+
+        if (recentTimesShown < veryLowExposureThreshold && (recentWrongGuesses > 0 || recentAskForHelpCounter > 0) ) {
+            weight += significantErrorBonus * 1.5; // High priority if very few encounters and any mistake
+        } else if (errorRate > problematicRateThreshold) {
+          weight += significantErrorBonus;
+        } else if (errorRate > problematicRateThreshold / 2) {
+          weight += moderateErrorBonus;
+        }
+        if (helpRate > problematicRateThreshold / 2) {
+            weight += helpBonus;
+        }
+
+        // Adjust by average response time for correct recent guesses
+        if (recentRightGuesses > 0) {
+          const avgRecentResponseTime = recentResponseTimeSum / recentRightGuesses;
+          // Slower responses slightly increase weight, faster slightly decrease
+          weight += (avgRecentResponseTime / 1000 - 5) * fastResponseFactor; // Assuming 5s is a neutral average
+        }
+
+      } else {
+        // No recent data, use lifetime stats if available, but with a penalty
+        weight *= noRecentDataPenalty;
+        if (stats.totalTimesShown > 0 && stats.totalTimesShown < lowExposureThreshold) {
+           const lifetimeErrorRate = (totalWrongGuessesLifetime + (stats.totalAskForHelpCounter || 0)) / stats.totalTimesShown;
+           if (lifetimeErrorRate > problematicRateThreshold) {
+               weight += moderateErrorBonus;
+           }
+        }
+      }
+      
+      // Ensure weight is not negative
+      weight = Math.max(1, weight);
+
+    } else {
+      // Character never seen or no stats, give it a slightly higher base weight to encourage first view
+      weight = baseWeight * 1.2;
+    }
+    
+    // TODO: Implement a mechanism to prevent showing the same character too many times in a row.
+    // (e.g., temporarily reducing weight after being shown, or a short-term exclusion list)
+    // This could be a check against `inGameKanaOnScreen` if this function is called multiple times
+    // for the same "next character" decision, or a short list of recently shown items.
+
+    weightedCharacters.push({ ...character, weight });
+  }
+
+  // Weighted random selection
+  let totalWeight = weightedCharacters.reduce((sum, char) => sum + char.weight, 0);
+
+  // Handle cases where all weights are zero (e.g., initial state or after filtering)
+  // In such a scenario, pick a character completely at random.
+  if (totalWeight === 0) {
+    const randomIndex = Math.floor(Math.random() * charactersToShow.length);
+    return charactersToShow[randomIndex];
+  }
+
+  let randomNum = Math.random() * totalWeight;
+  let accumulatedWeight = 0;
+
+  for (const char of weightedCharacters) {
+    accumulatedWeight += char.weight;
+    if (randomNum <= accumulatedWeight) {
+      return char;
+    }
+  }
+
+  // Fallback in case something goes wrong (should ideally not be reached)
+  return charactersToShow[Math.floor(Math.random() * charactersToShow.length)];
+}
 
 export default function InGameCharacterShowAndInput() {
 
@@ -210,7 +340,7 @@ export default function InGameCharacterShowAndInput() {
         currentUserStats[kana].currentGameStats = {}
       }
       currentUserStats[kana].currentGameStats.rightGuesses = 0;
-      currentUserStats[kana].currentGameStats.touchWrongGuesses = 0;
+      currentUserStats[kana].currentGameStats.wrongGuesses = 0; // <-- Changed
       currentUserStats[kana].currentGameStats.totalResponseTime = 0;
       currentUserStats[kana].currentGameStats.askForHelpCounter = 0;
     }
@@ -219,90 +349,193 @@ export default function InGameCharacterShowAndInput() {
 
   function updateCurrentGameStats(guessType) {
     const currentTime = Date.now();
-    let currentUserStats = JSON.parse(localStorage.getItem('userStats'));
-    if (currentUserStats[inGameKanaOnScreen] === undefined) {
-      currentUserStats[inGameKanaOnScreen] = {
-        currentGameStats: { rightGuesses: 0, touchWrongGuesses: 0, totalResponseTime: 0, askForHelpCounter: 0 },
-        last7DaysStats: [],
+    let currentUserStats = JSON.parse(localStorage.getItem('userStats')) || {};
+    const character = inGameKanaOnScreen;
+
+    // Initialize stats for the character if it's new
+    if (!currentUserStats[character]) {
+      currentUserStats[character] = {
+        totalTimesShown: 0,
         totalRightGuesses: 0,
-        totalTouchWrongGuesses: 0,
+        totalWrongGuesses: 0,
         totaltotalResponseTime: 0,
         totalAskForHelpCounter: 0,
+        currentGameStats: { rightGuesses: 0, wrongGuesses: 0, totalResponseTime: 0, askForHelpCounter: 0 },
+        dailyPerformance: [],
+        // last7DaysStats: [], // Retain if needed for other purposes, or phase out
+      };
+    } else {
+      // Handle migration from totalTouchWrongGuesses to totalWrongGuesses
+      if (currentUserStats[character].hasOwnProperty('totalTouchWrongGuesses')) {
+        currentUserStats[character].totalWrongGuesses = currentUserStats[character].totalTouchWrongGuesses;
+        delete currentUserStats[character].totalTouchWrongGuesses;
+      }
+      if (currentUserStats[character].currentGameStats && currentUserStats[character].currentGameStats.hasOwnProperty('touchWrongGuesses')) {
+        currentUserStats[character].currentGameStats.wrongGuesses = currentUserStats[character].currentGameStats.touchWrongGuesses;
+        delete currentUserStats[character].currentGameStats.touchWrongGuesses;
       }
     }
+    
+    // Ensure currentGameStats exists
+    if (!currentUserStats[character].currentGameStats) {
+        currentUserStats[character].currentGameStats = { rightGuesses: 0, wrongGuesses: 0, totalResponseTime: 0, askForHelpCounter: 0 };
+    }
+     // Ensure dailyPerformance array exists
+    if (!currentUserStats[character].dailyPerformance) {
+        currentUserStats[character].dailyPerformance = [];
+    }
+
+    // Update currentGameStats
     if (guessType === "correct") {
       let responseTime = currentTime - kanaTimeToAnswerTimer;
-      if (responseTime > 15000) {
-        responseTime = 15000;
-      }
-      currentUserStats[inGameKanaOnScreen].currentGameStats.totalResponseTime += responseTime;
-      currentUserStats[inGameKanaOnScreen].currentGameStats.rightGuesses++;
+      responseTime = Math.min(responseTime, 15000); // Cap response time
+      currentUserStats[character].currentGameStats.totalResponseTime += responseTime;
+      currentUserStats[character].currentGameStats.rightGuesses++;
+      // Update overall totals
+      currentUserStats[character].totalRightGuesses = (currentUserStats[character].totalRightGuesses || 0) + 1;
+      currentUserStats[character].totaltotalResponseTime = (currentUserStats[character].totaltotalResponseTime || 0) + responseTime;
     } else if (guessType === "wrong") {
-      currentUserStats[inGameKanaOnScreen].currentGameStats.touchWrongGuesses++;
+      currentUserStats[character].currentGameStats.wrongGuesses++;
+      currentUserStats[character].totalWrongGuesses = (currentUserStats[character].totalWrongGuesses || 0) + 1;
     } else if (guessType === "askForHelp") {
-      currentUserStats[inGameKanaOnScreen].currentGameStats.askForHelpCounter++;
+      currentUserStats[character].currentGameStats.askForHelpCounter++;
+      currentUserStats[character].totalAskForHelpCounter = (currentUserStats[character].totalAskForHelpCounter || 0) + 1;
     }
+
+    // Update dailyPerformance
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Get timestamp for midnight
+    const todayTimestamp = today.getTime();
+
+    let dailyEntry = currentUserStats[character].dailyPerformance.find(entry => entry.date === todayTimestamp);
+
+    if (!dailyEntry) {
+      dailyEntry = {
+        date: todayTimestamp,
+        rightGuesses: 0,
+        wrongGuesses: 0,
+        askForHelpCounter: 0,
+        responseTimeSum: 0.0
+      };
+      currentUserStats[character].dailyPerformance.push(dailyEntry);
+    }
+
+    if (guessType === "correct") {
+      let responseTime = currentTime - kanaTimeToAnswerTimer;
+      responseTime = Math.min(responseTime, 15000); // Cap response time
+      dailyEntry.rightGuesses++;
+      dailyEntry.responseTimeSum += responseTime;
+    } else if (guessType === "wrong") {
+      dailyEntry.wrongGuesses++;
+    } else if (guessType === "askForHelp") {
+      dailyEntry.askForHelpCounter++;
+    }
+    
     localStorage.setItem('userStats', JSON.stringify(currentUserStats));
   }
 
 
   // Function gets called at the beginning and every time the kana changes
-  function showNewCharacter() {
+  async function showNewCharacter() {
 
     // Check if the user already answered its kana limits. If so, show stats.
-    // We get the score with document because the variable onScreenScore 
-    // doesnt want to give it to us :( The regex is to just get the number
-    const gameMode = JSON.parse(localStorage.getItem("gameMode"))
-    if (gameMode.type === "kana-selector" &&
-      gameMode.value !== -1 &&
-      document.getElementById("in-game-score").textContent.replace(/^\D+/g, '') >= gameMode.value) {
+    const gameScoreElement = document.getElementById("in-game-score");
+    const gameMode = JSON.parse(localStorage.getItem("gameMode"));
+    if (gameMode && gameMode.type === "kana-selector" && gameMode.value !== -1 &&
+        gameScoreElement && 
+        parseInt(gameScoreElement.textContent.replace(/^\D+/g, ''), 10) >= gameMode.value) {
       setUserGameScoreWindowVisible(true);
-    }
-
-    // If we already used the full list of unique random picked, fill it again
-    if (currentElementToPickList.length === 0) {
-      currentElementToPickList = sample(charactersToShow, Math.floor(charactersToShow.length))
+      return; // Exit early if score window is shown
     }
 
     // Reset visibility of help
-    document.querySelector('#in-game-kana-solution').classList.add("hidden-element")
+    const helpSolutionElement = document.querySelector('#in-game-kana-solution');
+    if (helpSolutionElement) {
+      helpSolutionElement.classList.add("hidden-element");
+    }
 
-    // Get and show the current Kana
-    const pickedElement = currentElementToPickList.pop()
-    inGameKanaOnScreen = pickedElement.jp_character
-    setKana(inGameKanaOnScreen)
-    inGameAnswerList = pickedElement.romanji
-    setSolution(inGameAnswerList)
+    // Get and show the current Kana using the new weighted selection logic
+    let pickedElement = await selectNextCharacter(charactersToShow);
+    
+    if (!pickedElement) {
+      console.warn("selectNextCharacter returned undefined. Fallback to random selection from charactersToShow.");
+      if (charactersToShow.length > 0) {
+        pickedElement = charactersToShow[Math.floor(Math.random() * charactersToShow.length)];
+      } else {
+        navigate('/bruh', { state: { message: 'No characters available to show!' } });
+        return;
+      }
+    }
+    
+    inGameKanaOnScreen = pickedElement.jp_character;
+
+    // Update totalTimesShown
+    let currentUserStats = JSON.parse(localStorage.getItem('userStats')) || {};
+    if (!currentUserStats[inGameKanaOnScreen]) {
+      currentUserStats[inGameKanaOnScreen] = {
+        totalTimesShown: 1,
+        totalRightGuesses: 0,
+        totalWrongGuesses: 0,
+        totaltotalResponseTime: 0,
+        totalAskForHelpCounter: 0,
+        currentGameStats: { rightGuesses: 0, wrongGuesses: 0, totalResponseTime: 0, askForHelpCounter: 0 },
+        dailyPerformance: [],
+      };
+    } else {
+      currentUserStats[inGameKanaOnScreen].totalTimesShown = (currentUserStats[inGameKanaOnScreen].totalTimesShown || 0) + 1;
+       // Ensure dailyPerformance exists for older data structures
+      if (!currentUserStats[inGameKanaOnScreen].dailyPerformance) {
+        currentUserStats[inGameKanaOnScreen].dailyPerformance = [];
+      }
+       // Handle migration for totalWrongGuesses if necessary from an even older state (pre-totalTouchWrongGuesses)
+      if (!currentUserStats[inGameKanaOnScreen].hasOwnProperty('totalWrongGuesses') && !currentUserStats[inGameKanaOnScreen].hasOwnProperty('totalTouchWrongGuesses')) {
+        currentUserStats[inGameKanaOnScreen].totalWrongGuesses = 0;
+      }
+    }
+    localStorage.setItem('userStats', JSON.stringify(currentUserStats));
+
+    setKana(pickedElement.jp_character);
+    // @ts-ignore
+    inGameAnswerList = pickedElement.romanji;
+    // @ts-ignore
+    setSolution(pickedElement.romanji);
+    // @ts-ignore
     if (pickedElement.type === "word") {
-      setWordMeaning(pickedElement.meaning)
+      // @ts-ignore
+      setWordMeaning(pickedElement.meaning);
     }
 
     if (localStorage.getItem("game-mode-random-fonts") === "true") {
       const randomFontIndex = Math.floor(Math.random() * fontClassList.length);
       const fontClass = fontClassList[randomFontIndex];
-      // First we delete any class that begins with the word font
-      document.querySelector('#in-game-kana-character').classList.forEach(element => {
-        if (element.startsWith('font-')) {
-          document.querySelector('#in-game-kana-character').classList.remove(element);
-        }
-      });
-
-      // Then we add the new class
-      document.querySelector('#in-game-kana-character').classList.add("font-" + fontClass);
+      const charDisplayElement = document.querySelector('#in-game-kana-character');
+      if (charDisplayElement) {
+        charDisplayElement.classList.forEach(cls => {
+          if (cls.startsWith('font-')) {
+            charDisplayElement.classList.remove(cls);
+          }
+        });
+        charDisplayElement.classList.add("font-" + fontClass);
+      }
     }
 
     if (localStorage.getItem("game-mode-touch") === "true") {
+      // @ts-ignore
       fillTouchAnswers(pickedElement);
     }
 
-    document.querySelector("#in-game-kana-character>p").style.fontSize = "35vh";
-    document.querySelector("#in-game-kana-character>p").setAttribute("data-word-wraped", "false")
+    const charTextElement = document.querySelector("#in-game-kana-character>p");
+    if (charTextElement) {
+      // @ts-ignore
+      charTextElement.style.fontSize = "35vh";
+      charTextElement.setAttribute("data-word-wraped", "false");
+    }
 
     kanaTimeToAnswerTimer = Date.now();
 
-    // Get angry if the user keeps submiting correct answers while on the stats window
+    // Get angry if the user keeps submitting correct answers while on the stats window
     if (document.querySelector('.inGameUserGameScoreBackground')) {
-      alert("Hey! ( ｡ •̀ ᴖ •́ ｡) Stop responding you silly")
+      alert("Hey! ( ｡ •̀ ᴖ •́ ｡) Stop responding you silly");
     }
   }
 
