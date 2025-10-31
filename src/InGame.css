@@ -92,6 +92,38 @@ body {
   width: auto;
 }
 
+.in-game-timer {
+  font-size: 3em;
+  font-weight: bold;
+  user-select: none;
+  text-align: center;
+  color: #ff9a3c;
+  transition: all 0.3s ease;
+  font-family: 'Courier New', monospace;
+}
+
+.in-game-timer.timer-warning {
+  color: #ffcc3c;
+  font-size: 3.2em;
+}
+
+.in-game-timer.timer-critical {
+  color: #ff5c3c;
+  font-size: 3.5em;
+  animation: timer-pulse 1s infinite;
+}
+
+@keyframes timer-pulse {
+  0%, 100% {
+    transform: scale(1);
+    text-shadow: 0 0 10px #ff5c3c80;
+  }
+  50% {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px #ff5c3c;
+  }
+}
+
 .in-game-help-bar {
   display: flex;
   font-size: 1.5em;

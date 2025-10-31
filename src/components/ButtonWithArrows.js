@@ -4,11 +4,22 @@ import { useState } from 'react'
 export default function ButtonWithArrows(props) {
   const [value, setValue] = useState(5);
   const handleMinus = (e) => {
-    let newValue = 5;
-    if (value > 5 && value <= 50) {
-      newValue = value - 5;
-    } else if (value > 50) {
-      newValue = value - 10;
+    const isTimeSelector = props.id === "time-selector";
+    const minValue = isTimeSelector ? 1 : 5;
+
+    let newValue = minValue;
+    if (isTimeSelector) {
+      // For time selector: decrement by 1
+      if (value > minValue) {
+        newValue = value - 1;
+      }
+    } else {
+      // For kana selector: original logic
+      if (value > 5 && value <= 50) {
+        newValue = value - 5;
+      } else if (value > 50) {
+        newValue = value - 10;
+      }
     }
 
     // Mark the checkbox as checked
@@ -23,11 +34,19 @@ export default function ButtonWithArrows(props) {
   }
 
   const handlePlus = (e) => {
+    const isTimeSelector = props.id === "time-selector";
+
     let newValue = 5;
-    if (value < 50) {
-      newValue = value + 5;
-    } else if (value >= 50) {
-      newValue = value + 10;
+    if (isTimeSelector) {
+      // For time selector: increment by 1
+      newValue = value + 1;
+    } else {
+      // For kana selector: original logic
+      if (value < 50) {
+        newValue = value + 5;
+      } else if (value >= 50) {
+        newValue = value + 10;
+      }
     }
 
     // Mark the checkbox as checked
