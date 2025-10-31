@@ -145,29 +145,29 @@ Game Menu Page
 ##############
 */
 
-.game-menu-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5em;
-  position: relative;
-  width: 100%;
-  padding-top: 0.7em;
-}
-
 #game-menu-title {
   user-select: none;
+  padding-top: 0.7em;
   font-size: 2em;
-  margin: 0;
 }
 
-.stats-button {
-  width: 3em;
-  height: 3em;
-  padding: 0.6em;
+.stats-button-floating {
+  position: fixed;
+  bottom: 2em;
+  left: 2em;
+  width: 4em;
+  height: 4em;
+  padding: 0.8em;
+  z-index: 100;
+  transition: all 0.3s;
 }
 
-.stats-button svg {
+.stats-button-floating:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px 2px #ff9a3c, 6px 6px 12px #144d5d, -6px -6px 12px #165769;
+}
+
+.stats-button-floating svg {
   width: 100%;
   height: 100%;
 }
