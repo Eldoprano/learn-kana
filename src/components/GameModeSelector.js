@@ -66,6 +66,7 @@ export default function GameModeSelector() {
         <CheckMark characterText="Word Practice" class="game-mode-selector-button-group-row-2" id="game-mode-word"/>
         <CheckMark characterText="Handwritten Fonts" class="game-mode-selector-button-group-row-2" id="game-mode-random-fonts"/>
         <CheckMark characterText="Auto Next" class="game-mode-selector-button-group-row-2" id="game-mode-auto-next" default="true"/>
+        <CheckMark characterText="Try Problematics" class="game-mode-selector-button-group-row-2" id="game-mode-problematics"/>
       </div>
     </div>
   )
