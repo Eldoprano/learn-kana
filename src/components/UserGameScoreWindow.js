@@ -5,22 +5,28 @@ import React from 'react'
 {
     "あ": {
         "totalRightGuesses": 6,
-        "totalTouchWrongGuesses": 1,
+        "totalWrongGuesses": 1,
+        "totalWrongSubmissions": 2,
+        "totalEditCount": 15,
         "totaltotalResponseTime":2.36,
         "totalAskForHelpCounter": 3,
         "currentGameStats": {
           "rightGuesses":1,
-          "touchWrongGuesses":0,
+          "wrongGuesses":0,
+          "wrongSubmissions":0,
+          "editCount":3,
           "totalResponseTime":1.33,
           "askForHelpCounter":0
         }
-        "last7DaysStats": [
+        "dailyPerformance": [
             {
-                "date": 12379898722,
+                "date": 1678886400000,
                 "rightGuesses": 3,
-                "TouchwrongGuesses": 1,
-                "totalResponseTime": 1.45,
-                "askForHelpCounter": 1
+                "wrongGuesses": 1,
+                "wrongSubmissions": 2,
+                "editCount": 8,
+                "askForHelpCounter": 1,
+                "responseTimeSum": 1.45
             }
         ]
     }
@@ -43,6 +49,28 @@ export default function UserGameScoreWindow(props) {
             totalResponseTime += userStats[kana].currentGameStats.totalResponseTime;
         }
         return (totalResponseTime/getTotalRightGuessesOfCurrentGame())/1000;
+    }
+
+    function getTotalEditsOfCurrentGame() {
+        let totalEdits=0;
+        for (const kana in userStats) {
+            totalEdits += userStats[kana].currentGameStats.editCount || 0;
+        }
+        return totalEdits;
+    }
+
+    function getTotalWrongSubmissionsOfCurrentGame() {
+        let totalWrongSubmissions=0;
+        for (const kana in userStats) {
+            totalWrongSubmissions += userStats[kana].currentGameStats.wrongSubmissions || 0;
+        }
+        return totalWrongSubmissions;
+    }
+
+    function getAverageEditsPerKana() {
+        const totalRightGuesses = getTotalRightGuessesOfCurrentGame();
+        if (totalRightGuesses === 0) return 0;
+        return getTotalEditsOfCurrentGame() / totalRightGuesses;
     }
 
     // This function returns n kanas in descending order that have the highest average response time
@@ -70,6 +98,14 @@ export default function UserGameScoreWindow(props) {
                 <p>
                     {"Time per Kana: " + getAverageResponseTimeOfCurrentGame().toFixed(3) + " seconds"}
                 </p>
+                <p>
+                    {"Avg Edits per Kana: " + getAverageEditsPerKana().toFixed(1)}
+                </p>
+                {getTotalWrongSubmissionsOfCurrentGame() > 0 && (
+                    <p>
+                        {"Wrong Submissions: " + getTotalWrongSubmissionsOfCurrentGame()}
+                    </p>
+                )}
             </div>
             <div className='inGameUserGameScoreWindow_stats_problematicKanas'>
                 <p>Slow Kanas:</p>
