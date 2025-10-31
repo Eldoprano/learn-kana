@@ -64,6 +64,65 @@ if (localStorage.getItem('userStats') === null) {
 let kanaTimeToAnswerTimer = 0;
 let inGameKanaOnScreen = "";
 
+// Function to get problematic characters based on recent performance
+function getProblematicCharacters(charactersToShow, userStats) {
+  const problematicCharacters = [];
+  const minRecentAttempts = 3; // Minimum attempts to consider a character
+  const errorRateThreshold = 0.3; // 30% error rate (wrong + help) makes it problematic
+  const slowResponseThreshold = 5000; // 5 seconds average makes it problematic
+
+  // Get recent data from dailyPerformance (looking at roughly last 200 answers)
+  // We'll consider characters that have been attempted in recent sessions
+  const recentDaysToCheck = 30; // Look at last 30 days
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - recentDaysToCheck);
+  thirtyDaysAgo.setHours(0, 0, 0, 0);
+  const thirtyDaysAgoTimestamp = thirtyDaysAgo.getTime();
+
+  for (const character of charactersToShow) {
+    const stats = userStats[character.jp_character];
+
+    if (!stats || !stats.dailyPerformance || stats.dailyPerformance.length === 0) {
+      continue; // Skip characters with no recent data
+    }
+
+    let recentRightGuesses = 0;
+    let recentWrongGuesses = 0;
+    let recentAskForHelpCounter = 0;
+    let recentResponseTimeSum = 0;
+
+    // Collect recent performance data
+    stats.dailyPerformance.forEach(daily => {
+      if (daily.date >= thirtyDaysAgoTimestamp) {
+        recentRightGuesses += daily.rightGuesses || 0;
+        recentWrongGuesses += daily.wrongGuesses || 0;
+        recentAskForHelpCounter += daily.askForHelpCounter || 0;
+        recentResponseTimeSum += daily.responseTimeSum || 0;
+      }
+    });
+
+    const totalRecentAttempts = recentRightGuesses + recentWrongGuesses + recentAskForHelpCounter;
+
+    // Only consider characters with minimum attempts
+    if (totalRecentAttempts < minRecentAttempts) {
+      continue;
+    }
+
+    // Calculate error rate
+    const errorRate = (recentWrongGuesses + recentAskForHelpCounter) / totalRecentAttempts;
+
+    // Calculate average response time for correct answers
+    const avgResponseTime = recentRightGuesses > 0 ? recentResponseTimeSum / recentRightGuesses : 0;
+
+    // Mark as problematic if high error rate OR slow response time
+    if (errorRate >= errorRateThreshold || avgResponseTime >= slowResponseThreshold) {
+      problematicCharacters.push(character);
+    }
+  }
+
+  return problematicCharacters;
+}
+
 async function selectNextCharacter(charactersToShow) {
   let userStats = JSON.parse(localStorage.getItem('userStats')) || {};
   let weightedCharacters = [];
@@ -388,7 +447,7 @@ export default function InGameCharacterShowAndInput() {
     // Update currentGameStats
     if (guessType === "correct") {
       let responseTime = currentTime - kanaTimeToAnswerTimer;
-      responseTime = Math.min(responseTime, 15000); // Cap response time
+      responseTime = Math.min(responseTime, 10000); // Cap response time at 10 seconds
       currentUserStats[character].currentGameStats.totalResponseTime += responseTime;
       currentUserStats[character].currentGameStats.rightGuesses++;
       // Update overall totals
@@ -422,7 +481,7 @@ export default function InGameCharacterShowAndInput() {
 
     if (guessType === "correct") {
       let responseTime = currentTime - kanaTimeToAnswerTimer;
-      responseTime = Math.min(responseTime, 15000); // Cap response time
+      responseTime = Math.min(responseTime, 10000); // Cap response time at 10 seconds
       dailyEntry.rightGuesses++;
       dailyEntry.responseTimeSum += responseTime;
     } else if (guessType === "wrong") {
@@ -442,7 +501,7 @@ export default function InGameCharacterShowAndInput() {
     const gameScoreElement = document.getElementById("in-game-score");
     const gameMode = JSON.parse(localStorage.getItem("gameMode"));
     if (gameMode && gameMode.type === "kana-selector" && gameMode.value !== -1 &&
-        gameScoreElement && 
+        gameScoreElement &&
         parseInt(gameScoreElement.textContent.replace(/^\D+/g, ''), 10) >= gameMode.value) {
       setUserGameScoreWindowVisible(true);
       return; // Exit early if score window is shown
@@ -454,8 +513,23 @@ export default function InGameCharacterShowAndInput() {
       helpSolutionElement.classList.add("hidden-element");
     }
 
+    // Check if "Try Problematics" mode is enabled
+    let charactersToSelect = charactersToShow;
+    if (localStorage.getItem("game-mode-problematics") === "true") {
+      const userStats = JSON.parse(localStorage.getItem('userStats')) || {};
+      const problematicChars = getProblematicCharacters(charactersToShow, userStats);
+
+      // If we have problematic characters, use them; otherwise fall back to all characters
+      if (problematicChars.length > 0) {
+        charactersToSelect = problematicChars;
+      } else {
+        // No problematic characters found, inform user and use all characters
+        console.log("No problematic characters found. Using all selected characters.");
+      }
+    }
+
     // Get and show the current Kana using the new weighted selection logic
-    let pickedElement = await selectNextCharacter(charactersToShow);
+    let pickedElement = await selectNextCharacter(charactersToSelect);
     
     if (!pickedElement) {
       console.warn("selectNextCharacter returned undefined. Fallback to random selection from charactersToShow.");
