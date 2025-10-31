@@ -17,6 +17,20 @@ function ProgressStatsModal(props) {
         setHoveredItem(null);
     }, [activeTab]);
 
+    useEffect(() => {
+        // Prevent background scrolling when modal is open
+        if (props.visible) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
+        // Cleanup function to restore scrolling when component unmounts
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [props.visible]);
+
     // Calculate mastery level based on stats (0-100)
     const calculateMastery = (character) => {
         const stats = userStats[character];
@@ -175,7 +189,10 @@ function ProgressStatsModal(props) {
             <div
                 key={`${activeTab}-${item.character}-${item.romanji}-${index}`}
                 className="progress-stats-grid-item"
-                style={{ backgroundColor: color }}
+                style={{ 
+                    backgroundColor: color,
+                    '--mastery-color': color
+                }}
                 onMouseEnter={() => setHoveredItem(item)}
                 onMouseLeave={() => setHoveredItem(null)}
             >
@@ -185,11 +202,11 @@ function ProgressStatsModal(props) {
                 <div className="progress-stats-grid-item-romanji">
                     {item.romanji}
                 </div>
-                {mastery !== null && (
+                {/* {mastery !== null && (
                     <div className="progress-stats-grid-item-mastery">
                         {mastery}%
                     </div>
-                )}
+                )} */}
             </div>
         );
     };

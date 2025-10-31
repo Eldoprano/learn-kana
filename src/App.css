@@ -152,19 +152,18 @@ Game Menu Page
 }
 
 .stats-button-floating {
-  position: fixed;
-  bottom: 2em;
-  left: 2em;
-  width: 4em;
-  height: 4em;
+  width: 3em;
+  height: 3em;
   padding: 0.8em;
   z-index: 100;
   transition: all 0.3s;
+  align-self: flex-start;
+  margin: -3.5em 0.5em 0.5em 0.5em;
 }
 
 .stats-button-floating:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 20px 2px #ff9a3c, 6px 6px 12px #144d5d, -6px -6px 12px #165769;
+  box-shadow: 6px 6px 12px #144d5d, -6px -6px 12px #165769;
 }
 
 .stats-button-floating svg {
@@ -475,7 +474,7 @@ Progress Stats Modal
   max-width: 90vw;
   max-height: 90vh;
   overflow: hidden;
-  box-shadow: 0 0 60px 2px #ff9a3c, 0.5rem 0.5rem 30px #503114;
+  box-shadow: 0 0 20px 1px #155263, 0.5rem 0.5rem 30px #113843;
   display: flex;
   flex-direction: column;
   gap: 1.5em;
@@ -546,7 +545,7 @@ Progress Stats Modal
 .progress-stats-tab.active {
   background: linear-gradient(24deg, #ff9a3c, #155263);
   color: white;
-  box-shadow: 0 0 20px 1px #ff9a3c, inset 2px 2px 8px #00000050;
+  box-shadow: 0 0 20px 1px #144d5d, inset 2px 2px 8px #00000050
 }
 
 .progress-stats-summary {
@@ -630,12 +629,15 @@ Progress Stats Modal
 }
 
 .progress-stats-grid-item:hover {
-  transform: scale(1.15);
+  transform: scale(1.05);
   z-index: 10;
-  box-shadow: 0 0 15px 2px currentColor, 3px 3px 8px #00000080;
+  box-shadow: 0 0 10px 2px var(--mastery-color), 3px 3px 8px #00000080;
 }
 
 .progress-stats-grid-item-character {
+  display: block;
+  width: 100%;
+  text-align: center;
   font-size: 1.8em;
   font-weight: bold;
   color: #155263;
@@ -644,6 +646,9 @@ Progress Stats Modal
 }
 
 .progress-stats-grid-item-romanji {
+  display: block;
+  width: 100%;
+  text-align: center;
   font-size: 0.65em;
   color: #155263;
   opacity: 0.7;
@@ -651,7 +656,7 @@ Progress Stats Modal
 }
 
 .progress-stats-grid-item-mastery {
-  position: absolute;
+  align-self: end;
   bottom: 2px;
   right: 4px;
   font-size: 0.6em;
