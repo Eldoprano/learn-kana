@@ -145,10 +145,31 @@ Game Menu Page
 ##############
 */
 
+.game-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5em;
+  position: relative;
+  width: 100%;
+  padding-top: 0.7em;
+}
+
 #game-menu-title {
   user-select: none;
-  padding-top: 0.7em;
   font-size: 2em;
+  margin: 0;
+}
+
+.stats-button {
+  width: 3em;
+  height: 3em;
+  padding: 0.6em;
+}
+
+.stats-button svg {
+  width: 100%;
+  height: 100%;
 }
 
 .game-menu-page {
@@ -424,5 +445,305 @@ body::-webkit-scrollbar-thumb:hover {
 
   .game-mode-selector-button-group {
     flex-direction: column;
+  }
+}
+
+/*
+####################
+Progress Stats Modal
+####################
+*/
+
+.progress-stats-modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000080;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.progress-stats-modal {
+  background-color: #155263;
+  border-radius: 30px;
+  padding: 2em;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 0 60px 2px #ff9a3c, 0.5rem 0.5rem 30px #503114;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  position: relative;
+}
+
+.progress-stats-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+.progress-stats-modal-header h2 {
+  font-family: "Belanosima";
+  font-size: 2.5em;
+  margin: 0;
+  color: #ff9a3c;
+  user-select: none;
+}
+
+.progress-stats-modal-close {
+  background: transparent;
+  border: 2px solid #ff9a3c;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  font-size: 2em;
+  color: #ff9a3c;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  line-height: 1;
+}
+
+.progress-stats-modal-close:hover {
+  background-color: #ff9a3c;
+  color: #155263;
+  transform: rotate(90deg);
+}
+
+.progress-stats-modal-tabs {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+
+.progress-stats-tab {
+  padding: 0.8em 2em;
+  border: none;
+  border-radius: 50em;
+  background: #155263;
+  box-shadow: 6px 6px 12px #144d5d, -6px -6px 12px #165769;
+  color: #ff9a3c;
+  font-size: 1.2em;
+  font-family: "Belanosima";
+  cursor: pointer;
+  transition: all 0.3s;
+  user-select: none;
+}
+
+.progress-stats-tab:hover {
+  background: linear-gradient(145deg, #134a59, #16586a);
+}
+
+.progress-stats-tab.active {
+  background: linear-gradient(24deg, #ff9a3c, #155263);
+  color: white;
+  box-shadow: 0 0 20px 1px #ff9a3c, inset 2px 2px 8px #00000050;
+}
+
+.progress-stats-summary {
+  display: flex;
+  justify-content: space-around;
+  padding: 1em;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #134a59, #16586a);
+  box-shadow: inset 5px 5px 12px #144d5d, inset -5px -5px 12px #165769;
+}
+
+.progress-stats-summary-item {
+  text-align: center;
+}
+
+.progress-stats-summary-value {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #ff9a3c;
+  font-family: "Belanosima";
+}
+
+.progress-stats-summary-label {
+  font-size: 1em;
+  color: #ff9a3c;
+  opacity: 0.8;
+  margin-top: -0.5em;
+}
+
+.progress-stats-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+  padding: 0.5em;
+  font-size: 0.9em;
+}
+
+.progress-stats-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.progress-stats-legend-color {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px #00000050;
+}
+
+.progress-stats-grid-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.5em;
+  flex: 1;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #134a59, #16586a);
+  box-shadow: inset 5px 5px 12px #144d5d, inset -5px -5px 12px #165769;
+}
+
+.progress-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 8px;
+  padding: 0.5em;
+}
+
+.progress-stats-grid-item {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 3px 3px 6px #00000050, -2px -2px 6px #ffffff10;
+  position: relative;
+}
+
+.progress-stats-grid-item:hover {
+  transform: scale(1.15);
+  z-index: 10;
+  box-shadow: 0 0 15px 2px currentColor, 3px 3px 8px #00000080;
+}
+
+.progress-stats-grid-item-character {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #155263;
+  text-shadow: 1px 1px 2px #00000030;
+  line-height: 1;
+}
+
+.progress-stats-grid-item-romanji {
+  font-size: 0.65em;
+  color: #155263;
+  opacity: 0.7;
+  margin-top: -2px;
+}
+
+.progress-stats-grid-item-mastery {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-size: 0.6em;
+  color: #155263;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+.progress-stats-tooltip {
+  position: fixed;
+  bottom: 2em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #155263;
+  border: 2px solid #ff9a3c;
+  border-radius: 15px;
+  padding: 1.5em;
+  box-shadow: 0 0 30px 2px #ff9a3c, 0.5rem 0.5rem 20px #503114;
+  z-index: 1001;
+  min-width: 300px;
+  max-width: 500px;
+  pointer-events: none;
+}
+
+.progress-stats-tooltip-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #ff9a3c;
+  margin-bottom: 0.5em;
+  text-align: center;
+  font-family: "Belanosima";
+}
+
+.progress-stats-tooltip-meaning {
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+
+.progress-stats-tooltip-content {
+  color: #ff9a3c;
+  line-height: 1.6;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+.progress-stats-tooltip-content > div {
+  margin: 0.2em 0;
+}
+
+/* Custom scrollbar for stats grid */
+.progress-stats-grid-container::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+.progress-stats-grid-container::-webkit-scrollbar-thumb {
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: 3px solid transparent;
+  background-clip: content-box;
+  background-color: #ff9a3c;
+}
+
+.progress-stats-grid-container::-webkit-scrollbar-thumb:hover {
+  background-color: #db8331;
+}
+
+@media (max-width: 655px) {
+  .progress-stats-modal {
+    max-width: 95vw;
+    max-height: 95vh;
+    padding: 1.5em;
+  }
+
+  .progress-stats-modal-header h2 {
+    font-size: 1.8em;
+  }
+
+  .progress-stats-grid {
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 6px;
+  }
+
+  .progress-stats-summary {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .progress-stats-legend {
+    font-size: 0.8em;
+  }
+
+  .progress-stats-tooltip {
+    min-width: 250px;
+    padding: 1em;
   }
 }
