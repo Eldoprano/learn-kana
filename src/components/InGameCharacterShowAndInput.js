@@ -257,6 +257,7 @@ export default function InGameCharacterShowAndInput() {
   const [onScreenWordMeaning, setWordMeaning] = useState('');
   const [onScreenScore, setScore] = useState(0);
   const [userGameScoreWindowVisible, setUserGameScoreWindowVisible] = useState(false);
+  const [remainingTime, setRemainingTime] = useState(null);
   let currentScore = 0;
   let inGameAnswerList = [];
 
@@ -666,6 +667,40 @@ export default function InGameCharacterShowAndInput() {
   # Text input handlers #
   #######################
   */
+  // Timer countdown effect
+  React.useEffect(() => {
+    const gameMode = JSON.parse(localStorage.getItem("gameMode"));
+
+    // Initialize timer if in time-selector mode
+    if (gameMode && gameMode.type === "time-selector" && gameMode.value !== -1) {
+      setRemainingTime(gameMode.value * 60); // Convert minutes to seconds
+    }
+  }, []);
+
+  React.useEffect(() => {
+    const gameMode = JSON.parse(localStorage.getItem("gameMode"));
+
+    // Only run timer if in time-selector mode
+    if (gameMode && gameMode.type === "time-selector" && remainingTime !== null) {
+      if (remainingTime <= 0) {
+        setUserGameScoreWindowVisible(true);
+        return;
+      }
+
+      const timer = setInterval(() => {
+        setRemainingTime((prevTime) => {
+          if (prevTime <= 1) {
+            clearInterval(timer);
+            return 0;
+          }
+          return prevTime - 1;
+        });
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }
+  }, [remainingTime]);
+
   React.useEffect(() => {
     let timeoutInProgress = false;
     let lastWrongAttempt = ''; // Track last wrong attempt to avoid duplicate counting
@@ -892,6 +927,24 @@ export default function InGameCharacterShowAndInput() {
     setUserGameScoreWindowVisible(true);
   }
 
+  // Format time as MM:SS
+  function formatTime(seconds) {
+    if (seconds === null) return null;
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${minutes}:${secs.toString().padStart(2, '0')}`;
+  }
+
+  // Calculate time percentage for styling
+  function getTimePercentage() {
+    const gameMode = JSON.parse(localStorage.getItem("gameMode"));
+    if (!gameMode || gameMode.type !== "time-selector" || remainingTime === null) {
+      return 100;
+    }
+    const totalSeconds = gameMode.value * 60;
+    return (remainingTime / totalSeconds) * 100;
+  }
+
   /* 
   ######################################################
   # Decide wether to use touch or keyboard for answers #
@@ -941,10 +994,19 @@ export default function InGameCharacterShowAndInput() {
         <div className='in-game-score' id='in-game-score'>
           {isProblematicsMode ? '🎯 Problematics: ' : 'Kanas '}{onScreenScore}
         </div>
-        <div className='in-game-help-bar'>
-          <div onClick={handleUserAskForHelp}><strong>?</strong>: help</div>
-          {(localStorage.getItem("game-mode-random-fonts") === "true") ? <div onClick={onClickChangeFontToDefault}><strong>shift</strong>: normal font</div> : <div></div>}
-        </div>
+        {remainingTime !== null ? (
+          <div
+            className={`in-game-timer ${getTimePercentage() <= 10 ? 'timer-critical' : getTimePercentage() <= 25 ? 'timer-warning' : ''}`}
+            id='in-game-timer'
+          >
+            {formatTime(remainingTime)}
+          </div>
+        ) : (
+          <div className='in-game-help-bar'>
+            <div onClick={handleUserAskForHelp}><strong>?</strong>: help</div>
+            {(localStorage.getItem("game-mode-random-fonts") === "true") ? <div onClick={onClickChangeFontToDefault}><strong>shift</strong>: normal font</div> : <div></div>}
+          </div>
+        )}
         <div onClick={onClickExitButton} className='in-game-exit-button'>✖</div>
       </div>
       <div className='in-game-game-screen'>
