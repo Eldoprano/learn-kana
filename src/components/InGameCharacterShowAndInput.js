@@ -1,10 +1,9 @@
 import React from 'react'
-import {  useState, useEffect } from 'react'
+import {  useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { kanaCharacters } from '../kanaCharacters.js'
 import UserGameScoreWindow from './UserGameScoreWindow.js'
 
-let currentElementToPickList = []
 let fontClassList = [
   // "Belanosima",
   "KleeOne",
@@ -258,7 +257,6 @@ export default function InGameCharacterShowAndInput() {
   const [onScreenScore, setScore] = useState(0);
   const [userGameScoreWindowVisible, setUserGameScoreWindowVisible] = useState(false);
   const [remainingTime, setRemainingTime] = useState(null);
-  let currentScore = 0;
   let inGameAnswerList = [];
 
   const characterGroupsToShow = JSON.parse(localStorage.getItem("checkedKanas"))
@@ -301,9 +299,8 @@ export default function InGameCharacterShowAndInput() {
   useEffect(() => {
     if (charactersToShow.length === 0) {
       navigate('/bruh', { state: { message: 'You didn\'t select any Kana!' } });
-      charactersToShow = [{ "jp_character": "あ", "romanji": ["a"], "sound": "あ", "type": "kana/word", "vocal": "a", "meaning": "dog" }]
     }
-  }, [charactersToShow]);
+  }, [charactersToShow, navigate]);
 
   // game-mode-auto-next
   let autoNext = false;
@@ -774,8 +771,7 @@ export default function InGameCharacterShowAndInput() {
       if (inGameAnswerList.includes(InGameUserCurrentAnswer.trim().toLowerCase())) {
         updateCurrentGameStats("correct");
         lastWrongAttempt = ''; // Reset for next character
-        currentScore += 1;
-        setScore(currentScore)
+        setScore(prevScore => prevScore + 1)
 
         // If the user is in word mode, show the translation of the word
         if (localStorage.getItem("game-mode-word") === "true") {
@@ -829,7 +825,7 @@ export default function InGameCharacterShowAndInput() {
     }
   }, []);
 
-  let cursorBlinkInterval;
+  const cursorBlinkInterval = useRef(null);
   React.useEffect(() => {
     function getFontSizeInVH(element) {
       const computedStyles = window.getComputedStyle(element);
@@ -867,7 +863,7 @@ export default function InGameCharacterShowAndInput() {
 
     function handleFocus() {
       document.querySelector('#in-game-text-input').focus();
-      cursorBlinkInterval = window.setInterval(function () {
+      cursorBlinkInterval.current = window.setInterval(function () {
         try {
           if (document.querySelector('#in-game-text-input-cursor').style.visibility === 'visible') {
             document.querySelector('#in-game-text-input-cursor').style.visibility = 'hidden';
@@ -885,7 +881,7 @@ export default function InGameCharacterShowAndInput() {
     resetCurentGameStats();
     showNewCharacter();
     return () => {
-      clearInterval(cursorBlinkInterval);
+      clearInterval(cursorBlinkInterval.current);
     }
   }, []);
 
