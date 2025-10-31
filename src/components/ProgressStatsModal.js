@@ -12,6 +12,11 @@ function ProgressStatsModal(props) {
         setUserStats(stats);
     }, [props.visible]);
 
+    useEffect(() => {
+        // Clear hovered item when switching tabs
+        setHoveredItem(null);
+    }, [activeTab]);
+
     // Calculate mastery level based on stats (0-100)
     const calculateMastery = (character) => {
         const stats = userStats[character];
@@ -129,13 +134,13 @@ Help Requested: ${stats.totalAskForHelpCounter} times
     };
 
     // Render character grid item
-    const renderGridItem = (item) => {
+    const renderGridItem = (item, index) => {
         const mastery = calculateMastery(item.character);
         const color = getMasteryColor(mastery);
 
         return (
             <div
-                key={item.character}
+                key={`${activeTab}-${item.character}-${item.romanji}-${index}`}
                 className="progress-stats-grid-item"
                 style={{ backgroundColor: color }}
                 onMouseEnter={() => setHoveredItem(item)}
@@ -266,8 +271,8 @@ Help Requested: ${stats.totalAskForHelpCounter} times
                 </div>
 
                 <div className='progress-stats-grid-container'>
-                    <div className='progress-stats-grid'>
-                        {items.map(item => renderGridItem(item))}
+                    <div className='progress-stats-grid' key={activeTab}>
+                        {items.map((item, index) => renderGridItem(item, index))}
                     </div>
                 </div>
 
