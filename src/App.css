@@ -44,7 +44,8 @@ Title Page
 
 .title-page>div>h3 {
   text-align: center;
-  margin-top: 1vh;
+  width: fit-content;
+  margin: auto;
   font-size: 2.5vw;
   font-family: "Belanosima";
   user-select: none;

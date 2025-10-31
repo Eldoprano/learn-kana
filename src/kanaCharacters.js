@@ -1,5 +1,4 @@
 // Generated with our favorite GPT
-// TODO: Check if all the characters are correct
 
 /*
 Structure:
