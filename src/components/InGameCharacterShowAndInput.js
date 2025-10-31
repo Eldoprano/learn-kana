@@ -980,7 +980,14 @@ export default function InGameCharacterShowAndInput() {
         <div id='in-game-text-input-cursor'></div>
         <span id='in-game-text-input-after-cursor'></span>
       </div>
-      <input type="text" id='in-game-text-input' />
+      <input 
+        type="text" 
+        id='in-game-text-input' 
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck="false"
+      />
     </>
   }
 
