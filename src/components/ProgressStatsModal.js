@@ -35,11 +35,28 @@ function ProgressStatsModal(props) {
         // Calculate help factor (less help is better)
         const helpFactor = Math.max(0, 1 - (stats.totalAskForHelpCounter / totalAttempts));
 
+        // Calculate edit efficiency (fewer edits per correct answer is better)
+        const avgEditsPerCorrect = stats.totalRightGuesses > 0 
+            ? (stats.totalEditCount || 0) / stats.totalRightGuesses 
+            : 0;
+        const editEfficiency = Math.max(0, 1 - (avgEditsPerCorrect / 5)); // Cap at 5 edits
+
+        // Calculate wrong submission penalty (fewer wrong submissions is better)
+        const wrongSubmissionRate = (stats.totalWrongSubmissions || 0) / totalAttempts;
+        const submissionAccuracy = Math.max(0, 1 - wrongSubmissionRate);
+
         // Calculate experience factor (more practice is better, cap at 20 attempts)
         const experienceFactor = Math.min(totalAttempts / 20, 1);
 
-        // Weighted formula: accuracy (50%), time (20%), help (15%), experience (15%)
-        const mastery = (accuracy * 0.5 + timeScore * 0.2 + helpFactor * 0.15 + experienceFactor * 0.15) * 100;
+        // Weighted formula: accuracy (40%), time (15%), help (10%), edits (15%), submissions (10%), experience (10%)
+        const mastery = (
+            accuracy * 0.4 + 
+            timeScore * 0.15 + 
+            helpFactor * 0.1 + 
+            editEfficiency * 0.15 + 
+            submissionAccuracy * 0.1 + 
+            experienceFactor * 0.1
+        ) * 100;
 
         return Math.round(mastery);
     };
@@ -123,14 +140,30 @@ function ProgressStatsModal(props) {
         const avgResponseTime = stats.totalRightGuesses > 0
             ? (stats.totaltotalResponseTime / stats.totalRightGuesses / 1000).toFixed(2)
             : 0;
+        const avgEditsPerCorrect = stats.totalRightGuesses > 0
+            ? ((stats.totalEditCount || 0) / stats.totalRightGuesses).toFixed(1)
+            : 0;
 
-        return `
-Times Shown: ${stats.totalTimesShown}
-Correct: ${stats.totalRightGuesses} | Wrong: ${stats.totalWrongGuesses}
-Accuracy: ${accuracy}%
-Avg Time: ${avgResponseTime}s
-Help Requested: ${stats.totalAskForHelpCounter} times
-        `.trim();
+        let statsLines = [
+            `Times Shown: ${stats.totalTimesShown || 'N/A'}`,
+            `Correct: ${stats.totalRightGuesses} | Wrong: ${stats.totalWrongGuesses}`,
+            `Accuracy: ${accuracy}%`,
+            `Avg Time: ${avgResponseTime}s`,
+        ];
+
+        if (stats.totalEditCount > 0) {
+            statsLines.push(`Edits: ${stats.totalEditCount} (avg ${avgEditsPerCorrect}/correct)`);
+        }
+
+        if (stats.totalWrongSubmissions > 0) {
+            statsLines.push(`Wrong Submissions: ${stats.totalWrongSubmissions}`);
+        }
+
+        if (stats.totalAskForHelpCounter > 0) {
+            statsLines.push(`Help Requested: ${stats.totalAskForHelpCounter} times`);
+        }
+
+        return statsLines.join('\n');
     };
 
     // Render character grid item
