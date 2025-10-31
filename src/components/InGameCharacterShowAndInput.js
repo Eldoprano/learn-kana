@@ -25,11 +25,15 @@ let fontClassList = [
         "totalTimesShown": 10, // New: Total times this character has been shown
         "totalRightGuesses": 6,
         "totalWrongGuesses": 1, // Changed from totalTouchWrongGuesses
+        "totalWrongSubmissions": 2, // New: Total wrong complete submissions (keyboard mode)
+        "totalEditCount": 15, // New: Total backspace/delete key presses
         "totaltotalResponseTime": 2.36, // Sum of response times for correct guesses
         "totalAskForHelpCounter": 3,
         "currentGameStats": { // Stats for the current session/game
           "rightGuesses":1,
           "wrongGuesses":0, // Changed from touchWrongGuesses
+          "wrongSubmissions":0, // New: Wrong complete submissions this session
+          "editCount":3, // New: Backspace/delete presses this session
           "totalResponseTime":1.33,
           "askForHelpCounter":0
         },
@@ -38,6 +42,8 @@ let fontClassList = [
                 "date": 1678886400000, // Timestamp for the day (e.g., midnight UTC)
                 "rightGuesses": 3,
                 "wrongGuesses": 1,
+                "wrongSubmissions": 2, // New: Wrong complete submissions this day
+                "editCount": 8, // New: Backspace/delete presses this day
                 "askForHelpCounter": 1,
                 "responseTimeSum": 1.45 // Sum of response times for correct guesses this day
             }
@@ -75,6 +81,8 @@ async function selectNextCharacter(charactersToShow) {
   const significantErrorBonus = 40; // Bonus for high error rates
   const moderateErrorBonus = 20; // Bonus for moderate error rates
   const helpBonus = 10; // Bonus for needing help
+  const editBonus = 15; // Bonus for high edit counts (indicates uncertainty)
+  const wrongSubmissionBonus = 25; // Bonus for wrong submissions (indicates confusion)
   const noRecentDataPenalty = 0.7; // Multiplier if no recent data (to encourage re-visiting)
   const fastResponseFactor = 0.1; // Factor to slightly reduce weight for faster correct responses
 
@@ -93,6 +101,8 @@ async function selectNextCharacter(charactersToShow) {
       let recentAskForHelpCounter = 0;
       let recentResponseTimeSum = 0;
       let recentTimesShown = 0; // This will be sum of R/W/H from daily entries
+      let recentEditCount = 0;
+      let recentWrongSubmissions = 0;
 
       if (stats.dailyPerformance && stats.dailyPerformance.length > 0) {
         stats.dailyPerformance.forEach(daily => {
@@ -101,6 +111,8 @@ async function selectNextCharacter(charactersToShow) {
             recentWrongGuesses += daily.wrongGuesses || 0;
             recentAskForHelpCounter += daily.askForHelpCounter || 0;
             recentResponseTimeSum += daily.responseTimeSum || 0;
+            recentEditCount += daily.editCount || 0;
+            recentWrongSubmissions += daily.wrongSubmissions || 0;
             recentTimesShown += (daily.rightGuesses || 0) + (daily.wrongGuesses || 0) + (daily.askForHelpCounter || 0);
           }
         });
@@ -130,6 +142,28 @@ async function selectNextCharacter(charactersToShow) {
           const avgRecentResponseTime = recentResponseTimeSum / recentRightGuesses;
           // Slower responses slightly increase weight, faster slightly decrease
           weight += (avgRecentResponseTime / 1000 - 5) * fastResponseFactor; // Assuming 5s is a neutral average
+        }
+
+        // Adjust by edit count (high edits = more uncertainty)
+        if (recentRightGuesses > 0) {
+          const avgEditsPerCorrect = recentEditCount / recentRightGuesses;
+          // More than 3 edits per correct answer indicates uncertainty
+          if (avgEditsPerCorrect > 3) {
+            weight += editBonus;
+          } else if (avgEditsPerCorrect > 1.5) {
+            weight += editBonus * 0.5;
+          }
+        }
+
+        // Adjust by wrong submission rate
+        if (recentTimesShown > 0) {
+          const wrongSubmissionRate = recentWrongSubmissions / recentTimesShown;
+          // More than 1 wrong submission per attempt indicates confusion
+          if (wrongSubmissionRate > 1) {
+            weight += wrongSubmissionBonus;
+          } else if (wrongSubmissionRate > 0.5) {
+            weight += wrongSubmissionBonus * 0.6;
+          }
         }
 
       } else {
@@ -340,7 +374,9 @@ export default function InGameCharacterShowAndInput() {
         currentUserStats[kana].currentGameStats = {}
       }
       currentUserStats[kana].currentGameStats.rightGuesses = 0;
-      currentUserStats[kana].currentGameStats.wrongGuesses = 0; // <-- Changed
+      currentUserStats[kana].currentGameStats.wrongGuesses = 0;
+      currentUserStats[kana].currentGameStats.wrongSubmissions = 0;
+      currentUserStats[kana].currentGameStats.editCount = 0;
       currentUserStats[kana].currentGameStats.totalResponseTime = 0;
       currentUserStats[kana].currentGameStats.askForHelpCounter = 0;
     }
@@ -358,9 +394,11 @@ export default function InGameCharacterShowAndInput() {
         totalTimesShown: 0,
         totalRightGuesses: 0,
         totalWrongGuesses: 0,
+        totalWrongSubmissions: 0,
+        totalEditCount: 0,
         totaltotalResponseTime: 0,
         totalAskForHelpCounter: 0,
-        currentGameStats: { rightGuesses: 0, wrongGuesses: 0, totalResponseTime: 0, askForHelpCounter: 0 },
+        currentGameStats: { rightGuesses: 0, wrongGuesses: 0, wrongSubmissions: 0, editCount: 0, totalResponseTime: 0, askForHelpCounter: 0 },
         dailyPerformance: [],
         // last7DaysStats: [], // Retain if needed for other purposes, or phase out
       };
@@ -374,11 +412,25 @@ export default function InGameCharacterShowAndInput() {
         currentUserStats[character].currentGameStats.wrongGuesses = currentUserStats[character].currentGameStats.touchWrongGuesses;
         delete currentUserStats[character].currentGameStats.touchWrongGuesses;
       }
+      // Initialize new fields if they don't exist
+      if (!currentUserStats[character].hasOwnProperty('totalWrongSubmissions')) {
+        currentUserStats[character].totalWrongSubmissions = 0;
+      }
+      if (!currentUserStats[character].hasOwnProperty('totalEditCount')) {
+        currentUserStats[character].totalEditCount = 0;
+      }
     }
-    
+
     // Ensure currentGameStats exists
     if (!currentUserStats[character].currentGameStats) {
-        currentUserStats[character].currentGameStats = { rightGuesses: 0, wrongGuesses: 0, totalResponseTime: 0, askForHelpCounter: 0 };
+        currentUserStats[character].currentGameStats = { rightGuesses: 0, wrongGuesses: 0, wrongSubmissions: 0, editCount: 0, totalResponseTime: 0, askForHelpCounter: 0 };
+    }
+    // Ensure new fields exist in currentGameStats
+    if (!currentUserStats[character].currentGameStats.hasOwnProperty('wrongSubmissions')) {
+      currentUserStats[character].currentGameStats.wrongSubmissions = 0;
+    }
+    if (!currentUserStats[character].currentGameStats.hasOwnProperty('editCount')) {
+      currentUserStats[character].currentGameStats.editCount = 0;
     }
      // Ensure dailyPerformance array exists
     if (!currentUserStats[character].dailyPerformance) {
@@ -397,6 +449,12 @@ export default function InGameCharacterShowAndInput() {
     } else if (guessType === "wrong") {
       currentUserStats[character].currentGameStats.wrongGuesses++;
       currentUserStats[character].totalWrongGuesses = (currentUserStats[character].totalWrongGuesses || 0) + 1;
+    } else if (guessType === "wrongSubmission") {
+      currentUserStats[character].currentGameStats.wrongSubmissions++;
+      currentUserStats[character].totalWrongSubmissions = (currentUserStats[character].totalWrongSubmissions || 0) + 1;
+    } else if (guessType === "edit") {
+      currentUserStats[character].currentGameStats.editCount++;
+      currentUserStats[character].totalEditCount = (currentUserStats[character].totalEditCount || 0) + 1;
     } else if (guessType === "askForHelp") {
       currentUserStats[character].currentGameStats.askForHelpCounter++;
       currentUserStats[character].totalAskForHelpCounter = (currentUserStats[character].totalAskForHelpCounter || 0) + 1;
@@ -414,6 +472,8 @@ export default function InGameCharacterShowAndInput() {
         date: todayTimestamp,
         rightGuesses: 0,
         wrongGuesses: 0,
+        wrongSubmissions: 0,
+        editCount: 0,
         askForHelpCounter: 0,
         responseTimeSum: 0.0
       };
@@ -427,10 +487,14 @@ export default function InGameCharacterShowAndInput() {
       dailyEntry.responseTimeSum += responseTime;
     } else if (guessType === "wrong") {
       dailyEntry.wrongGuesses++;
+    } else if (guessType === "wrongSubmission") {
+      dailyEntry.wrongSubmissions++;
+    } else if (guessType === "edit") {
+      dailyEntry.editCount++;
     } else if (guessType === "askForHelp") {
       dailyEntry.askForHelpCounter++;
     }
-    
+
     localStorage.setItem('userStats', JSON.stringify(currentUserStats));
   }
 
@@ -476,9 +540,11 @@ export default function InGameCharacterShowAndInput() {
         totalTimesShown: 1,
         totalRightGuesses: 0,
         totalWrongGuesses: 0,
+        totalWrongSubmissions: 0,
+        totalEditCount: 0,
         totaltotalResponseTime: 0,
         totalAskForHelpCounter: 0,
-        currentGameStats: { rightGuesses: 0, wrongGuesses: 0, totalResponseTime: 0, askForHelpCounter: 0 },
+        currentGameStats: { rightGuesses: 0, wrongGuesses: 0, wrongSubmissions: 0, editCount: 0, totalResponseTime: 0, askForHelpCounter: 0 },
         dailyPerformance: [],
       };
     } else {
@@ -490,6 +556,13 @@ export default function InGameCharacterShowAndInput() {
        // Handle migration for totalWrongGuesses if necessary from an even older state (pre-totalTouchWrongGuesses)
       if (!currentUserStats[inGameKanaOnScreen].hasOwnProperty('totalWrongGuesses') && !currentUserStats[inGameKanaOnScreen].hasOwnProperty('totalTouchWrongGuesses')) {
         currentUserStats[inGameKanaOnScreen].totalWrongGuesses = 0;
+      }
+      // Initialize new fields if they don't exist
+      if (!currentUserStats[inGameKanaOnScreen].hasOwnProperty('totalWrongSubmissions')) {
+        currentUserStats[inGameKanaOnScreen].totalWrongSubmissions = 0;
+      }
+      if (!currentUserStats[inGameKanaOnScreen].hasOwnProperty('totalEditCount')) {
+        currentUserStats[inGameKanaOnScreen].totalEditCount = 0;
       }
     }
     localStorage.setItem('userStats', JSON.stringify(currentUserStats));
@@ -546,6 +619,7 @@ export default function InGameCharacterShowAndInput() {
   */
   React.useEffect(() => {
     let timeoutInProgress = false;
+    let lastWrongAttempt = ''; // Track last wrong attempt to avoid duplicate counting
 
     function handleKeyDown(e) {
       // Check if key is a printable character and append it to the input field
@@ -556,6 +630,8 @@ export default function InGameCharacterShowAndInput() {
         InGameTextInput.textContent += e.key;
       } else if (e.key === 'Backspace') {
         InGameTextInput.textContent = InGameTextInput.textContent.slice(0, -1);
+        // Track edit
+        updateCurrentGameStats("edit");
       } else if (e.key === 'Shift') {
         document.querySelector('#in-game-kana-character').classList.add("font-forceDefault");
         setTimeout(function () {
@@ -580,20 +656,40 @@ export default function InGameCharacterShowAndInput() {
       } else if (e.key === 'Delete') {
         if (InGameTextInputAfterCursor.textContent.length > 0) {
           InGameTextInputAfterCursor.textContent = InGameTextInputAfterCursor.textContent.slice(1);
+          // Track edit
+          updateCurrentGameStats("edit");
         }
       }
 
       const InGameUserCurrentAnswer = InGameTextInput.textContent + InGameTextInputAfterCursor.textContent;
 
+      // Track wrong submissions: if user has typed at least the minimum answer length
+      // and the answer is wrong, count it once
+      if (InGameUserCurrentAnswer.length > 0 && e.key.match(/^[^?]$/)) {
+        const minAnswerLength = Math.min(...inGameAnswerList.map(a => a.length));
+        if (InGameUserCurrentAnswer.length >= minAnswerLength &&
+            !inGameAnswerList.includes(InGameUserCurrentAnswer.trim().toLowerCase()) &&
+            lastWrongAttempt !== InGameUserCurrentAnswer.trim().toLowerCase()) {
+          updateCurrentGameStats("wrongSubmission");
+          lastWrongAttempt = InGameUserCurrentAnswer.trim().toLowerCase();
+        }
+      }
+
+      // Reset wrong attempt tracking when user edits back to shorter length
+      if ((e.key === 'Backspace' || e.key === 'Delete') && InGameUserCurrentAnswer.length < lastWrongAttempt.length) {
+        lastWrongAttempt = '';
+      }
+
 
       ///////////////////////////////////////////////////////////////
       //////////// If the user types the correct answer! ////////////
       ///////////////////////////////////////////////////////////////
-      
+
       if (timeoutInProgress) return;
       //  Make that known and pass to the next character
       if (inGameAnswerList.includes(InGameUserCurrentAnswer.trim().toLowerCase())) {
         updateCurrentGameStats("correct");
+        lastWrongAttempt = ''; // Reset for next character
         currentScore += 1;
         setScore(currentScore)
 
