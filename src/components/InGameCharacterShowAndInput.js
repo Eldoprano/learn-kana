@@ -64,158 +64,115 @@ if (localStorage.getItem('userStats') === null) {
 let kanaTimeToAnswerTimer = 0;
 let inGameKanaOnScreen = "";
 
-// Function to get problematic characters based on recent performance
-function getProblematicCharacters(charactersToShow, userStats) {
-  const problematicCharacters = [];
-  const minRecentAttempts = 3; // Minimum attempts to consider a character
-  const errorRateThreshold = 0.3; // 30% error rate (wrong + help) makes it problematic
-  const slowResponseThreshold = 5000; // 5 seconds average makes it problematic
-
-  // Get recent data from dailyPerformance (looking at roughly last 200 answers)
-  // We'll consider characters that have been attempted in recent sessions
-  const recentDaysToCheck = 30; // Look at last 30 days
-  const thirtyDaysAgo = new Date();
-  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - recentDaysToCheck);
-  thirtyDaysAgo.setHours(0, 0, 0, 0);
-  const thirtyDaysAgoTimestamp = thirtyDaysAgo.getTime();
-
-  for (const character of charactersToShow) {
-    const stats = userStats[character.jp_character];
-
-    if (!stats || !stats.dailyPerformance || stats.dailyPerformance.length === 0) {
-      continue; // Skip characters with no recent data
-    }
-
-    let recentRightGuesses = 0;
-    let recentWrongGuesses = 0;
-    let recentAskForHelpCounter = 0;
-    let recentResponseTimeSum = 0;
-
-    // Collect recent performance data
-    stats.dailyPerformance.forEach(daily => {
-      if (daily.date >= thirtyDaysAgoTimestamp) {
-        recentRightGuesses += daily.rightGuesses || 0;
-        recentWrongGuesses += daily.wrongGuesses || 0;
-        recentAskForHelpCounter += daily.askForHelpCounter || 0;
-        recentResponseTimeSum += daily.responseTimeSum || 0;
-      }
-    });
-
-    const totalRecentAttempts = recentRightGuesses + recentWrongGuesses + recentAskForHelpCounter;
-
-    // Only consider characters with minimum attempts
-    if (totalRecentAttempts < minRecentAttempts) {
-      continue;
-    }
-
-    // Calculate error rate
-    const errorRate = (recentWrongGuesses + recentAskForHelpCounter) / totalRecentAttempts;
-
-    // Calculate average response time for correct answers
-    const avgResponseTime = recentRightGuesses > 0 ? recentResponseTimeSum / recentRightGuesses : 0;
-
-    // Mark as problematic if high error rate OR slow response time
-    if (errorRate >= errorRateThreshold || avgResponseTime >= slowResponseThreshold) {
-      problematicCharacters.push(character);
-    }
-  }
-
-  return problematicCharacters;
-}
-
 async function selectNextCharacter(charactersToShow) {
   let userStats = JSON.parse(localStorage.getItem('userStats')) || {};
   let weightedCharacters = [];
-  const baseWeight = 50; // Base weight for all characters
-  const recencyMultiplier = 1.5; // Multiplier for characters shown recently
-  const problematicRateThreshold = 0.4; // If (wrong + help) / recentShown > this, it's problematic
-  const lowExposureThreshold = 10; // Times shown recently to be considered "enough data"
-  const veryLowExposureThreshold = 3; // Times shown recently, below this gets high priority if any errors
-  const significantErrorBonus = 40; // Bonus for high error rates
-  const moderateErrorBonus = 20; // Bonus for moderate error rates
-  const helpBonus = 10; // Bonus for needing help
-  const noRecentDataPenalty = 0.7; // Multiplier if no recent data (to encourage re-visiting)
-  const fastResponseFactor = 0.1; // Factor to slightly reduce weight for faster correct responses
+  const baseWeight = 50;
 
   const thirtyDaysAgo = new Date();
   thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
   thirtyDaysAgo.setHours(0, 0, 0, 0);
   const thirtyDaysAgoTimestamp = thirtyDaysAgo.getTime();
 
-  for (const character of charactersToShow) {
-    let weight = baseWeight;
-    const stats = userStats[character.jp_character];
+  // First pass: collect performance metrics for all characters
+  let characterMetrics = [];
 
-    if (stats) {
+  for (const character of charactersToShow) {
+    const stats = userStats[character.jp_character];
+    let errorRate = 0;
+    let avgResponseTime = 0;
+    let hasData = false;
+
+    if (stats && stats.dailyPerformance && stats.dailyPerformance.length > 0) {
       let recentRightGuesses = 0;
       let recentWrongGuesses = 0;
       let recentAskForHelpCounter = 0;
       let recentResponseTimeSum = 0;
-      let recentTimesShown = 0; // This will be sum of R/W/H from daily entries
 
-      if (stats.dailyPerformance && stats.dailyPerformance.length > 0) {
-        stats.dailyPerformance.forEach(daily => {
-          if (daily.date >= thirtyDaysAgoTimestamp) {
-            recentRightGuesses += daily.rightGuesses || 0;
-            recentWrongGuesses += daily.wrongGuesses || 0;
-            recentAskForHelpCounter += daily.askForHelpCounter || 0;
-            recentResponseTimeSum += daily.responseTimeSum || 0;
-            recentTimesShown += (daily.rightGuesses || 0) + (daily.wrongGuesses || 0) + (daily.askForHelpCounter || 0);
-          }
-        });
+      stats.dailyPerformance.forEach(daily => {
+        if (daily.date >= thirtyDaysAgoTimestamp) {
+          recentRightGuesses += daily.rightGuesses || 0;
+          recentWrongGuesses += daily.wrongGuesses || 0;
+          recentAskForHelpCounter += daily.askForHelpCounter || 0;
+          recentResponseTimeSum += daily.responseTimeSum || 0;
+        }
+      });
+
+      const totalAttempts = recentRightGuesses + recentWrongGuesses + recentAskForHelpCounter;
+
+      if (totalAttempts > 0) {
+        errorRate = (recentWrongGuesses + recentAskForHelpCounter) / totalAttempts;
+        avgResponseTime = recentRightGuesses > 0 ? recentResponseTimeSum / recentRightGuesses : 0;
+        hasData = true;
       }
-      
-      // Handle legacy totalTouchWrongGuesses
-      const totalWrongGuessesLifetime = stats.totalWrongGuesses || stats.totalTouchWrongGuesses || 0;
+    }
 
-      if (recentTimesShown > 0) {
-        weight *= recencyMultiplier; // Boost weight if shown recently
-        const errorRate = (recentWrongGuesses + recentAskForHelpCounter) / recentTimesShown;
-        const helpRate = recentAskForHelpCounter / recentTimesShown;
+    characterMetrics.push({
+      character,
+      errorRate,
+      avgResponseTime,
+      hasData
+    });
+  }
 
-        if (recentTimesShown < veryLowExposureThreshold && (recentWrongGuesses > 0 || recentAskForHelpCounter > 0) ) {
-            weight += significantErrorBonus * 1.5; // High priority if very few encounters and any mistake
-        } else if (errorRate > problematicRateThreshold) {
-          weight += significantErrorBonus;
-        } else if (errorRate > problematicRateThreshold / 2) {
-          weight += moderateErrorBonus;
-        }
-        if (helpRate > problematicRateThreshold / 2) {
-            weight += helpBonus;
-        }
+  // Calculate median error rate and response time for characters with data
+  const charsWithData = characterMetrics.filter(m => m.hasData);
 
-        // Adjust by average response time for correct recent guesses
-        if (recentRightGuesses > 0) {
-          const avgRecentResponseTime = recentResponseTimeSum / recentRightGuesses;
-          // Slower responses slightly increase weight, faster slightly decrease
-          weight += (avgRecentResponseTime / 1000 - 5) * fastResponseFactor; // Assuming 5s is a neutral average
-        }
+  let medianErrorRate = 0;
+  let medianResponseTime = 0;
 
-      } else {
-        // No recent data, use lifetime stats if available, but with a penalty
-        weight *= noRecentDataPenalty;
-        if (stats.totalTimesShown > 0 && stats.totalTimesShown < lowExposureThreshold) {
-           const lifetimeErrorRate = (totalWrongGuessesLifetime + (stats.totalAskForHelpCounter || 0)) / stats.totalTimesShown;
-           if (lifetimeErrorRate > problematicRateThreshold) {
-               weight += moderateErrorBonus;
-           }
-        }
+  if (charsWithData.length > 0) {
+    const sortedByError = [...charsWithData].sort((a, b) => a.errorRate - b.errorRate);
+    const sortedByTime = [...charsWithData].sort((a, b) => a.avgResponseTime - b.avgResponseTime);
+
+    const midPoint = Math.floor(sortedByError.length / 2);
+    medianErrorRate = sortedByError.length % 2 === 0
+      ? (sortedByError[midPoint - 1].errorRate + sortedByError[midPoint].errorRate) / 2
+      : sortedByError[midPoint].errorRate;
+
+    medianResponseTime = sortedByTime.length % 2 === 0
+      ? (sortedByTime[midPoint - 1].avgResponseTime + sortedByTime[midPoint].avgResponseTime) / 2
+      : sortedByTime[midPoint].avgResponseTime;
+  }
+
+  // Second pass: assign weights based on comparison to median
+  for (const metric of characterMetrics) {
+    let weight = baseWeight;
+
+    if (metric.hasData) {
+      // Calculate how much worse than median this character is
+      const errorDiff = metric.errorRate - medianErrorRate;
+      const timeDiff = metric.avgResponseTime - medianResponseTime;
+
+      // Characters worse than median get more weight
+      if (errorDiff > 0) {
+        // Error rate above median: increase weight significantly
+        // Scale: 20% above median = +30 weight, 40% above = +60 weight
+        weight += errorDiff * 150;
       }
-      
-      // Ensure weight is not negative
-      weight = Math.max(1, weight);
+
+      if (timeDiff > 0 && medianResponseTime > 0) {
+        // Response time above median: increase weight
+        // Scale: 1s above median = +20 weight
+        weight += (timeDiff / 1000) * 20;
+      }
+
+      // Characters better than median get reduced weight
+      if (errorDiff < 0) {
+        weight += errorDiff * 100; // Reduces weight for low error rates
+      }
+
+      if (timeDiff < 0 && medianResponseTime > 0) {
+        weight += (timeDiff / 1000) * 10; // Reduces weight for fast responses
+      }
 
     } else {
-      // Character never seen or no stats, give it a slightly higher base weight to encourage first view
-      weight = baseWeight * 1.2;
+      // No data: give slightly higher weight to encourage learning new characters
+      weight = baseWeight * 1.3;
     }
-    
-    // TODO: Implement a mechanism to prevent showing the same character too many times in a row.
-    // (e.g., temporarily reducing weight after being shown, or a short-term exclusion list)
-    // This could be a check against `inGameKanaOnScreen` if this function is called multiple times
-    // for the same "next character" decision, or a short list of recently shown items.
 
-    weightedCharacters.push({ ...character, weight });
+    weight = Math.max(5, weight); // Ensure minimum weight
+    weightedCharacters.push({ ...metric.character, weight });
   }
 
   // Weighted random selection
@@ -260,7 +217,7 @@ export default function InGameCharacterShowAndInput() {
   const characterGroupsToShow = JSON.parse(localStorage.getItem("checkedKanas"))
 
 
-  // Creates a list of all possible Kanas/Words to show, the element outputs look like this: 
+  // Creates a list of all possible Kanas/Words to show, the element outputs look like this:
   // { "jp_character": "あ", "romanji": ["a"], "sound": "あ", "type": "kana/word", *"vocal": "a", *"meaning": "dog" }
   // *The key "vocal" only shows up when the type is "kana"
   // *The key "meaning" only shows up when the type is "word"
@@ -269,6 +226,27 @@ export default function InGameCharacterShowAndInput() {
     charactersToShow = getListOfWords(characterGroupsToShow)
   } else {
     charactersToShow = getListOfKanas(characterGroupsToShow);
+  }
+
+  // Filter to problematic characters if that mode is active
+  const problematicFilter = localStorage.getItem('problematicKanasFilter');
+  let isProblematicsMode = false;
+  if (problematicFilter) {
+    const problematicChars = JSON.parse(problematicFilter);
+    charactersToShow = charactersToShow.filter(char => problematicChars.includes(char.jp_character));
+    isProblematicsMode = true;
+
+    // If filter resulted in no characters, clear it and use original list
+    if (charactersToShow.length === 0) {
+      localStorage.removeItem('problematicKanasFilter');
+      isProblematicsMode = false;
+      // Restore original list
+      if (localStorage.getItem("game-mode-word") === "true") {
+        charactersToShow = getListOfWords(characterGroupsToShow)
+      } else {
+        charactersToShow = getListOfKanas(characterGroupsToShow);
+      }
+    }
   }
 
   // Be mad at the user if the charactersToShow is empty
@@ -513,23 +491,8 @@ export default function InGameCharacterShowAndInput() {
       helpSolutionElement.classList.add("hidden-element");
     }
 
-    // Check if "Try Problematics" mode is enabled
-    let charactersToSelect = charactersToShow;
-    if (localStorage.getItem("game-mode-problematics") === "true") {
-      const userStats = JSON.parse(localStorage.getItem('userStats')) || {};
-      const problematicChars = getProblematicCharacters(charactersToShow, userStats);
-
-      // If we have problematic characters, use them; otherwise fall back to all characters
-      if (problematicChars.length > 0) {
-        charactersToSelect = problematicChars;
-      } else {
-        // No problematic characters found, inform user and use all characters
-        console.log("No problematic characters found. Using all selected characters.");
-      }
-    }
-
-    // Get and show the current Kana using the new weighted selection logic
-    let pickedElement = await selectNextCharacter(charactersToSelect);
+    // Get and show the current Kana using the weighted selection logic
+    let pickedElement = await selectNextCharacter(charactersToShow);
     
     if (!pickedElement) {
       console.warn("selectNextCharacter returned undefined. Fallback to random selection from charactersToShow.");
@@ -867,7 +830,9 @@ export default function InGameCharacterShowAndInput() {
   return (
     <>
       <div className="in-game-top-var">
-        <div className='in-game-score' id='in-game-score'>Kanas {onScreenScore}</div>
+        <div className='in-game-score' id='in-game-score'>
+          {isProblematicsMode ? '🎯 Problematics: ' : 'Kanas '}{onScreenScore}
+        </div>
         <div className='in-game-help-bar'>
           <div onClick={handleUserAskForHelp}><strong>?</strong>: help</div>
           {(localStorage.getItem("game-mode-random-fonts") === "true") ? <div onClick={onClickChangeFontToDefault}><strong>shift</strong>: normal font</div> : <div></div>}

@@ -63,6 +63,75 @@ export default function UserGameScoreWindow(props) {
         return problematicKanas.slice(0,n);
     }
 
+    // Get problematic characters based on recent performance (last 30 days)
+    function getProblematicCharactersForFilter() {
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+        thirtyDaysAgo.setHours(0, 0, 0, 0);
+        const thirtyDaysAgoTimestamp = thirtyDaysAgo.getTime();
+
+        // Collect metrics for all characters with recent data
+        let allMetrics = [];
+
+        for (const kana in userStats) {
+            const stats = userStats[kana];
+
+            if (!stats || !stats.dailyPerformance || stats.dailyPerformance.length === 0) {
+                continue;
+            }
+
+            let recentRightGuesses = 0;
+            let recentWrongGuesses = 0;
+            let recentAskForHelpCounter = 0;
+            let recentResponseTimeSum = 0;
+
+            stats.dailyPerformance.forEach(daily => {
+                if (daily.date >= thirtyDaysAgoTimestamp) {
+                    recentRightGuesses += daily.rightGuesses || 0;
+                    recentWrongGuesses += daily.wrongGuesses || 0;
+                    recentAskForHelpCounter += daily.askForHelpCounter || 0;
+                    recentResponseTimeSum += daily.responseTimeSum || 0;
+                }
+            });
+
+            const totalAttempts = recentRightGuesses + recentWrongGuesses + recentAskForHelpCounter;
+
+            if (totalAttempts >= 2) { // Minimum 2 attempts to be considered
+                const errorRate = (recentWrongGuesses + recentAskForHelpCounter) / totalAttempts;
+                const avgResponseTime = recentRightGuesses > 0 ? recentResponseTimeSum / recentRightGuesses : 0;
+
+                allMetrics.push({
+                    kana,
+                    errorRate,
+                    avgResponseTime,
+                    problemScore: errorRate * 100 + (avgResponseTime / 1000) * 2 // Combined score
+                });
+            }
+        }
+
+        // Sort by problem score and take top 30% or at least 5 characters
+        allMetrics.sort((a, b) => b.problemScore - a.problemScore);
+        const numberOfProblematic = Math.max(5, Math.ceil(allMetrics.length * 0.3));
+        const topProblematic = allMetrics.slice(0, numberOfProblematic);
+
+        return topProblematic.map(m => m.kana);
+    }
+
+    function handleTryProblematicsClick() {
+        const problematicChars = getProblematicCharactersForFilter();
+
+        if (problematicChars.length === 0) {
+            alert("No problematic characters found! You're doing great! 🎉");
+            return;
+        }
+
+        // Store the problematic characters filter in localStorage
+        localStorage.setItem('problematicKanasFilter', JSON.stringify(problematicChars));
+
+        // Reload to start a new game with filtered characters
+        window.location.reload(false);
+    }
+
     let userStatsElement = <></>
     if (getAverageResponseTimeOfCurrentGame() > 0) {
         userStatsElement = <div className='inGameUserGameScoreWindow_stats'>
@@ -101,13 +170,19 @@ export default function UserGameScoreWindow(props) {
                     </div>
                     {userStatsElement}
                     <div className='inGameUserGameScoreWindow_buttons'>
-                        {/* Changing to window.location because of some react problems 
-                            (game-mode-word change wasn't being respected) 
-                             <Link to='/learn-kana'> */} 
-                            <button onClick={() => window.location.href = "/learn-kana#game-menu-title"}>Back to Main Menu</button>
+                        {/* Changing to window.location because of some react problems
+                            (game-mode-word change wasn't being respected)
+                             <Link to='/learn-kana'> */}
+                            <button onClick={() => {
+                                localStorage.removeItem('problematicKanasFilter');
+                                window.location.href = "/learn-kana#game-menu-title";
+                            }}>Back to Main Menu</button>
                         {/* </Link> */}
-                        <button onClick={() => alert("Not implemented.. yet")}>Try Problematics</button>
-                        <button onClick={() => window.location.reload(false)}>Play Again</button>
+                        <button onClick={handleTryProblematicsClick}>Try Problematics</button>
+                        <button onClick={() => {
+                            localStorage.removeItem('problematicKanasFilter');
+                            window.location.reload(false);
+                        }}>Play Again</button>
                     </div>
                 </div>            
             </div>
