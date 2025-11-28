@@ -296,6 +296,7 @@ export default function InGameCharacterShowAndInput() {
 
   // Be mad at the user if the charactersToShow is empty
   const navigate = useNavigate();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (charactersToShow.length === 0) {
       navigate('/bruh', { state: { message: 'You didn\'t select any Kana!' } });
@@ -823,6 +824,7 @@ export default function InGameCharacterShowAndInput() {
         window.removeEventListener("keydown", handleKeyDown);
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const cursorBlinkInterval = useRef(null);
@@ -883,6 +885,7 @@ export default function InGameCharacterShowAndInput() {
     return () => {
       clearInterval(cursorBlinkInterval.current);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleUserAskForHelp() {
