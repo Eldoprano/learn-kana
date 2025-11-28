@@ -266,6 +266,7 @@ export default function InGameCharacterShowAndInput() {
   // { "jp_character": "あ", "romanji": ["a"], "sound": "あ", "type": "kana/word", *"vocal": "a", *"meaning": "dog" }
   // *The key "vocal" only shows up when the type is "kana"
   // *The key "meaning" only shows up when the type is "word"
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   let charactersToShow = []
   if (localStorage.getItem("game-mode-word") === "true") {
     charactersToShow = getListOfWords(characterGroupsToShow)
