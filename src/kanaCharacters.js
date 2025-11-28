@@ -1309,6 +1309,7 @@ export const kanaCharacters = {
       ],
       "sound": "かわいい",
       "meaning": "cute",
+      "tags": ["adjectives", "expressions"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -1323,6 +1324,7 @@ export const kanaCharacters = {
       ],
       "sound": "じょうず",
       "meaning": "skillful",
+      "tags": ["adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -1337,6 +1339,7 @@ export const kanaCharacters = {
       ],
       "sound": "たべる",
       "meaning": "to eat",
+      "tags": ["verbs", "food"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -1351,6 +1354,7 @@ export const kanaCharacters = {
       ],
       "sound": "のむ",
       "meaning": "to drink",
+      "tags": ["verbs", "food"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ま",
@@ -1364,6 +1368,7 @@ export const kanaCharacters = {
       ],
       "sound": "くらす",
       "meaning": "to live",
+      "tags": ["verbs", "daily_life"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -1378,6 +1383,7 @@ export const kanaCharacters = {
       ],
       "sound": "べんきょう",
       "meaning": "study",
+      "tags": ["basic"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -1394,6 +1400,7 @@ export const kanaCharacters = {
       ],
       "sound": "ここ",
       "meaning": "here",
+      "tags": ["demonstratives", "locations"],
       "katakana_groups": [],
       "hiragana_groups": [
         "か"
@@ -1406,6 +1413,7 @@ export const kanaCharacters = {
       ],
       "sound": "そこ",
       "meaning": "there",
+      "tags": ["demonstratives", "locations"],
       "katakana_groups": [],
       "hiragana_groups": [
         "か",
@@ -1419,6 +1427,7 @@ export const kanaCharacters = {
       ],
       "sound": "あそこ",
       "meaning": "over there",
+      "tags": ["demonstratives", "locations"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -1433,6 +1442,7 @@ export const kanaCharacters = {
       ],
       "sound": "なに",
       "meaning": "what",
+      "tags": ["question_words"],
       "katakana_groups": [],
       "hiragana_groups": [
         "な"
@@ -1445,6 +1455,7 @@ export const kanaCharacters = {
       ],
       "sound": "どこ",
       "meaning": "where",
+      "tags": ["question_words"],
       "katakana_groups": [],
       "hiragana_groups": [
         "か",
@@ -1458,6 +1469,7 @@ export const kanaCharacters = {
       ],
       "sound": "いつ",
       "meaning": "when",
+      "tags": ["question_words"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -1471,6 +1483,7 @@ export const kanaCharacters = {
       ],
       "sound": "だれ",
       "meaning": "who",
+      "tags": ["question_words"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -1484,6 +1497,7 @@ export const kanaCharacters = {
       ],
       "sound": "われわれ",
       "meaning": "we",
+      "tags": ["pronouns", "people"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -1497,6 +1511,7 @@ export const kanaCharacters = {
       ],
       "sound": "あなた",
       "meaning": "you",
+      "tags": ["pronouns", "people"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -1511,6 +1526,7 @@ export const kanaCharacters = {
       ],
       "sound": "かれ",
       "meaning": "he",
+      "tags": ["pronouns", "people"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -1524,6 +1540,7 @@ export const kanaCharacters = {
       ],
       "sound": "かのじょ",
       "meaning": "she",
+      "tags": ["pronouns", "people"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -1539,6 +1556,7 @@ export const kanaCharacters = {
       ],
       "sound": "それ",
       "meaning": "that",
+      "tags": ["demonstratives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -1552,6 +1570,7 @@ export const kanaCharacters = {
       ],
       "sound": "これ",
       "meaning": "this",
+      "tags": ["demonstratives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -1565,6 +1584,7 @@ export const kanaCharacters = {
       ],
       "sound": "この",
       "meaning": "this",
+      "tags": ["demonstratives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "か",
@@ -1578,6 +1598,7 @@ export const kanaCharacters = {
       ],
       "sound": "その",
       "meaning": "that",
+      "tags": ["demonstratives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "さ",
@@ -1591,6 +1612,7 @@ export const kanaCharacters = {
       ],
       "sound": "あの",
       "meaning": "that over there",
+      "tags": ["demonstratives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -1604,6 +1626,7 @@ export const kanaCharacters = {
       ],
       "sound": "おおきい",
       "meaning": "big",
+      "tags": ["adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -1617,6 +1640,7 @@ export const kanaCharacters = {
       ],
       "sound": "ちいさい",
       "meaning": "small",
+      "tags": ["adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -1631,6 +1655,7 @@ export const kanaCharacters = {
       ],
       "sound": "さむい",
       "meaning": "cold",
+      "tags": ["adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -1645,6 +1670,7 @@ export const kanaCharacters = {
       ],
       "sound": "たかい",
       "meaning": "expensive",
+      "tags": ["adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -1659,6 +1685,7 @@ export const kanaCharacters = {
       ],
       "sound": "やすい",
       "meaning": "cheap",
+      "tags": ["adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -1673,6 +1700,7 @@ export const kanaCharacters = {
       ],
       "sound": "おもしろい",
       "meaning": "interesting",
+      "tags": ["adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -1688,6 +1716,7 @@ export const kanaCharacters = {
       ],
       "sound": "つまらない",
       "meaning": "boring",
+      "tags": ["adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ま",
@@ -1704,6 +1733,7 @@ export const kanaCharacters = {
       ],
       "sound": "かんたん",
       "meaning": "easy",
+      "tags": ["adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -1718,6 +1748,7 @@ export const kanaCharacters = {
       ],
       "sound": "むずかしい",
       "meaning": "difficult",
+      "tags": ["adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ま",
@@ -1734,6 +1765,7 @@ export const kanaCharacters = {
       ],
       "sound": "きけん",
       "meaning": "dangerous",
+      "tags": ["adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -1747,6 +1779,7 @@ export const kanaCharacters = {
       ],
       "sound": "やさしい",
       "meaning": "kind",
+      "tags": ["adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -1761,6 +1794,7 @@ export const kanaCharacters = {
       ],
       "sound": "きらい",
       "meaning": "hate",
+      "tags": ["feelings", "adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -1775,6 +1809,7 @@ export const kanaCharacters = {
       ],
       "sound": "すき",
       "meaning": "love",
+      "tags": ["feelings", "adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "か",
@@ -1788,6 +1823,7 @@ export const kanaCharacters = {
       ],
       "sound": "たのしい",
       "meaning": "pleasant",
+      "tags": ["feelings", "adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -1803,6 +1839,7 @@ export const kanaCharacters = {
       ],
       "sound": "かなしい",
       "meaning": "sad",
+      "tags": ["feelings", "adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -1818,6 +1855,7 @@ export const kanaCharacters = {
       ],
       "sound": "うれしい",
       "meaning": "happy",
+      "tags": ["feelings", "adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -1832,6 +1870,7 @@ export const kanaCharacters = {
       ],
       "sound": "かんぱい",
       "meaning": "cheers",
+      "tags": ["expressions"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -1847,6 +1886,7 @@ export const kanaCharacters = {
       ],
       "sound": "カラオケ",
       "meaning": "karaoke",
+      "tags": ["entertainment", "social"],
       "katakana_groups": [
         "ラ",
         "ア",
@@ -1861,6 +1901,7 @@ export const kanaCharacters = {
       ],
       "sound": "コンビニ",
       "meaning": "convenience store",
+      "tags": ["places", "shopping"],
       "katakana_groups": [
         "バ",
         "ナ",
@@ -1876,6 +1917,7 @@ export const kanaCharacters = {
       ],
       "sound": "パソコン",
       "meaning": "computer",
+      "tags": ["items", "technology"],
       "katakana_groups": [
         "サ",
         "ワ",
@@ -1891,6 +1933,7 @@ export const kanaCharacters = {
       ],
       "sound": "スポーツ",
       "meaning": "sports",
+      "tags": ["activities", "hobbies"],
       "katakana_groups": [
         "サ",
         "タ",
@@ -1905,6 +1948,7 @@ export const kanaCharacters = {
       ],
       "sound": "ラジオ",
       "meaning": "radio",
+      "tags": ["items", "technology"],
       "katakana_groups": [
         "ザ",
         "ラ",
@@ -1919,6 +1963,7 @@ export const kanaCharacters = {
       ],
       "sound": "てがみ",
       "meaning": "letter",
+      "tags": ["items", "communication"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ま",
@@ -1934,6 +1979,7 @@ export const kanaCharacters = {
       ],
       "sound": "パスポート",
       "meaning": "passport",
+      "tags": ["items", "travel"],
       "katakana_groups": [
         "サ",
         "タ",
@@ -1948,6 +1994,7 @@ export const kanaCharacters = {
       ],
       "sound": "ビール",
       "meaning": "beer",
+      "tags": ["food", "drinks"],
       "katakana_groups": [
         "バ",
         "ラ"
@@ -1962,6 +2009,7 @@ export const kanaCharacters = {
       ],
       "sound": "コーヒー",
       "meaning": "coffee",
+      "tags": ["food", "drinks"],
       "katakana_groups": [
         "ハ",
         "カ"
@@ -1975,6 +2023,7 @@ export const kanaCharacters = {
       ],
       "sound": "みず",
       "meaning": "water",
+      "tags": ["food", "drinks"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ま",
@@ -1989,6 +2038,7 @@ export const kanaCharacters = {
       ],
       "sound": "ビード",
       "meaning": "beard",
+      "tags": ["basic"],
       "katakana_groups": [
         "バ",
         "ダ"
@@ -2002,6 +2052,7 @@ export const kanaCharacters = {
       ],
       "sound": "ミルク",
       "meaning": "milk",
+      "tags": ["food", "drinks"],
       "katakana_groups": [
         "マ",
         "ラ",
@@ -2016,6 +2067,7 @@ export const kanaCharacters = {
       ],
       "sound": "パン",
       "meaning": "bread",
+      "tags": ["food"],
       "katakana_groups": [
         "ワ",
         "パ"
@@ -2029,6 +2081,7 @@ export const kanaCharacters = {
       ],
       "sound": "にほんご",
       "meaning": "Japanese language",
+      "tags": ["languages", "education"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -2044,6 +2097,7 @@ export const kanaCharacters = {
       ],
       "sound": "すいか",
       "meaning": "watermelon",
+      "tags": ["food", "drinks"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -2058,6 +2112,7 @@ export const kanaCharacters = {
       ],
       "sound": "りんご",
       "meaning": "apple",
+      "tags": ["food", "fruits"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -2072,6 +2127,7 @@ export const kanaCharacters = {
       ],
       "sound": "みかん",
       "meaning": "mandarin",
+      "tags": ["food", "fruits"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -2086,6 +2142,7 @@ export const kanaCharacters = {
       ],
       "sound": "トマト",
       "meaning": "tomato",
+      "tags": ["food", "vegetables"],
       "katakana_groups": [
         "マ",
         "タ"
@@ -2099,6 +2156,7 @@ export const kanaCharacters = {
       ],
       "sound": "すし",
       "meaning": "sushi",
+      "tags": ["food", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "さ"
@@ -2112,6 +2170,7 @@ export const kanaCharacters = {
       ],
       "sound": "ラーメン",
       "meaning": "ramen",
+      "tags": ["food", "japanese_culture"],
       "katakana_groups": [
         "マ",
         "ラ",
@@ -2126,6 +2185,7 @@ export const kanaCharacters = {
       ],
       "sound": "うどん",
       "meaning": "udon noodles",
+      "tags": ["food", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -2140,6 +2200,7 @@ export const kanaCharacters = {
       ],
       "sound": "そば",
       "meaning": "soba noodles",
+      "tags": ["food", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -2154,6 +2215,7 @@ export const kanaCharacters = {
       ],
       "sound": "カレーライス",
       "meaning": "curry rice",
+      "tags": ["basic"],
       "katakana_groups": [
         "サ",
         "ラ",
@@ -2169,6 +2231,7 @@ export const kanaCharacters = {
       ],
       "sound": "やさい",
       "meaning": "vegetable",
+      "tags": ["food", "vegetables"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -2183,6 +2246,7 @@ export const kanaCharacters = {
       ],
       "sound": "たまご",
       "meaning": "egg",
+      "tags": ["food"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ま",
@@ -2197,6 +2261,7 @@ export const kanaCharacters = {
       ],
       "sound": "くだもの",
       "meaning": "fruit",
+      "tags": ["food", "fruits"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ま",
@@ -2212,6 +2277,7 @@ export const kanaCharacters = {
       ],
       "sound": "おかし",
       "meaning": "candy",
+      "tags": ["food", "sweets"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -2226,6 +2292,7 @@ export const kanaCharacters = {
       ],
       "sound": "ケーキ",
       "meaning": "cake",
+      "tags": ["food", "sweets"],
       "katakana_groups": [
         "カ"
       ],
@@ -2239,6 +2306,7 @@ export const kanaCharacters = {
       ],
       "sound": "アイスクリーム",
       "meaning": "ice cream",
+      "tags": ["food", "sweets"],
       "katakana_groups": [
         "ラ",
         "カ",
@@ -2255,6 +2323,7 @@ export const kanaCharacters = {
       ],
       "sound": "みそしる",
       "meaning": "miso soup",
+      "tags": ["food", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -2269,6 +2338,7 @@ export const kanaCharacters = {
       ],
       "sound": "とんじる",
       "meaning": "pork miso soup",
+      "tags": ["food", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -2284,6 +2354,7 @@ export const kanaCharacters = {
       ],
       "sound": "スープ",
       "meaning": "soup",
+      "tags": ["food"],
       "katakana_groups": [
         "サ",
         "パ"
@@ -2298,6 +2369,7 @@ export const kanaCharacters = {
       ],
       "sound": "パスタ",
       "meaning": "pasta",
+      "tags": ["food"],
       "katakana_groups": [
         "サ",
         "タ",
@@ -2312,6 +2384,7 @@ export const kanaCharacters = {
       ],
       "sound": "オムレツ",
       "meaning": "omelette",
+      "tags": ["food"],
       "katakana_groups": [
         "マ",
         "ラ",
@@ -2328,6 +2401,7 @@ export const kanaCharacters = {
       ],
       "sound": "ヌードル",
       "meaning": "noodles",
+      "tags": ["food"],
       "katakana_groups": [
         "ナ",
         "ダ",
@@ -2343,6 +2417,7 @@ export const kanaCharacters = {
       ],
       "sound": "ぎゅうどん",
       "meaning": "beef bowl",
+      "tags": ["food"],
       "katakana_groups": [],
       "hiragana_groups": [
         "だ",
@@ -2359,6 +2434,7 @@ export const kanaCharacters = {
       ],
       "sound": "かつどん",
       "meaning": "pork cutlet bowl",
+      "tags": ["food"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -2375,6 +2451,7 @@ export const kanaCharacters = {
       ],
       "sound": "てんぷら",
       "meaning": "tempura",
+      "tags": ["food", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -2390,6 +2467,7 @@ export const kanaCharacters = {
       ],
       "sound": "てんどん",
       "meaning": "tempura bowl",
+      "tags": ["food", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -2404,6 +2482,7 @@ export const kanaCharacters = {
       ],
       "sound": "えびふらい",
       "meaning": "fried shrimp",
+      "tags": ["food"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -2419,6 +2498,7 @@ export const kanaCharacters = {
       ],
       "sound": "ささかま",
       "meaning": "fish cake",
+      "tags": ["food", "sweets"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ま",
@@ -2433,6 +2513,7 @@ export const kanaCharacters = {
       ],
       "sound": "やきそば",
       "meaning": "fried noodles",
+      "tags": ["food"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -2448,6 +2529,7 @@ export const kanaCharacters = {
       ],
       "sound": "やきとり",
       "meaning": "grilled chicken",
+      "tags": ["food"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -2463,6 +2545,7 @@ export const kanaCharacters = {
       ],
       "sound": "おこのみやき",
       "meaning": "savory pancake",
+      "tags": ["food", "sweets"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ま",
@@ -2479,6 +2562,7 @@ export const kanaCharacters = {
       ],
       "sound": "みつ",
       "meaning": "honey",
+      "tags": ["food", "sweets"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ま",
@@ -2492,6 +2576,7 @@ export const kanaCharacters = {
       ],
       "sound": "アンコール",
       "meaning": "encore",
+      "tags": ["entertainment", "music"],
       "katakana_groups": [
         "ワ",
         "カ",
@@ -2507,6 +2592,7 @@ export const kanaCharacters = {
       ],
       "sound": "ラムネ",
       "meaning": "Ramune (soda)",
+      "tags": ["food", "drinks"],
       "katakana_groups": [
         "ナ",
         "マ",
@@ -2521,6 +2607,7 @@ export const kanaCharacters = {
       ],
       "sound": "ビル",
       "meaning": "building",
+      "tags": ["places", "buildings"],
       "katakana_groups": [
         "バ",
         "ラ"
@@ -2534,6 +2621,7 @@ export const kanaCharacters = {
       ],
       "sound": "とうがらし",
       "meaning": "chili pepper",
+      "tags": ["food", "vegetables"],
       "katakana_groups": [],
       "hiragana_groups": [
         "た",
@@ -2550,6 +2638,7 @@ export const kanaCharacters = {
       ],
       "sound": "しお",
       "meaning": "salt",
+      "tags": ["food", "condiments"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -2563,6 +2652,7 @@ export const kanaCharacters = {
       ],
       "sound": "こしょう",
       "meaning": "black pepper",
+      "tags": ["food", "vegetables"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -2578,6 +2668,7 @@ export const kanaCharacters = {
       ],
       "sound": "しょうゆ",
       "meaning": "soy sauce",
+      "tags": ["food", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -2593,6 +2684,7 @@ export const kanaCharacters = {
       ],
       "sound": "とんかつソース",
       "meaning": "tonkatsu sauce",
+      "tags": ["food", "condiments"],
       "katakana_groups": [
         "サ"
       ],
@@ -2610,6 +2702,7 @@ export const kanaCharacters = {
       ],
       "sound": "マヨネーズ",
       "meaning": "mayonnaise",
+      "tags": ["food", "condiments"],
       "katakana_groups": [
         "ナ",
         "ザ",
@@ -2625,6 +2718,7 @@ export const kanaCharacters = {
       ],
       "sound": "からし",
       "meaning": "mustard",
+      "tags": ["food", "condiments"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -2639,6 +2733,7 @@ export const kanaCharacters = {
       ],
       "sound": "わさび",
       "meaning": "wasabi",
+      "tags": ["food", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -2653,6 +2748,7 @@ export const kanaCharacters = {
       ],
       "sound": "かぼちゃ",
       "meaning": "pumpkin",
+      "tags": ["food", "vegetables"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -2668,6 +2764,7 @@ export const kanaCharacters = {
       ],
       "sound": "なす",
       "meaning": "eggplant",
+      "tags": ["food", "vegetables"],
       "katakana_groups": [],
       "hiragana_groups": [
         "さ",
@@ -2682,6 +2779,7 @@ export const kanaCharacters = {
       ],
       "sound": "ピーマン",
       "meaning": "green pepper",
+      "tags": ["food", "vegetables"],
       "katakana_groups": [
         "マ",
         "ワ",
@@ -2696,6 +2794,7 @@ export const kanaCharacters = {
       ],
       "sound": "パプリカ",
       "meaning": "bell pepper",
+      "tags": ["food", "vegetables"],
       "katakana_groups": [
         "カ",
         "ラ",
@@ -2710,6 +2809,7 @@ export const kanaCharacters = {
       ],
       "sound": "レナ",
       "meaning": "lettuce",
+      "tags": ["food", "vegetables"],
       "katakana_groups": [
         "ナ",
         "ラ"
@@ -2724,6 +2824,7 @@ export const kanaCharacters = {
       ],
       "sound": "ベーコン",
       "meaning": "bacon",
+      "tags": ["food", "meat"],
       "katakana_groups": [
         "バ",
         "ワ",
@@ -2738,6 +2839,7 @@ export const kanaCharacters = {
       ],
       "sound": "ハム",
       "meaning": "ham",
+      "tags": ["food", "meat"],
       "katakana_groups": [
         "マ",
         "ハ"
@@ -2752,6 +2854,7 @@ export const kanaCharacters = {
       ],
       "sound": "チキン",
       "meaning": "chicken",
+      "tags": ["food"],
       "katakana_groups": [
         "ワ",
         "タ",
@@ -2767,6 +2870,7 @@ export const kanaCharacters = {
       ],
       "sound": "パン",
       "meaning": "bread",
+      "tags": ["food"],
       "katakana_groups": [
         "ワ",
         "パ"
@@ -2780,6 +2884,7 @@ export const kanaCharacters = {
       ],
       "sound": "ピザ",
       "meaning": "pizza",
+      "tags": ["food"],
       "katakana_groups": [
         "ザ",
         "パ"
@@ -2793,6 +2898,7 @@ export const kanaCharacters = {
       ],
       "sound": "パスタ",
       "meaning": "pasta",
+      "tags": ["food"],
       "katakana_groups": [
         "サ",
         "タ",
@@ -2807,6 +2913,7 @@ export const kanaCharacters = {
       ],
       "sound": "あかちゃん",
       "meaning": "baby",
+      "tags": ["people", "family"],
       "katakana_groups": [],
       "hiragana_groups": [
         "た",
@@ -2823,6 +2930,7 @@ export const kanaCharacters = {
       ],
       "sound": "あかい",
       "meaning": "red",
+      "tags": ["colors", "adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -2836,6 +2944,7 @@ export const kanaCharacters = {
       ],
       "sound": "あかるい",
       "meaning": "bright",
+      "tags": ["adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -2850,6 +2959,7 @@ export const kanaCharacters = {
       ],
       "sound": "ありがとう",
       "meaning": "thank you",
+      "tags": ["expressions"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -2865,6 +2975,7 @@ export const kanaCharacters = {
       ],
       "sound": "バナナ",
       "meaning": "banana",
+      "tags": ["food", "fruits"],
       "katakana_groups": [
         "バ",
         "ナ"
@@ -2878,6 +2989,7 @@ export const kanaCharacters = {
       ],
       "sound": "びっくり",
       "meaning": "surprise",
+      "tags": ["feelings", "expressions"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -2893,6 +3005,7 @@ export const kanaCharacters = {
       ],
       "sound": "ボス",
       "meaning": "boss",
+      "tags": ["people", "work"],
       "katakana_groups": [
         "バ",
         "サ"
@@ -2906,6 +3019,7 @@ export const kanaCharacters = {
       ],
       "sound": "ぶろっこり",
       "meaning": "plump",
+      "tags": ["basic"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -2921,6 +3035,7 @@ export const kanaCharacters = {
       ],
       "sound": "ブス",
       "meaning": "ugly",
+      "tags": ["adjectives", "appearance"],
       "katakana_groups": [
         "バ",
         "サ"
@@ -2934,6 +3049,7 @@ export const kanaCharacters = {
       ],
       "sound": "びょういん",
       "meaning": "hospital",
+      "tags": ["places", "health"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -2949,6 +3065,7 @@ export const kanaCharacters = {
       ],
       "sound": "ちゃ",
       "meaning": "tea",
+      "tags": ["food", "drinks"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -2962,6 +3079,7 @@ export const kanaCharacters = {
       ],
       "sound": "ちょっと",
       "meaning": "a little",
+      "tags": ["adverbs", "expressions"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -2975,6 +3093,7 @@ export const kanaCharacters = {
       ],
       "sound": "でんしゃ",
       "meaning": "train",
+      "tags": ["transportation"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -2990,6 +3109,7 @@ export const kanaCharacters = {
       ],
       "sound": "ドア",
       "meaning": "door",
+      "tags": ["home", "items"],
       "katakana_groups": [
         "ダ",
         "ア"
@@ -3003,6 +3123,7 @@ export const kanaCharacters = {
       ],
       "sound": "どこでも",
       "meaning": "anywhere",
+      "tags": ["question_words"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ま",
@@ -3017,6 +3138,7 @@ export const kanaCharacters = {
       ],
       "sound": "どれ",
       "meaning": "which one",
+      "tags": ["question_words"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -3030,6 +3152,7 @@ export const kanaCharacters = {
       ],
       "sound": "え",
       "meaning": "picture",
+      "tags": ["basic"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ"
@@ -3042,6 +3165,7 @@ export const kanaCharacters = {
       ],
       "sound": "ふゆ",
       "meaning": "winter",
+      "tags": ["seasons", "time"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -3055,6 +3179,7 @@ export const kanaCharacters = {
       ],
       "sound": "ぎんこう",
       "meaning": "bank",
+      "tags": ["places", "money"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -3070,6 +3195,7 @@ export const kanaCharacters = {
       ],
       "sound": "ごめん",
       "meaning": "sorry",
+      "tags": ["expressions"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -3084,6 +3210,7 @@ export const kanaCharacters = {
       ],
       "sound": "は",
       "meaning": "tooth",
+      "tags": ["body_parts"],
       "katakana_groups": [],
       "hiragana_groups": [
         "は"
@@ -3096,6 +3223,7 @@ export const kanaCharacters = {
       ],
       "sound": "はい",
       "meaning": "yes",
+      "tags": ["expressions"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -3109,6 +3237,7 @@ export const kanaCharacters = {
       ],
       "sound": "はる",
       "meaning": "spring",
+      "tags": ["seasons", "time"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -3122,6 +3251,7 @@ export const kanaCharacters = {
       ],
       "sound": "はし",
       "meaning": "chopsticks",
+      "tags": ["items", "food"],
       "katakana_groups": [],
       "hiragana_groups": [
         "さ",
@@ -3135,6 +3265,7 @@ export const kanaCharacters = {
       ],
       "sound": "ひこうき",
       "meaning": "airplane",
+      "tags": ["transportation"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -3149,6 +3280,7 @@ export const kanaCharacters = {
       ],
       "sound": "ひまわり",
       "meaning": "sunflower",
+      "tags": ["nature", "flowers"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -3164,6 +3296,7 @@ export const kanaCharacters = {
       ],
       "sound": "いい",
       "meaning": "good",
+      "tags": ["adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ"
@@ -3176,6 +3309,7 @@ export const kanaCharacters = {
       ],
       "sound": "いいえ",
       "meaning": "no",
+      "tags": ["expressions"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ"
@@ -3188,6 +3322,7 @@ export const kanaCharacters = {
       ],
       "sound": "おおみず",
       "meaning": "water",
+      "tags": ["food", "drinks"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -3202,6 +3337,7 @@ export const kanaCharacters = {
       ],
       "sound": "さけ",
       "meaning": "alcohol",
+      "tags": ["basic"],
       "katakana_groups": [],
       "hiragana_groups": [
         "か",
@@ -3215,6 +3351,7 @@ export const kanaCharacters = {
       ],
       "sound": "わん",
       "meaning": "dog",
+      "tags": ["animals", "pets"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ"
@@ -3227,6 +3364,7 @@ export const kanaCharacters = {
       ],
       "sound": "ねこ",
       "meaning": "cat",
+      "tags": ["animals", "pets"],
       "katakana_groups": [],
       "hiragana_groups": [
         "か",
@@ -3240,6 +3378,7 @@ export const kanaCharacters = {
       ],
       "sound": "とり",
       "meaning": "bird",
+      "tags": ["animals"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -3253,6 +3392,7 @@ export const kanaCharacters = {
       ],
       "sound": "うま",
       "meaning": "horse",
+      "tags": ["animals"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -3266,6 +3406,7 @@ export const kanaCharacters = {
       ],
       "sound": "ひつじ",
       "meaning": "sheep",
+      "tags": ["animals"],
       "katakana_groups": [],
       "hiragana_groups": [
         "た",
@@ -3280,6 +3421,7 @@ export const kanaCharacters = {
       ],
       "sound": "ぶた",
       "meaning": "pig",
+      "tags": ["animals"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -3293,6 +3435,7 @@ export const kanaCharacters = {
       ],
       "sound": "いのしし",
       "meaning": "boar",
+      "tags": ["basic"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -3307,6 +3450,7 @@ export const kanaCharacters = {
       ],
       "sound": "ざりがに",
       "meaning": "crab",
+      "tags": ["basic"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -3322,6 +3466,7 @@ export const kanaCharacters = {
       ],
       "sound": "いか",
       "meaning": "squid",
+      "tags": ["animals", "seafood"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -3335,6 +3480,7 @@ export const kanaCharacters = {
       ],
       "sound": "えび",
       "meaning": "shrimp",
+      "tags": ["food"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -3348,6 +3494,7 @@ export const kanaCharacters = {
       ],
       "sound": "もも",
       "meaning": "peach",
+      "tags": ["food", "fruits"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ま"
@@ -3360,6 +3507,7 @@ export const kanaCharacters = {
       ],
       "sound": "ぶどう",
       "meaning": "grape",
+      "tags": ["food", "fruits"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -3374,6 +3522,7 @@ export const kanaCharacters = {
       ],
       "sound": "いちご",
       "meaning": "strawberry",
+      "tags": ["food", "fruits"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -3388,6 +3537,7 @@ export const kanaCharacters = {
       ],
       "sound": "クリスマス",
       "meaning": "Christmas",
+      "tags": ["events", "holidays"],
       "katakana_groups": [
         "サ",
         "マ",
@@ -3403,6 +3553,7 @@ export const kanaCharacters = {
       ],
       "sound": "はなび",
       "meaning": "fireworks",
+      "tags": ["events", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -3417,6 +3568,7 @@ export const kanaCharacters = {
       ],
       "sound": "ひな",
       "meaning": "doll",
+      "tags": ["items", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "は",
@@ -3430,6 +3582,7 @@ export const kanaCharacters = {
       ],
       "sound": "たんじょうび",
       "meaning": "birthday",
+      "tags": ["events", "celebrations"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -3447,6 +3600,7 @@ export const kanaCharacters = {
       ],
       "sound": "きょう",
       "meaning": "today",
+      "tags": ["time"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -3461,6 +3615,7 @@ export const kanaCharacters = {
       ],
       "sound": "あした",
       "meaning": "tomorrow",
+      "tags": ["time"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -3475,6 +3630,7 @@ export const kanaCharacters = {
       ],
       "sound": "きのう",
       "meaning": "yesterday",
+      "tags": ["expressions"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -3489,6 +3645,7 @@ export const kanaCharacters = {
       ],
       "sound": "げつようび",
       "meaning": "Monday",
+      "tags": ["time", "days_of_week"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -3505,6 +3662,7 @@ export const kanaCharacters = {
       ],
       "sound": "かようび",
       "meaning": "Tuesday",
+      "tags": ["time", "days_of_week"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -3520,6 +3678,7 @@ export const kanaCharacters = {
       ],
       "sound": "すいようび",
       "meaning": "Wednesday",
+      "tags": ["time", "days_of_week"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -3535,6 +3694,7 @@ export const kanaCharacters = {
       ],
       "sound": "もくようび",
       "meaning": "Thursday",
+      "tags": ["time", "days_of_week"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -3552,6 +3712,7 @@ export const kanaCharacters = {
       ],
       "sound": "きんようび",
       "meaning": "Friday",
+      "tags": ["time", "days_of_week"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -3568,6 +3729,7 @@ export const kanaCharacters = {
       ],
       "sound": "どようび",
       "meaning": "Saturday",
+      "tags": ["time", "days_of_week"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -3583,6 +3745,7 @@ export const kanaCharacters = {
       ],
       "sound": "にちようび",
       "meaning": "Sunday",
+      "tags": ["time", "days_of_week"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -3599,6 +3762,7 @@ export const kanaCharacters = {
       ],
       "sound": "なつ",
       "meaning": "summer",
+      "tags": ["seasons", "time"],
       "katakana_groups": [],
       "hiragana_groups": [
         "た",
@@ -3612,6 +3776,7 @@ export const kanaCharacters = {
       ],
       "sound": "あき",
       "meaning": "autumn",
+      "tags": ["seasons", "time"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -3625,6 +3790,7 @@ export const kanaCharacters = {
       ],
       "sound": "こうえん",
       "meaning": "park",
+      "tags": ["places", "nature"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -3639,6 +3805,7 @@ export const kanaCharacters = {
       ],
       "sound": "がっこう",
       "meaning": "school",
+      "tags": ["places", "education"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -3654,6 +3821,7 @@ export const kanaCharacters = {
       ],
       "sound": "だいがく",
       "meaning": "university",
+      "tags": ["places", "education"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -3669,6 +3837,7 @@ export const kanaCharacters = {
       ],
       "sound": "ちゅうがっこう",
       "meaning": "middle school",
+      "tags": ["places", "education"],
       "katakana_groups": [],
       "hiragana_groups": [
         "た",
@@ -3685,6 +3854,7 @@ export const kanaCharacters = {
       ],
       "sound": "しょうがっこう",
       "meaning": "elementary school",
+      "tags": ["places", "education"],
       "katakana_groups": [],
       "hiragana_groups": [
         "た",
@@ -3702,6 +3872,7 @@ export const kanaCharacters = {
       ],
       "sound": "ホテル",
       "meaning": "hotel",
+      "tags": ["adjectives"],
       "katakana_groups": [
         "タ",
         "ラ",
@@ -3717,6 +3888,7 @@ export const kanaCharacters = {
       ],
       "sound": "みそしる",
       "meaning": "miso soup",
+      "tags": ["food", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -3731,6 +3903,7 @@ export const kanaCharacters = {
       ],
       "sound": "トイレ",
       "meaning": "toilet",
+      "tags": ["places", "home"],
       "katakana_groups": [
         "タ",
         "ラ",
@@ -3745,6 +3918,7 @@ export const kanaCharacters = {
       ],
       "sound": "でんわ",
       "meaning": "phone",
+      "tags": ["items", "communication"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -3758,6 +3932,7 @@ export const kanaCharacters = {
       ],
       "sound": "テレビ",
       "meaning": "television",
+      "tags": ["items", "entertainment"],
       "katakana_groups": [
         "バ",
         "タ",
@@ -3772,6 +3947,7 @@ export const kanaCharacters = {
       ],
       "sound": "くるま",
       "meaning": "car",
+      "tags": ["transportation"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ま",
@@ -3786,6 +3962,7 @@ export const kanaCharacters = {
       ],
       "sound": "ふね",
       "meaning": "ship",
+      "tags": ["transportation"],
       "katakana_groups": [],
       "hiragana_groups": [
         "は",
@@ -3799,6 +3976,7 @@ export const kanaCharacters = {
       ],
       "sound": "じてんしゃ",
       "meaning": "bicycle",
+      "tags": ["transportation"],
       "katakana_groups": [],
       "hiragana_groups": [
         "た",
@@ -3815,6 +3993,7 @@ export const kanaCharacters = {
       ],
       "sound": "あるき",
       "meaning": "walking",
+      "tags": ["movement", "verbs"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -3829,6 +4008,7 @@ export const kanaCharacters = {
       ],
       "sound": "さら",
       "meaning": "plate",
+      "tags": ["items", "food"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -3842,6 +4022,7 @@ export const kanaCharacters = {
       ],
       "sound": "りょかん",
       "meaning": "Japanese inn",
+      "tags": ["places", "travel", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -3857,6 +4038,7 @@ export const kanaCharacters = {
       ],
       "sound": "せんとう",
       "meaning": "public bath",
+      "tags": ["places", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -3872,6 +4054,7 @@ export const kanaCharacters = {
       ],
       "sound": "おんせん",
       "meaning": "hot spring",
+      "tags": ["adjectives"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -3886,6 +4069,7 @@ export const kanaCharacters = {
       ],
       "sound": "オタク",
       "meaning": "geek",
+      "tags": ["basic"],
       "katakana_groups": [
         "カ",
         "タ",
@@ -3900,6 +4084,7 @@ export const kanaCharacters = {
       ],
       "sound": "まんが",
       "meaning": "manga",
+      "tags": ["entertainment", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -3914,6 +4099,7 @@ export const kanaCharacters = {
       ],
       "sound": "アニメ",
       "meaning": "anime",
+      "tags": ["entertainment", "japanese_culture"],
       "katakana_groups": [
         "ナ",
         "マ",
@@ -3929,6 +4115,7 @@ export const kanaCharacters = {
       ],
       "sound": "すもう",
       "meaning": "sumo",
+      "tags": ["sports", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -3943,6 +4130,7 @@ export const kanaCharacters = {
       ],
       "sound": "ちゃのゆ",
       "meaning": "tea ceremony",
+      "tags": ["food", "drinks"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -3957,6 +4145,7 @@ export const kanaCharacters = {
       ],
       "sound": "いけばな",
       "meaning": "flower arrangement",
+      "tags": ["activities", "japanese_culture", "art"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -3972,6 +4161,7 @@ export const kanaCharacters = {
       ],
       "sound": "ぼんさい",
       "meaning": "bonsai",
+      "tags": ["hobbies", "nature", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "わ",
@@ -3987,6 +4177,7 @@ export const kanaCharacters = {
       ],
       "sound": "かぶき",
       "meaning": "Japanese theatre form",
+      "tags": ["basic"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ば",
@@ -4000,6 +4191,7 @@ export const kanaCharacters = {
       ],
       "sound": "おりがみ",
       "meaning": "origami",
+      "tags": ["activities", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -4015,6 +4207,7 @@ export const kanaCharacters = {
       ],
       "sound": "しゃみせん",
       "meaning": "Japanese string instrument",
+      "tags": ["basic"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -4030,6 +4223,7 @@ export const kanaCharacters = {
       ],
       "sound": "ふろしき",
       "meaning": "traditional wrapping cloths",
+      "tags": ["items", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -4045,6 +4239,7 @@ export const kanaCharacters = {
       ],
       "sound": "うきよえ",
       "meaning": "ukiyoe (art genre)",
+      "tags": ["basic"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -4059,6 +4254,7 @@ export const kanaCharacters = {
       ],
       "sound": "かたな",
       "meaning": "sword",
+      "tags": ["items", "weapons", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "か",
@@ -4074,6 +4270,7 @@ export const kanaCharacters = {
       ],
       "sound": "じゅどう",
       "meaning": "judo (martial art)",
+      "tags": ["sports", "martial_arts", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -4089,6 +4286,7 @@ export const kanaCharacters = {
       ],
       "sound": "からて",
       "meaning": "karate",
+      "tags": ["sports", "martial_arts", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "ら",
@@ -4104,6 +4302,7 @@ export const kanaCharacters = {
       ],
       "sound": "あいきどう",
       "meaning": "Japanese martial art",
+      "tags": ["sports", "martial_arts", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "あ",
@@ -4119,6 +4318,7 @@ export const kanaCharacters = {
       ],
       "sound": "きゅうどう",
       "meaning": "Japanese archery",
+      "tags": ["sports", "martial_arts", "japanese_culture"],
       "katakana_groups": [],
       "hiragana_groups": [
         "や",
@@ -4134,10 +4334,2656 @@ export const kanaCharacters = {
       ],
       "sound": "ふぐ",
       "meaning": "blowfish",
+      "tags": ["animals", "food"],
       "katakana_groups": [],
       "hiragana_groups": [
         "は",
         "が"
+      ]
+    },
+    "iku": {
+      "jp_character": "いく",
+      "romanji": [
+        "iku"
+      ],
+      "sound": "いく",
+      "meaning": "to go",
+      "tags": ["verbs", "movement"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "か"
+      ]
+    },
+    "kuru": {
+      "jp_character": "くる",
+      "romanji": [
+        "kuru"
+      ],
+      "sound": "くる",
+      "meaning": "to come",
+      "tags": ["verbs", "movement"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "か"
+      ]
+    },
+    "miru": {
+      "jp_character": "みる",
+      "romanji": [
+        "miru"
+      ],
+      "sound": "みる",
+      "meaning": "to see",
+      "tags": ["verbs", "senses"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "ら"
+      ]
+    },
+    "kiku": {
+      "jp_character": "きく",
+      "romanji": [
+        "kiku"
+      ],
+      "sound": "きく",
+      "meaning": "to listen/ask",
+      "tags": ["verbs", "senses"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "か"
+      ]
+    },
+    "hanasu": {
+      "jp_character": "はなす",
+      "romanji": [
+        "hanasu"
+      ],
+      "sound": "はなす",
+      "meaning": "to speak",
+      "tags": ["verbs", "communication"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "は",
+        "な",
+        "さ"
+      ]
+    },
+    "yomu": {
+      "jp_character": "よむ",
+      "romanji": [
+        "yomu"
+      ],
+      "sound": "よむ",
+      "meaning": "to read",
+      "tags": ["verbs", "activities"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "や"
+      ]
+    },
+    "kaku": {
+      "jp_character": "かく",
+      "romanji": [
+        "kaku"
+      ],
+      "sound": "かく",
+      "meaning": "to write",
+      "tags": ["verbs", "activities"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "か"
+      ]
+    },
+    "neru": {
+      "jp_character": "ねる",
+      "romanji": [
+        "neru"
+      ],
+      "sound": "ねる",
+      "meaning": "to sleep",
+      "tags": ["verbs", "daily_life"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "な"
+      ]
+    },
+    "okiru": {
+      "jp_character": "おきる",
+      "romanji": [
+        "okiru"
+      ],
+      "sound": "おきる",
+      "meaning": "to wake up",
+      "tags": ["verbs", "daily_life"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "ら",
+        "か"
+      ]
+    },
+    "au": {
+      "jp_character": "あう",
+      "romanji": [
+        "au"
+      ],
+      "sound": "あう",
+      "meaning": "to meet",
+      "tags": ["verbs", "social"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ"
+      ]
+    },
+    "kau": {
+      "jp_character": "かう",
+      "romanji": [
+        "kau"
+      ],
+      "sound": "かう",
+      "meaning": "to buy",
+      "tags": ["verbs", "shopping"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "か"
+      ]
+    },
+    "uru": {
+      "jp_character": "うる",
+      "romanji": [
+        "uru"
+      ],
+      "sound": "うる",
+      "meaning": "to sell",
+      "tags": ["verbs", "shopping"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "ら"
+      ]
+    },
+    "tsukuru": {
+      "jp_character": "つくる",
+      "romanji": [
+        "tsukuru"
+      ],
+      "sound": "つくる",
+      "meaning": "to make",
+      "tags": ["verbs", "activities"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "か",
+        "た"
+      ]
+    },
+    "arau": {
+      "jp_character": "あらう",
+      "romanji": [
+        "arau"
+      ],
+      "sound": "あらう",
+      "meaning": "to wash",
+      "tags": ["verbs", "daily_life"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "あ"
+      ]
+    },
+    "atama": {
+      "jp_character": "あたま",
+      "romanji": [
+        "atama"
+      ],
+      "sound": "あたま",
+      "meaning": "head",
+      "tags": ["body_parts"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "あ",
+        "た"
+      ]
+    },
+    "me": {
+      "jp_character": "め",
+      "romanji": [
+        "me"
+      ],
+      "sound": "め",
+      "meaning": "eye",
+      "tags": ["body_parts"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま"
+      ]
+    },
+    "mimi": {
+      "jp_character": "みみ",
+      "romanji": [
+        "mimi"
+      ],
+      "sound": "みみ",
+      "meaning": "ear",
+      "tags": ["body_parts"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま"
+      ]
+    },
+    "hana": {
+      "jp_character": "はな",
+      "romanji": [
+        "hana"
+      ],
+      "sound": "はな",
+      "meaning": "nose",
+      "tags": ["body_parts"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "は",
+        "な"
+      ]
+    },
+    "kuchi": {
+      "jp_character": "くち",
+      "romanji": [
+        "kuchi"
+      ],
+      "sound": "くち",
+      "meaning": "mouth",
+      "tags": ["body_parts"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "か",
+        "た"
+      ]
+    },
+    "te": {
+      "jp_character": "て",
+      "romanji": [
+        "te"
+      ],
+      "sound": "て",
+      "meaning": "hand",
+      "tags": ["body_parts"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "た"
+      ]
+    },
+    "ashi": {
+      "jp_character": "あし",
+      "romanji": [
+        "ashi"
+      ],
+      "sound": "あし",
+      "meaning": "foot/leg",
+      "tags": ["body_parts"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "さ"
+      ]
+    },
+    "onaka": {
+      "jp_character": "おなか",
+      "romanji": [
+        "onaka"
+      ],
+      "sound": "おなか",
+      "meaning": "stomach",
+      "tags": ["body_parts"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "な",
+        "か"
+      ]
+    },
+    "chichi": {
+      "jp_character": "ちち",
+      "romanji": [
+        "chichi"
+      ],
+      "sound": "ちち",
+      "meaning": "father",
+      "tags": ["family"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "た"
+      ]
+    },
+    "haha": {
+      "jp_character": "はは",
+      "romanji": [
+        "haha"
+      ],
+      "sound": "はは",
+      "meaning": "mother",
+      "tags": ["family"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "は"
+      ]
+    },
+    "otouto": {
+      "jp_character": "おとうと",
+      "romanji": [
+        "otouto"
+      ],
+      "sound": "おとうと",
+      "meaning": "younger brother",
+      "tags": ["family"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "た"
+      ]
+    },
+    "ani": {
+      "jp_character": "あに",
+      "romanji": [
+        "ani"
+      ],
+      "sound": "あに",
+      "meaning": "older brother",
+      "tags": ["family"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "な"
+      ]
+    },
+    "imouto": {
+      "jp_character": "いもうと",
+      "romanji": [
+        "imouto"
+      ],
+      "sound": "いもうと",
+      "meaning": "younger sister",
+      "tags": ["family"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "あ",
+        "た"
+      ]
+    },
+    "ane": {
+      "jp_character": "あね",
+      "romanji": [
+        "ane"
+      ],
+      "sound": "あね",
+      "meaning": "older sister",
+      "tags": ["family"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "な"
+      ]
+    },
+    "kodomo": {
+      "jp_character": "こども",
+      "romanji": [
+        "kodomo"
+      ],
+      "sound": "こども",
+      "meaning": "child",
+      "tags": ["family", "people"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "だ",
+        "か"
+      ]
+    },
+    "ichi": {
+      "jp_character": "いち",
+      "romanji": [
+        "ichi"
+      ],
+      "sound": "いち",
+      "meaning": "one",
+      "tags": ["numbers"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "た"
+      ]
+    },
+    "ni": {
+      "jp_character": "に",
+      "romanji": [
+        "ni"
+      ],
+      "sound": "に",
+      "meaning": "two",
+      "tags": ["numbers"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "な"
+      ]
+    },
+    "san": {
+      "jp_character": "さん",
+      "romanji": [
+        "san"
+      ],
+      "sound": "さん",
+      "meaning": "three",
+      "tags": ["numbers"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "さ"
+      ]
+    },
+    "shi": {
+      "jp_character": "し",
+      "romanji": [
+        "shi"
+      ],
+      "sound": "し",
+      "meaning": "four",
+      "tags": ["numbers"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "さ"
+      ]
+    },
+    "go": {
+      "jp_character": "ご",
+      "romanji": [
+        "go"
+      ],
+      "sound": "ご",
+      "meaning": "five",
+      "tags": ["numbers"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "が"
+      ]
+    },
+    "roku": {
+      "jp_character": "ろく",
+      "romanji": [
+        "roku"
+      ],
+      "sound": "ろく",
+      "meaning": "six",
+      "tags": ["numbers"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "か"
+      ]
+    },
+    "shichi": {
+      "jp_character": "しち",
+      "romanji": [
+        "shichi"
+      ],
+      "sound": "しち",
+      "meaning": "seven",
+      "tags": ["numbers"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "さ",
+        "た"
+      ]
+    },
+    "hachi": {
+      "jp_character": "はち",
+      "romanji": [
+        "hachi"
+      ],
+      "sound": "はち",
+      "meaning": "eight",
+      "tags": ["numbers"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "は",
+        "た"
+      ]
+    },
+    "kyuu": {
+      "jp_character": "きゅう",
+      "romanji": [
+        "kyuu"
+      ],
+      "sound": "きゅう",
+      "meaning": "nine",
+      "tags": ["numbers"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "あ",
+        "か"
+      ]
+    },
+    "juu": {
+      "jp_character": "じゅう",
+      "romanji": [
+        "juu"
+      ],
+      "sound": "じゅう",
+      "meaning": "ten",
+      "tags": ["numbers"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "あ",
+        "ざ"
+      ]
+    },
+    "hyaku": {
+      "jp_character": "ひゃく",
+      "romanji": [
+        "hyaku"
+      ],
+      "sound": "ひゃく",
+      "meaning": "hundred",
+      "tags": ["numbers"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "は",
+        "か"
+      ]
+    },
+    "sen": {
+      "jp_character": "せん",
+      "romanji": [
+        "sen"
+      ],
+      "sound": "せん",
+      "meaning": "thousand",
+      "tags": ["numbers"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "さ"
+      ]
+    },
+    "man": {
+      "jp_character": "まん",
+      "romanji": [
+        "man"
+      ],
+      "sound": "まん",
+      "meaning": "ten thousand",
+      "tags": ["numbers"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "わ"
+      ]
+    },
+    "shiro": {
+      "jp_character": "しろ",
+      "romanji": [
+        "shiro"
+      ],
+      "sound": "しろ",
+      "meaning": "white",
+      "tags": ["colors"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "さ"
+      ]
+    },
+    "kuro": {
+      "jp_character": "くろ",
+      "romanji": [
+        "kuro"
+      ],
+      "sound": "くろ",
+      "meaning": "black",
+      "tags": ["colors"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "か"
+      ]
+    },
+    "ao": {
+      "jp_character": "あお",
+      "romanji": [
+        "ao"
+      ],
+      "sound": "あお",
+      "meaning": "blue",
+      "tags": ["colors"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ"
+      ]
+    },
+    "kiiro": {
+      "jp_character": "きいろ",
+      "romanji": [
+        "kiiro"
+      ],
+      "sound": "きいろ",
+      "meaning": "yellow",
+      "tags": ["colors"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "あ",
+        "か"
+      ]
+    },
+    "midori": {
+      "jp_character": "みどり",
+      "romanji": [
+        "midori"
+      ],
+      "sound": "みどり",
+      "meaning": "green",
+      "tags": ["colors"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "ら",
+        "だ"
+      ]
+    },
+    "chairo": {
+      "jp_character": "ちゃいろ",
+      "romanji": [
+        "chairo"
+      ],
+      "sound": "ちゃいろ",
+      "meaning": "brown",
+      "tags": ["colors"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "ら",
+        "あ",
+        "た"
+      ]
+    },
+    "ie": {
+      "jp_character": "いえ",
+      "romanji": [
+        "ie"
+      ],
+      "sound": "いえ",
+      "meaning": "house",
+      "tags": ["places", "home"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ"
+      ]
+    },
+    "heya": {
+      "jp_character": "へや",
+      "romanji": [
+        "heya"
+      ],
+      "sound": "へや",
+      "meaning": "room",
+      "tags": ["places", "home"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "は"
+      ]
+    },
+    "mado": {
+      "jp_character": "まど",
+      "romanji": [
+        "mado"
+      ],
+      "sound": "まど",
+      "meaning": "window",
+      "tags": ["home"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "だ"
+      ]
+    },
+    "tsukue": {
+      "jp_character": "つくえ",
+      "romanji": [
+        "tsukue"
+      ],
+      "sound": "つくえ",
+      "meaning": "desk",
+      "tags": ["home", "furniture"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "か",
+        "た"
+      ]
+    },
+    "isu": {
+      "jp_character": "いす",
+      "romanji": [
+        "isu"
+      ],
+      "sound": "いす",
+      "meaning": "chair",
+      "tags": ["home", "furniture"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "さ"
+      ]
+    },
+    "beddo": {
+      "jp_character": "ベッド",
+      "romanji": [
+        "beddo"
+      ],
+      "sound": "ベッド",
+      "meaning": "bed",
+      "tags": ["home", "furniture"],
+      "katakana_groups": [
+        "バ",
+        "ダ"
+      ],
+      "hiragana_groups": []
+    },
+    "hon": {
+      "jp_character": "ほん",
+      "romanji": [
+        "hon"
+      ],
+      "sound": "ほん",
+      "meaning": "book",
+      "tags": ["items", "education"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "は"
+      ]
+    },
+    "enpitsu": {
+      "jp_character": "えんぴつ",
+      "romanji": [
+        "enpitsu"
+      ],
+      "sound": "えんぴつ",
+      "meaning": "pencil",
+      "tags": ["items", "education"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "ぱ",
+        "あ",
+        "た"
+      ]
+    },
+    "kami": {
+      "jp_character": "かみ",
+      "romanji": [
+        "kami"
+      ],
+      "sound": "かみ",
+      "meaning": "paper",
+      "tags": ["items"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "か"
+      ]
+    },
+    "kaban": {
+      "jp_character": "かばん",
+      "romanji": [
+        "kaban"
+      ],
+      "sound": "かばん",
+      "meaning": "bag",
+      "tags": ["items", "accessories"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "ば",
+        "か"
+      ]
+    },
+    "tokei": {
+      "jp_character": "とけい",
+      "romanji": [
+        "tokei"
+      ],
+      "sound": "とけい",
+      "meaning": "clock/watch",
+      "tags": ["items", "time"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "か",
+        "た"
+      ]
+    },
+    "kutsu": {
+      "jp_character": "くつ",
+      "romanji": [
+        "kutsu"
+      ],
+      "sound": "くつ",
+      "meaning": "shoes",
+      "tags": ["clothing", "accessories"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "か",
+        "た"
+      ]
+    },
+    "fuku": {
+      "jp_character": "ふく",
+      "romanji": [
+        "fuku"
+      ],
+      "sound": "ふく",
+      "meaning": "clothes",
+      "tags": ["clothing"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "は",
+        "か"
+      ]
+    },
+    "zubon": {
+      "jp_character": "ズボン",
+      "romanji": [
+        "zubon"
+      ],
+      "sound": "ズボン",
+      "meaning": "pants",
+      "tags": ["clothing"],
+      "katakana_groups": [
+        "ザ",
+        "ワ",
+        "バ"
+      ],
+      "hiragana_groups": []
+    },
+    "shatsu": {
+      "jp_character": "シャツ",
+      "romanji": [
+        "shatsu"
+      ],
+      "sound": "シャツ",
+      "meaning": "shirt",
+      "tags": ["clothing"],
+      "katakana_groups": [
+        "ザ",
+        "タ",
+        "ヤ"
+      ],
+      "hiragana_groups": []
+    },
+    "boushi": {
+      "jp_character": "ぼうし",
+      "romanji": [
+        "boushi"
+      ],
+      "sound": "ぼうし",
+      "meaning": "hat",
+      "tags": ["clothing", "accessories"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ば",
+        "あ",
+        "さ"
+      ]
+    },
+    "megane": {
+      "jp_character": "めがね",
+      "romanji": [
+        "megane"
+      ],
+      "sound": "めがね",
+      "meaning": "glasses",
+      "tags": ["accessories"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "な",
+        "が"
+      ]
+    },
+    "ame": {
+      "jp_character": "あめ",
+      "romanji": [
+        "ame"
+      ],
+      "sound": "あめ",
+      "meaning": "rain",
+      "tags": ["weather", "nature"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "あ"
+      ]
+    },
+    "yuki": {
+      "jp_character": "ゆき",
+      "romanji": [
+        "yuki"
+      ],
+      "sound": "ゆき",
+      "meaning": "snow",
+      "tags": ["weather", "nature"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "か"
+      ]
+    },
+    "kaze": {
+      "jp_character": "かぜ",
+      "romanji": [
+        "kaze"
+      ],
+      "sound": "かぜ",
+      "meaning": "wind",
+      "tags": ["weather", "nature"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "か",
+        "ざ"
+      ]
+    },
+    "tenki": {
+      "jp_character": "てんき",
+      "romanji": [
+        "tenki"
+      ],
+      "sound": "てんき",
+      "meaning": "weather",
+      "tags": ["weather"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "た",
+        "か"
+      ]
+    },
+    "atsui": {
+      "jp_character": "あつい",
+      "romanji": [
+        "atsui"
+      ],
+      "sound": "あつい",
+      "meaning": "hot",
+      "tags": ["weather", "adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "た"
+      ]
+    },
+    "suzushii": {
+      "jp_character": "すずしい",
+      "romanji": [
+        "suzushii"
+      ],
+      "sound": "すずしい",
+      "meaning": "cool",
+      "tags": ["weather", "adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ざ",
+        "あ",
+        "さ"
+      ]
+    },
+    "atarashii": {
+      "jp_character": "あたらしい",
+      "romanji": [
+        "atarashii"
+      ],
+      "sound": "あたらしい",
+      "meaning": "new",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "あ",
+        "さ",
+        "た"
+      ]
+    },
+    "furui": {
+      "jp_character": "ふるい",
+      "romanji": [
+        "furui"
+      ],
+      "sound": "ふるい",
+      "meaning": "old",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "あ",
+        "は"
+      ]
+    },
+    "hayai": {
+      "jp_character": "はやい",
+      "romanji": [
+        "hayai"
+      ],
+      "sound": "はやい",
+      "meaning": "fast/early",
+      "tags": ["adjectives", "time"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "あ",
+        "は"
+      ]
+    },
+    "osoi": {
+      "jp_character": "おそい",
+      "romanji": [
+        "osoi"
+      ],
+      "sound": "おそい",
+      "meaning": "slow/late",
+      "tags": ["adjectives", "time"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "さ"
+      ]
+    },
+    "tooi": {
+      "jp_character": "とおい",
+      "romanji": [
+        "tooi"
+      ],
+      "sound": "とおい",
+      "meaning": "far",
+      "tags": ["adjectives", "distance"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "た"
+      ]
+    },
+    "chikai": {
+      "jp_character": "ちかい",
+      "romanji": [
+        "chikai"
+      ],
+      "sound": "ちかい",
+      "meaning": "near",
+      "tags": ["adjectives", "distance"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "か",
+        "た"
+      ]
+    },
+    "nagai": {
+      "jp_character": "ながい",
+      "romanji": [
+        "nagai"
+      ],
+      "sound": "ながい",
+      "meaning": "long",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "な",
+        "が",
+        "あ"
+      ]
+    },
+    "mijikai": {
+      "jp_character": "みじかい",
+      "romanji": [
+        "mijikai"
+      ],
+      "sound": "みじかい",
+      "meaning": "short",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "ざ",
+        "あ",
+        "か"
+      ]
+    },
+    "hiroi": {
+      "jp_character": "ひろい",
+      "romanji": [
+        "hiroi"
+      ],
+      "sound": "ひろい",
+      "meaning": "wide/spacious",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "あ",
+        "は"
+      ]
+    },
+    "semai": {
+      "jp_character": "せまい",
+      "romanji": [
+        "semai"
+      ],
+      "sound": "せまい",
+      "meaning": "narrow",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "あ",
+        "さ"
+      ]
+    },
+    "oishii": {
+      "jp_character": "おいしい",
+      "romanji": [
+        "oishii"
+      ],
+      "sound": "おいしい",
+      "meaning": "delicious",
+      "tags": ["adjectives", "food"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "さ"
+      ]
+    },
+    "mazui": {
+      "jp_character": "まずい",
+      "romanji": [
+        "mazui"
+      ],
+      "sound": "まずい",
+      "meaning": "bad tasting",
+      "tags": ["adjectives", "food"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "ざ",
+        "あ"
+      ]
+    },
+    "umai": {
+      "jp_character": "うまい",
+      "romanji": [
+        "umai"
+      ],
+      "sound": "うまい",
+      "meaning": "delicious/skillful",
+      "tags": ["adjectives", "food"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "あ"
+      ]
+    },
+    "genki": {
+      "jp_character": "げんき",
+      "romanji": [
+        "genki"
+      ],
+      "sound": "げんき",
+      "meaning": "energetic/healthy",
+      "tags": ["adjectives", "feelings"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "か",
+        "が"
+      ]
+    },
+    "kirei": {
+      "jp_character": "きれい",
+      "romanji": [
+        "kirei"
+      ],
+      "sound": "きれい",
+      "meaning": "pretty/clean",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "あ",
+        "か"
+      ]
+    },
+    "kitanai": {
+      "jp_character": "きたない",
+      "romanji": [
+        "kitanai"
+      ],
+      "sound": "きたない",
+      "meaning": "dirty",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "な",
+        "あ",
+        "か",
+        "た"
+      ]
+    },
+    "shizuka": {
+      "jp_character": "しずか",
+      "romanji": [
+        "shizuka"
+      ],
+      "sound": "しずか",
+      "meaning": "quiet",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ざ",
+        "か",
+        "さ"
+      ]
+    },
+    "urusai": {
+      "jp_character": "うるさい",
+      "romanji": [
+        "urusai"
+      ],
+      "sound": "うるさい",
+      "meaning": "noisy",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "あ",
+        "さ"
+      ]
+    },
+    "benri": {
+      "jp_character": "べんり",
+      "romanji": [
+        "benri"
+      ],
+      "sound": "べんり",
+      "meaning": "convenient",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ば",
+        "ら",
+        "わ"
+      ]
+    },
+    "michi": {
+      "jp_character": "みち",
+      "romanji": [
+        "michi"
+      ],
+      "sound": "みち",
+      "meaning": "road/path",
+      "tags": ["places", "directions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "た"
+      ]
+    },
+    "eki": {
+      "jp_character": "えき",
+      "romanji": [
+        "eki"
+      ],
+      "sound": "えき",
+      "meaning": "station",
+      "tags": ["places", "transportation"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "か"
+      ]
+    },
+    "machi": {
+      "jp_character": "まち",
+      "romanji": [
+        "machi"
+      ],
+      "sound": "まち",
+      "meaning": "town/city",
+      "tags": ["places"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "た"
+      ]
+    },
+    "yama": {
+      "jp_character": "やま",
+      "romanji": [
+        "yama"
+      ],
+      "sound": "やま",
+      "meaning": "mountain",
+      "tags": ["nature", "places"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "ま"
+      ]
+    },
+    "umi": {
+      "jp_character": "うみ",
+      "romanji": [
+        "umi"
+      ],
+      "sound": "うみ",
+      "meaning": "sea/ocean",
+      "tags": ["nature", "places"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "あ"
+      ]
+    },
+    "kawa": {
+      "jp_character": "かわ",
+      "romanji": [
+        "kawa"
+      ],
+      "sound": "かわ",
+      "meaning": "river",
+      "tags": ["nature", "places"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "か"
+      ]
+    },
+    "sora": {
+      "jp_character": "そら",
+      "romanji": [
+        "sora"
+      ],
+      "sound": "そら",
+      "meaning": "sky",
+      "tags": ["nature"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "さ"
+      ]
+    },
+    "tsuki": {
+      "jp_character": "つき",
+      "romanji": [
+        "tsuki"
+      ],
+      "sound": "つき",
+      "meaning": "moon",
+      "tags": ["nature"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "か",
+        "た"
+      ]
+    },
+    "hoshi": {
+      "jp_character": "ほし",
+      "romanji": [
+        "hoshi"
+      ],
+      "sound": "ほし",
+      "meaning": "star",
+      "tags": ["nature"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "は",
+        "さ"
+      ]
+    },
+    "taiyou": {
+      "jp_character": "たいよう",
+      "romanji": [
+        "taiyou"
+      ],
+      "sound": "たいよう",
+      "meaning": "sun",
+      "tags": ["nature"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "あ",
+        "た"
+      ]
+    },
+    "inu": {
+      "jp_character": "いぬ",
+      "romanji": [
+        "inu"
+      ],
+      "sound": "いぬ",
+      "meaning": "dog",
+      "tags": ["animals", "pets"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "な"
+      ]
+    },
+    "sakana": {
+      "jp_character": "さかな",
+      "romanji": [
+        "sakana"
+      ],
+      "sound": "さかな",
+      "meaning": "fish",
+      "tags": ["animals", "food"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "さ",
+        "か",
+        "な"
+      ]
+    },
+    "sensei": {
+      "jp_character": "せんせい",
+      "romanji": [
+        "sensei"
+      ],
+      "sound": "せんせい",
+      "meaning": "teacher",
+      "tags": ["people", "education"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "あ",
+        "さ"
+      ]
+    },
+    "gakusei": {
+      "jp_character": "がくせい",
+      "romanji": [
+        "gakusei"
+      ],
+      "sound": "がくせい",
+      "meaning": "student",
+      "tags": ["people", "education"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "が",
+        "あ",
+        "か",
+        "さ"
+      ]
+    },
+    "tomodachi": {
+      "jp_character": "ともだち",
+      "romanji": [
+        "tomodachi"
+      ],
+      "sound": "ともだち",
+      "meaning": "friend",
+      "tags": ["people", "social"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "だ",
+        "た"
+      ]
+    },
+    "hito": {
+      "jp_character": "ひと",
+      "romanji": [
+        "hito"
+      ],
+      "sound": "ひと",
+      "meaning": "person",
+      "tags": ["people"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "は",
+        "た"
+      ]
+    },
+    "otoko": {
+      "jp_character": "おとこ",
+      "romanji": [
+        "otoko"
+      ],
+      "sound": "おとこ",
+      "meaning": "man",
+      "tags": ["people"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "か",
+        "た"
+      ]
+    },
+    "onna": {
+      "jp_character": "おんな",
+      "romanji": [
+        "onna"
+      ],
+      "sound": "おんな",
+      "meaning": "woman",
+      "tags": ["people"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "あ",
+        "な"
+      ]
+    },
+    "asa": {
+      "jp_character": "あさ",
+      "romanji": [
+        "asa"
+      ],
+      "sound": "あさ",
+      "meaning": "morning",
+      "tags": ["time"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "さ"
+      ]
+    },
+    "hiru": {
+      "jp_character": "ひる",
+      "romanji": [
+        "hiru"
+      ],
+      "sound": "ひる",
+      "meaning": "afternoon/noon",
+      "tags": ["time"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "は"
+      ]
+    },
+    "ban": {
+      "jp_character": "ばん",
+      "romanji": [
+        "ban"
+      ],
+      "sound": "ばん",
+      "meaning": "evening",
+      "tags": ["time"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "ば"
+      ]
+    },
+    "yoru": {
+      "jp_character": "よる",
+      "romanji": [
+        "yoru"
+      ],
+      "sound": "よる",
+      "meaning": "night",
+      "tags": ["time"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "ら"
+      ]
+    },
+    "ima": {
+      "jp_character": "いま",
+      "romanji": [
+        "ima"
+      ],
+      "sound": "いま",
+      "meaning": "now",
+      "tags": ["time"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "あ"
+      ]
+    },
+    "mainichi": {
+      "jp_character": "まいにち",
+      "romanji": [
+        "mainichi"
+      ],
+      "sound": "まいにち",
+      "meaning": "every day",
+      "tags": ["time"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "あ",
+        "な",
+        "た"
+      ]
+    },
+    "totemo": {
+      "jp_character": "とても",
+      "romanji": [
+        "totemo"
+      ],
+      "sound": "とても",
+      "meaning": "very",
+      "tags": ["adverbs"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "た"
+      ]
+    },
+    "sukoshi": {
+      "jp_character": "すこし",
+      "romanji": [
+        "sukoshi"
+      ],
+      "sound": "すこし",
+      "meaning": "a little",
+      "tags": ["adverbs"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "か",
+        "さ"
+      ]
+    },
+    "takusan": {
+      "jp_character": "たくさん",
+      "romanji": [
+        "takusan"
+      ],
+      "sound": "たくさん",
+      "meaning": "many/a lot",
+      "tags": ["adverbs"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "か",
+        "さ",
+        "た"
+      ]
+    },
+    "amari": {
+      "jp_character": "あまり",
+      "romanji": [
+        "amari"
+      ],
+      "sound": "あまり",
+      "meaning": "not very",
+      "tags": ["adverbs"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "ら",
+        "あ"
+      ]
+    },
+    "migi": {
+      "jp_character": "みぎ",
+      "romanji": [
+        "migi"
+      ],
+      "sound": "みぎ",
+      "meaning": "right",
+      "tags": ["directions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "が"
+      ]
+    },
+    "hidari": {
+      "jp_character": "ひだり",
+      "romanji": [
+        "hidari"
+      ],
+      "sound": "ひだり",
+      "meaning": "left",
+      "tags": ["directions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "だ",
+        "は"
+      ]
+    },
+    "ue": {
+      "jp_character": "うえ",
+      "romanji": [
+        "ue"
+      ],
+      "sound": "うえ",
+      "meaning": "above/up",
+      "tags": ["directions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ"
+      ]
+    },
+    "shita": {
+      "jp_character": "した",
+      "romanji": [
+        "shita"
+      ],
+      "sound": "した",
+      "meaning": "below/down",
+      "tags": ["directions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "さ",
+        "た"
+      ]
+    },
+    "naka": {
+      "jp_character": "なか",
+      "romanji": [
+        "naka"
+      ],
+      "sound": "なか",
+      "meaning": "inside",
+      "tags": ["directions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "な",
+        "か"
+      ]
+    },
+    "soto": {
+      "jp_character": "そと",
+      "romanji": [
+        "soto"
+      ],
+      "sound": "そと",
+      "meaning": "outside",
+      "tags": ["directions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "さ",
+        "た"
+      ]
+    },
+    "mae": {
+      "jp_character": "まえ",
+      "romanji": [
+        "mae"
+      ],
+      "sound": "まえ",
+      "meaning": "front/before",
+      "tags": ["directions", "time"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "あ"
+      ]
+    },
+    "ushiro": {
+      "jp_character": "うしろ",
+      "romanji": [
+        "ushiro"
+      ],
+      "sound": "うしろ",
+      "meaning": "back/behind",
+      "tags": ["directions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "さ",
+        "あ"
+      ]
+    },
+    "となri": {
+      "jp_character": "となり",
+      "romanji": [
+        "tonari"
+      ],
+      "sound": "となり",
+      "meaning": "next to",
+      "tags": ["directions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "な",
+        "た"
+      ]
+    },
+    "aida": {
+      "jp_character": "あいだ",
+      "romanji": [
+        "aida"
+      ],
+      "sound": "あいだ",
+      "meaning": "between",
+      "tags": ["directions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "だ"
+      ]
+    },
+    "gohan": {
+      "jp_character": "ごはん",
+      "romanji": [
+        "gohan"
+      ],
+      "sound": "ごはん",
+      "meaning": "rice/meal",
+      "tags": ["food"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "は",
+        "が"
+      ]
+    },
+    "niku": {
+      "jp_character": "にく",
+      "romanji": [
+        "niku"
+      ],
+      "sound": "にく",
+      "meaning": "meat",
+      "tags": ["food"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "な",
+        "か"
+      ]
+    },
+    "ocha": {
+      "jp_character": "おちゃ",
+      "romanji": [
+        "ocha"
+      ],
+      "sound": "おちゃ",
+      "meaning": "tea",
+      "tags": ["food", "drinks"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "あ",
+        "た"
+      ]
+    },
+    "kissaten": {
+      "jp_character": "きっさてん",
+      "romanji": [
+        "kissaten"
+      ],
+      "sound": "きっさてん",
+      "meaning": "cafe",
+      "tags": ["places", "food"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "さ",
+        "た",
+        "か"
+      ]
+    },
+    "resutoran": {
+      "jp_character": "レストラン",
+      "romanji": [
+        "resutoran"
+      ],
+      "sound": "レストラン",
+      "meaning": "restaurant",
+      "tags": ["places", "food"],
+      "katakana_groups": [
+        "ラ",
+        "サ",
+        "タ",
+        "ワ"
+      ],
+      "hiragana_groups": []
+    },
+    "depaato": {
+      "jp_character": "デパート",
+      "romanji": [
+        "depaato"
+      ],
+      "sound": "デパート",
+      "meaning": "department store",
+      "tags": ["places", "shopping"],
+      "katakana_groups": [
+        "ダ",
+        "パ",
+        "タ",
+        "ア"
+      ],
+      "hiragana_groups": []
+    },
+    "yuubinkyoku": {
+      "jp_character": "ゆうびんきょく",
+      "romanji": [
+        "yuubinkyoku"
+      ],
+      "sound": "ゆうびんきょく",
+      "meaning": "post office",
+      "tags": ["places"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "あ",
+        "か",
+        "ば",
+        "わ"
+      ]
+    },
+    "toshokan": {
+      "jp_character": "としょかん",
+      "romanji": [
+        "toshokan"
+      ],
+      "sound": "としょかん",
+      "meaning": "library",
+      "tags": ["places", "education"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "か",
+        "や",
+        "さ",
+        "た"
+      ]
+    },
+    "kuni": {
+      "jp_character": "くに",
+      "romanji": [
+        "kuni"
+      ],
+      "sound": "くに",
+      "meaning": "country",
+      "tags": ["places"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "か",
+        "な"
+      ]
+    },
+    "eigo": {
+      "jp_character": "えいご",
+      "romanji": [
+        "eigo"
+      ],
+      "sound": "えいご",
+      "meaning": "English language",
+      "tags": ["languages", "education"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "が",
+        "あ"
+      ]
+    },
+    "namae": {
+      "jp_character": "なまえ",
+      "romanji": [
+        "namae"
+      ],
+      "sound": "なまえ",
+      "meaning": "name",
+      "tags": ["basic"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "な",
+        "あ"
+      ]
+    },
+    "shigoto": {
+      "jp_character": "しごと",
+      "romanji": [
+        "shigoto"
+      ],
+      "sound": "しごと",
+      "meaning": "work/job",
+      "tags": ["work"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "が",
+        "さ",
+        "た"
+      ]
+    },
+    "kaisha": {
+      "jp_character": "かいしゃ",
+      "romanji": [
+        "kaisha"
+      ],
+      "sound": "かいしゃ",
+      "meaning": "company",
+      "tags": ["work"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "あ",
+        "か",
+        "さ"
+      ]
+    },
+    "okane": {
+      "jp_character": "おかね",
+      "romanji": [
+        "okane"
+      ],
+      "sound": "おかね",
+      "meaning": "money",
+      "tags": ["shopping", "money"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "か",
+        "な"
+      ]
+    },
+    "omoi": {
+      "jp_character": "おもい",
+      "romanji": [
+        "omoi"
+      ],
+      "sound": "おもい",
+      "meaning": "heavy",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "あ"
+      ]
+    },
+    "karui": {
+      "jp_character": "かるい",
+      "romanji": [
+        "karui"
+      ],
+      "sound": "かるい",
+      "meaning": "light",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "あ",
+        "か"
+      ]
+    },
+    "tsuyoi": {
+      "jp_character": "つよい",
+      "romanji": [
+        "tsuyoi"
+      ],
+      "sound": "つよい",
+      "meaning": "strong",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "あ",
+        "た"
+      ]
+    },
+    "yowai": {
+      "jp_character": "よわい",
+      "romanji": [
+        "yowai"
+      ],
+      "sound": "よわい",
+      "meaning": "weak",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "わ",
+        "あ"
+      ]
+    },
+    "omoshiro": {
+      "jp_character": "おもしろ",
+      "romanji": [
+        "omoshiro"
+      ],
+      "sound": "おもしろ",
+      "meaning": "interesting",
+      "tags": ["adjectives"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ら",
+        "ま",
+        "さ",
+        "あ"
+      ]
+    },
+    "wakarimasu": {
+      "jp_character": "わかります",
+      "romanji": [
+        "wakarimasu"
+      ],
+      "sound": "わかります",
+      "meaning": "to understand",
+      "tags": ["verbs", "understanding"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "ら",
+        "わ",
+        "か",
+        "さ"
+      ]
+    },
+    "dekimasu": {
+      "jp_character": "できます",
+      "romanji": [
+        "dekimasu"
+      ],
+      "sound": "できます",
+      "meaning": "can do/be able to",
+      "tags": ["verbs", "ability"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "か",
+        "さ",
+        "だ"
+      ]
+    },
+    "shousetsu": {
+      "jp_character": "しょうせつ",
+      "romanji": [
+        "shousetsu"
+      ],
+      "sound": "しょうせつ",
+      "meaning": "novel",
+      "tags": ["items", "entertainment"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "あ",
+        "さ",
+        "た"
+      ]
+    },
+    "eiga": {
+      "jp_character": "えいが",
+      "romanji": [
+        "eiga"
+      ],
+      "sound": "えいが",
+      "meaning": "movie",
+      "tags": ["entertainment"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "が",
+        "あ"
+      ]
+    },
+    "ongaku": {
+      "jp_character": "おんがく",
+      "romanji": [
+        "ongaku"
+      ],
+      "sound": "おんがく",
+      "meaning": "music",
+      "tags": ["entertainment"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "が",
+        "あ",
+        "か"
+      ]
+    },
+    "geemu": {
+      "jp_character": "ゲーム",
+      "romanji": [
+        "geemu"
+      ],
+      "sound": "ゲーム",
+      "meaning": "game",
+      "tags": ["entertainment", "otaku"],
+      "katakana_groups": [
+        "ガ",
+        "マ"
+      ],
+      "hiragana_groups": []
+    },
+    "cosplay": {
+      "jp_character": "コスプレ",
+      "romanji": [
+        "cosplay",
+        "kosupure"
+      ],
+      "sound": "コスプレ",
+      "meaning": "cosplay",
+      "tags": ["otaku", "anime"],
+      "katakana_groups": [
+        "カ",
+        "サ",
+        "パ",
+        "ラ"
+      ],
+      "hiragana_groups": []
+    },
+    "waifu": {
+      "jp_character": "ワイフ",
+      "romanji": [
+        "waifu"
+      ],
+      "sound": "ワイフ",
+      "meaning": "waifu",
+      "tags": ["otaku", "anime"],
+      "katakana_groups": [
+        "ワ",
+        "ア",
+        "ハ"
+      ],
+      "hiragana_groups": []
+    },
+    "senpai": {
+      "jp_character": "せんぱい",
+      "romanji": [
+        "senpai"
+      ],
+      "sound": "せんぱい",
+      "meaning": "senior/upperclassman",
+      "tags": ["school", "social"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "ぱ",
+        "あ",
+        "さ"
+      ]
+    },
+    "kouhai": {
+      "jp_character": "こうはい",
+      "romanji": [
+        "kouhai"
+      ],
+      "sound": "こうはい",
+      "meaning": "junior/underclassman",
+      "tags": ["school", "social"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "は",
+        "あ",
+        "か"
+      ]
+    },
+    "yandere": {
+      "jp_character": "ヤンデレ",
+      "romanji": [
+        "yandere"
+      ],
+      "sound": "ヤンデレ",
+      "meaning": "yandere character type",
+      "tags": ["otaku", "anime"],
+      "katakana_groups": [
+        "ヤ",
+        "ワ",
+        "ダ",
+        "ラ"
+      ],
+      "hiragana_groups": []
+    },
+    "tsundere": {
+      "jp_character": "ツンデレ",
+      "romanji": [
+        "tsundere"
+      ],
+      "sound": "ツンデレ",
+      "meaning": "tsundere character type",
+      "tags": ["otaku", "anime"],
+      "katakana_groups": [
+        "タ",
+        "ワ",
+        "ダ",
+        "ラ"
+      ],
+      "hiragana_groups": []
+    },
+    "mecha": {
+      "jp_character": "メカ",
+      "romanji": [
+        "mecha"
+      ],
+      "sound": "メカ",
+      "meaning": "mecha/robot",
+      "tags": ["otaku", "anime"],
+      "katakana_groups": [
+        "マ",
+        "カ"
+      ],
+      "hiragana_groups": []
+    },
+    "shounen": {
+      "jp_character": "しょうねん",
+      "romanji": [
+        "shounen"
+      ],
+      "sound": "しょうねん",
+      "meaning": "boy/shounen genre",
+      "tags": ["otaku", "anime", "manga"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "あ",
+        "わ",
+        "さ"
+      ]
+    },
+    "shoujo": {
+      "jp_character": "しょうじょ",
+      "romanji": [
+        "shoujo"
+      ],
+      "sound": "しょうじょ",
+      "meaning": "girl/shoujo genre",
+      "tags": ["otaku", "anime", "manga"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "あ",
+        "ざ",
+        "さ"
+      ]
+    },
+    "kawaisou": {
+      "jp_character": "かわいそう",
+      "romanji": [
+        "kawaisou"
+      ],
+      "sound": "かわいそう",
+      "meaning": "pitiful/poor thing",
+      "tags": ["feelings", "expressions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "あ",
+        "か",
+        "さ"
+      ]
+    },
+    "sugoi": {
+      "jp_character": "すごい",
+      "romanji": [
+        "sugoi"
+      ],
+      "sound": "すごい",
+      "meaning": "amazing/awesome",
+      "tags": ["adjectives", "expressions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "が",
+        "あ",
+        "さ"
+      ]
+    },
+    "yabai": {
+      "jp_character": "やばい",
+      "romanji": [
+        "yabai"
+      ],
+      "sound": "やばい",
+      "meaning": "dangerous/crazy/awesome",
+      "tags": ["slang", "expressions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "ば",
+        "あ"
+      ]
+    },
+    "kimochi": {
+      "jp_character": "きもち",
+      "romanji": [
+        "kimochi"
+      ],
+      "sound": "きもち",
+      "meaning": "feeling",
+      "tags": ["feelings"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "か",
+        "た"
+      ]
+    },
+    "itai": {
+      "jp_character": "いたい",
+      "romanji": [
+        "itai"
+      ],
+      "sound": "いたい",
+      "meaning": "painful/ouch",
+      "tags": ["feelings", "expressions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "あ",
+        "た"
+      ]
+    },
+    "daijoubu": {
+      "jp_character": "だいじょうぶ",
+      "romanji": [
+        "daijoubu"
+      ],
+      "sound": "だいじょうぶ",
+      "meaning": "okay/alright",
+      "tags": ["expressions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "だ",
+        "や",
+        "あ",
+        "ば"
+      ]
+    },
+    "yokatta": {
+      "jp_character": "よかった",
+      "romanji": [
+        "yokatta"
+      ],
+      "sound": "よかった",
+      "meaning": "I'm glad/that's good",
+      "tags": ["expressions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "か",
+        "た"
+      ]
+    },
+    "ganbatte": {
+      "jp_character": "がんばって",
+      "romanji": [
+        "ganbatte"
+      ],
+      "sound": "がんばって",
+      "meaning": "do your best/good luck",
+      "tags": ["expressions", "encouragement"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "が",
+        "わ",
+        "ば",
+        "た"
+      ]
+    },
+    "omedetou": {
+      "jp_character": "おめでとう",
+      "romanji": [
+        "omedetou"
+      ],
+      "sound": "おめでとう",
+      "meaning": "congratulations",
+      "tags": ["expressions"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "だ",
+        "あ",
+        "た"
+      ]
+    },
+    "sumimasen": {
+      "jp_character": "すみません",
+      "romanji": [
+        "sumimasen"
+      ],
+      "sound": "すみません",
+      "meaning": "excuse me/sorry",
+      "tags": ["expressions", "politeness"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "わ",
+        "さ"
+      ]
+    },
+    "itadakimasu": {
+      "jp_character": "いただきます",
+      "romanji": [
+        "itadakimasu"
+      ],
+      "sound": "いただきます",
+      "meaning": "let's eat (before meal)",
+      "tags": ["expressions", "food"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "ま",
+        "だ",
+        "あ",
+        "か",
+        "た",
+        "さ"
+      ]
+    },
+    "gochisousama": {
+      "jp_character": "ごちそうさま",
+      "romanji": [
+        "gochisousama"
+      ],
+      "sound": "ごちそうさま",
+      "meaning": "thank you for the meal (after eating)",
+      "tags": ["expressions", "food"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "が",
+        "ま",
+        "さ",
+        "た"
+      ]
+    },
+    "ohayou": {
+      "jp_character": "おはよう",
+      "romanji": [
+        "ohayou"
+      ],
+      "sound": "おはよう",
+      "meaning": "good morning",
+      "tags": ["expressions", "greetings"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "は",
+        "や",
+        "あ"
+      ]
+    },
+    "konnichiwa": {
+      "jp_character": "こんにちは",
+      "romanji": [
+        "konnichiwa"
+      ],
+      "sound": "こんにちは",
+      "meaning": "hello/good afternoon",
+      "tags": ["expressions", "greetings"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "は",
+        "か",
+        "た"
+      ]
+    },
+    "konbanwa": {
+      "jp_character": "こんばんは",
+      "romanji": [
+        "konbanwa"
+      ],
+      "sound": "こんばんは",
+      "meaning": "good evening",
+      "tags": ["expressions", "greetings"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "わ",
+        "ば",
+        "は",
+        "か"
+      ]
+    },
+    "oyasumi": {
+      "jp_character": "おやすみ",
+      "romanji": [
+        "oyasumi"
+      ],
+      "sound": "おやすみ",
+      "meaning": "good night",
+      "tags": ["expressions", "greetings"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "ま",
+        "さ",
+        "あ"
+      ]
+    },
+    "sayounara": {
+      "jp_character": "さようなら",
+      "romanji": [
+        "sayounara"
+      ],
+      "sound": "さようなら",
+      "meaning": "goodbye",
+      "tags": ["expressions", "greetings"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "ら",
+        "な",
+        "さ",
+        "あ"
+      ]
+    },
+    "ja_mata": {
+      "jp_character": "じゃまた",
+      "romanji": [
+        "ja mata",
+        "jamata"
+      ],
+      "sound": "じゃまた",
+      "meaning": "see you later",
+      "tags": ["expressions", "greetings"],
+      "katakana_groups": [],
+      "hiragana_groups": [
+        "や",
+        "ま",
+        "た",
+        "ざ"
       ]
     }
   }
