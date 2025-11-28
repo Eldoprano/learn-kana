@@ -266,6 +266,7 @@ export default function InGameCharacterShowAndInput() {
   // { "jp_character": "あ", "romanji": ["a"], "sound": "あ", "type": "kana/word", *"vocal": "a", *"meaning": "dog" }
   // *The key "vocal" only shows up when the type is "kana"
   // *The key "meaning" only shows up when the type is "word"
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   let charactersToShow = []
   if (localStorage.getItem("game-mode-word") === "true") {
     charactersToShow = getListOfWords(characterGroupsToShow)
@@ -296,6 +297,7 @@ export default function InGameCharacterShowAndInput() {
 
   // Be mad at the user if the charactersToShow is empty
   const navigate = useNavigate();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (charactersToShow.length === 0) {
       navigate('/bruh', { state: { message: 'You didn\'t select any Kana!' } });
@@ -823,6 +825,7 @@ export default function InGameCharacterShowAndInput() {
         window.removeEventListener("keydown", handleKeyDown);
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const cursorBlinkInterval = useRef(null);
@@ -883,6 +886,7 @@ export default function InGameCharacterShowAndInput() {
     return () => {
       clearInterval(cursorBlinkInterval.current);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleUserAskForHelp() {
