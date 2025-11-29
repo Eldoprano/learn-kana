@@ -44,6 +44,7 @@ export default function GameMenu() {
           <path d="M3 13h2v8H3v-8zm4-6h2v14H7V7zm4-4h2v18h-2V3zm4 8h2v10h-2V11zm4-6h2v16h-2V5z"/>
         </svg>
       </button>
+      <div className='version-display'>v0.2.0</div>
       <ProgressStatsModal visible={showStatsModal} onClose={() => setShowStatsModal(false)} />
     </div>
   )
