@@ -85,9 +85,20 @@ function ProgressStatsModal(props) {
         return '#f87171'; // Red - struggling
     };
 
+    // Get mastery bracket for sorting
+    const getMasteryBracket = (mastery) => {
+        if (mastery === null) return 0; // No data
+        if (mastery >= 80) return 5; // Excellent
+        if (mastery >= 60) return 4; // Good
+        if (mastery >= 40) return 3; // OK
+        if (mastery >= 20) return 2; // Needs Work
+        return 1; // Struggling
+    };
+
     // Get all characters from kanaCharacters
     const getAllCharacters = () => {
         const characters = [];
+        let index = 0;
 
         ['hiragana', 'katakana'].forEach(type => {
             Object.keys(kanaCharacters[type]).forEach(groupKey => {
@@ -97,22 +108,27 @@ function ProgressStatsModal(props) {
                     characters.push({
                         character: char.jp_character,
                         romanji: char.romanji[0],
-                        type: type
+                        type: type,
+                        originalIndex: index++
                     });
                 });
             });
         });
 
-        // Sort: characters with data first (by mastery), then characters without data
+        // Sort: characters with data first (by mastery bracket), then characters without data
+        // Within same bracket, sort by original order
         return characters.sort((a, b) => {
             const masteryA = calculateMastery(a.character);
             const masteryB = calculateMastery(b.character);
 
-            if (masteryA === null && masteryB === null) return 0;
-            if (masteryA === null) return 1;
-            if (masteryB === null) return -1;
+            const bracketA = getMasteryBracket(masteryA);
+            const bracketB = getMasteryBracket(masteryB);
 
-            return masteryB - masteryA; // Higher mastery first
+            if (bracketA !== bracketB) {
+                return bracketB - bracketA; // Higher bracket first
+            }
+
+            return a.originalIndex - b.originalIndex; // Original order
         });
     };
 
