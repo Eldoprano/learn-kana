@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider,} from "react-router-dom";
+import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import './App.css';
 import './InGame.css';
 import App from './App';
@@ -11,22 +11,29 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 
 
+import Layout from './components/Layout';
+
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: < App/>,
-  },
-  {
-    path: "/learn-kana",
-    element: < App/>,
-  },
-  {
-    path: "/learn-kana∕game",
-    element: <InGame />,
-  },
-  {
-    path: "*",
-    element: <NotFound />,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: < App />,
+      },
+      {
+        path: "/learn-kana",
+        element: < App />,
+      },
+      {
+        path: "/learn-kana∕game",
+        element: <InGame />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
+      },
+    ],
   },
 ]);
 
