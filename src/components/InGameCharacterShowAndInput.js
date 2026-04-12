@@ -354,61 +354,37 @@ export default function InGameCharacterShowAndInput() {
     return output;
   }
 
-  // Helper function to get n random unique elements from an array
-  function sample(inputArray, numberOfOutputs, onePerVocal = false) {
-    const vocals = ["a", "i", "u", "e", "o"];
-    let current_vocal = 0;
-
-    // Create a copy of the original array to avoid modifying it
-    const copyArray = [...inputArray];
-    const sampledElements = [];
-
-    if (inputArray.length < numberOfOutputs) {
-      inputArray = inputArray.concat(inputArray);
-      onePerVocal = false;
-    }
-
-    // If n is greater than the size of a, set possible unique outputs to the size of array
-    const numberOfUniqueOutputs = Math.min(numberOfOutputs, copyArray.length);
-
-    for (let i = 0; i < numberOfUniqueOutputs; i++) {
-      while (true) {
-        const randomIndex = Math.floor(Math.random() * copyArray.length);
-        if (onePerVocal) {
-          if (copyArray[randomIndex].vocal === vocals[current_vocal]) {
-            current_vocal++;
-          } else { continue }
-        }
-        sampledElements.push(copyArray[randomIndex]);
-        // Remove the selected element from the copyArray to avoid duplicates
-        copyArray.splice(randomIndex, 1);
-        break;
-      }
-    }
-
-    // If still space, fill it with duplicate elements
-    const remainingOutputs = numberOfOutputs - numberOfUniqueOutputs;
-    for (let i = 0; i < remainingOutputs; i++) {
-      const randomIndex = Math.floor(Math.random() * numberOfUniqueOutputs);
-      sampledElements.push(sampledElements[randomIndex]);
-    }
-
-    return sampledElements;
-  }
-
   /* 
   ##########################################
   # Creates and handles the touch answers #
   ##########################################
   */
   function fillTouchAnswers(picked_kana) {
-    const possibleAnswers = sample(charactersToShow, 5, true);
-    const elements = document.querySelectorAll('.in-game-touch-answer>p');
-    for (let i = 0; i < possibleAnswers.length; i++) {
-      if (possibleAnswers[i].vocal === picked_kana.vocal) {
-        Object.assign(possibleAnswers[i], picked_kana)
+    let possibleAnswers = [];
+    possibleAnswers.push(picked_kana);
+
+    // Get other distinct characters
+    let otherChars = charactersToShow.filter(c => c.jp_character !== picked_kana.jp_character);
+
+    // Fill up to 5 elements
+    while (possibleAnswers.length < 5) {
+      if (otherChars.length === 0) {
+        // If no more unique chars, randomly pick from what we have to fill the buttons
+        possibleAnswers.push(possibleAnswers[Math.floor(Math.random() * possibleAnswers.length)]);
+      } else {
+        const randomIndex = Math.floor(Math.random() * otherChars.length);
+        possibleAnswers.push(otherChars[randomIndex]);
+        otherChars.splice(randomIndex, 1); // Remove to avoid duplicate unique elements
       }
     }
+
+    // Shuffle the possible answers
+    for (let i = possibleAnswers.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [possibleAnswers[i], possibleAnswers[j]] = [possibleAnswers[j], possibleAnswers[i]];
+    }
+
+    const elements = document.querySelectorAll('.in-game-touch-answer>p');
 
     // Go over the elements
     for (let i = 0; i < elements.length; i++) {
