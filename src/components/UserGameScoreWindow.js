@@ -214,7 +214,7 @@ export default function UserGameScoreWindow(props) {
                                 window.location.href = "/learn-kana#game-menu-title";
                             }}>Back to Main Menu</button>
                         {/* </Link> */}
-                        <button onClick={handleTryProblematicsClick}>Try Problematics</button>
+                        <button onClick={handleTryProblematicsClick}>Review Mistakes</button>
                         <button onClick={() => {
                             localStorage.removeItem('problematicKanasFilter');
                             window.location.reload(false);
