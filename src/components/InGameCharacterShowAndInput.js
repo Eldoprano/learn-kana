@@ -3,20 +3,7 @@ import {  useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { kanaCharacters } from '../kanaCharacters.js'
 import UserGameScoreWindow from './UserGameScoreWindow.js'
-
-let fontClassList = [
-  // "Belanosima",
-  "KleeOne",
-  "Kaisei_Tokumin",
-  "Noto_Serif_JP",
-  "Shippori_Mincho",
-  "Tsukimi_Rounded",
-  "YokoMoji",
-  "LeftHanded",
-  // "JiyunoTsubasa",
-  // "KleeOne",
-  "YujiBoku",
-]
+import { fontClassList } from '../fontClassList.js';
 
 /* userStats object structure:
 {
@@ -1030,16 +1017,6 @@ export default function InGameCharacterShowAndInput() {
           {onScreenSolution}
         </div>
         {inGameInputElement}
-        <div className='hidden-text-for-font-loading'>
-          {
-            // Go with a for loop over every font, and create an element p with a class of the font
-            fontClassList.map((fontClass) => {
-              return (
-                <p className={"font-" + fontClass} key={"font-" + fontClass}>a</p>
-              )
-            })
-          }
-        </div>
       </div>
       <UserGameScoreWindow
         visible={userGameScoreWindowVisible}
